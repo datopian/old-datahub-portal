@@ -1,0 +1,8 @@
+[
+  {
+    "id": "global-temp",
+    "title": "Global Temperature",
+    "body": "Monthly global land-ocean temperature index from NASA",
+    "tags": ["climate", "temperature"]
+  }
+]
