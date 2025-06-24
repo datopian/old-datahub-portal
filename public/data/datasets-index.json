@@ -1,0 +1,41 @@
+[
+  {
+    "id": "dataset-of-the-qing-secret-societies",
+    "title": "Dataset of the Qing Secret Societies",
+    "description": "Provision of LOD-based dataset of the Qing Secret Societies from the Academia Sinica Center for Digital Cultures.",
+    "organization": "Academia Sinica Center for Digital Cultures (ASCDC)",
+    "tags": [
+      "archives",
+      "Qing",
+      "history",
+      "lod"
+    ],
+    "path": "datasets/ascdc/dataset-of-the-qing-secret-societies/datapackage.json"
+  },
+  {
+    "id": "zip-codes-poquoson-va",
+    "title": "Zip Codes – Poquoson, VA",
+    "description": "List of ZIP codes for the city of Poquoson, Virginia.",
+    "organization": "",
+    "tags": [
+      "geospatial",
+      "zip",
+      "codes",
+      "us"
+    ],
+    "path": "datasets/poquoson/zip-codes-poquoson-va/datapackage.json"
+  },
+  {
+    "id": "mallzee-dataset",
+    "title": "Mallzee Dataset",
+    "description": "Binary responses of users swiping items in Mallzee retail app.",
+    "organization": "Robust Autonomy and Decisions group",
+    "tags": [
+      "binary responses",
+      "swipes",
+      "multiattribute",
+      "recommendation"
+    ],
+    "path": "datasets/rad/mallzee-dataset/datapackage.json"
+  }
+]

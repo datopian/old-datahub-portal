@@ -1,0 +1,28 @@
+{
+  "name": "dataset-of-the-qing-secret-societies",
+  "title": "Dataset of the Qing Secret Societies",
+  "description": "Provision of LOD-based dataset of the Qing Secret Societies from the Academia Sinica Center for Digital Cultures.",
+  "version": "1.0",
+  "licenses": [
+    { "name": "cc-zero", "title": "Creative Commons Zero", "path": "https://creativecommons.org/publicdomain/zero/1.0/" }
+  ],
+  "keywords": ["archives", "Qing", "history", "lod"],
+  "organization": {
+    "name": "ascdc",
+    "title": "Academia Sinica Center for Digital Cultures (ASCDC)"
+  },
+  "resources": [
+    {
+      "name": "Dataset of the Qing Secret Societies_Sect of …",
+      "format": "CSV",
+      "path": "https://old.datahub.io/dataset/…/download/ascdc-css-1.ttl"
+    },
+    {
+      "name": "SPARQL endpoint for querying the dataset",
+      "format": "API",
+      "path": "https://old.datahub.io/dataset/…/sparql"
+    }
+  ],
+  "created": "2025-05-31T02:25:00Z",
+  "modified": "2025-05-31T02:25:00Z"
+} 

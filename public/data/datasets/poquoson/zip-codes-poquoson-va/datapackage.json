@@ -1,0 +1,20 @@
+{
+  "name": "zip-codes-poquoson-va",
+  "title": "Zip Codes – Poquoson, VA",
+  "description": "List of ZIP codes for the city of Poquoson, Virginia.",
+  "version": "1.0",
+  "licenses": [
+    { "name": "notspecified", "title": "Not Specified", "path": "" }
+  ],
+  "keywords": ["geospatial", "zip", "codes", "us"],
+  "organization": null,
+  "resources": [
+    {
+      "name": "Complete dataset",
+      "format": "CSV",
+      "path": "https://old.datahub.io/dataset/zip-codes-poquoson-va/resource/…/download/zipcodes.csv"
+    }
+  ],
+  "created": "2025-05-30T06:05:06Z",
+  "modified": "2025-05-30T06:05:06Z"
+} 

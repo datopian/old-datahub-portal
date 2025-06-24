@@ -1,0 +1,33 @@
+{
+  "name": "mallzee-dataset",
+  "title": "Mallzee Dataset",
+  "description": "Binary responses of users swiping items in Mallzee retail app.",
+  "version": "1.0",
+  "licenses": [
+    { "name": "cc-by", "title": "Creative Commons Attribution", "path": "https://creativecommons.org/licenses/by/4.0/" }
+  ],
+  "keywords": ["binary responses", "swipes", "multiattribute", "recommendation"],
+  "organization": {
+    "name": "rad",
+    "title": "Robust Autonomy and Decisions group"
+  },
+  "resources": [
+    {
+      "name": "Complete dataset",
+      "format": "CSV",
+      "path": "https://old.datahub.io/dataset/mallzee‑dataset/resource/…/download/alldatawithlabels"
+    },
+    {
+      "name": "User responses",
+      "format": "CSV",
+      "path": "https://old.datahub.io/dataset/mallzee‑dataset/resource/…/download/userresponses"
+    },
+    {
+      "name": "Samples",
+      "format": "CSV",
+      "path": "https://old.datahub.io/dataset/mallzee‑dataset/resource/…/download/samples"
+    }
+  ],
+  "created": "2016-11-14T17:30:25Z",
+  "modified": "2022-01-05T14:20:30Z"
+} 
