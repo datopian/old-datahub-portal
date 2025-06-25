@@ -256,10 +256,19 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   );
 }
 
+function getAbsoluteUrl(path: string) {
+  if (typeof window === 'undefined') {
+    const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+    return base + path;
+  }
+  return path;
+}
+
 function DatasetFormats({ path }: { path: string }) {
   const [formats, setFormats] = useState<string[]>([]);
   useState(() => {
-    fetch(`/data/${path}`)
+    const url = getAbsoluteUrl(`/data/${path}`);
+    fetch(url)
       .then(res => res.json())
       .then((dp) => {
         const fmts = Array.isArray(dp.resources)
