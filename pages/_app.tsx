@@ -4,33 +4,22 @@ import "@/styles/tabs.scss";
 
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
-import { useRouter } from 'next/router';
 
 import SEO from "../next-seo.config";
 
 import Loader from "../components/_shared/Loader";
-
-import ThemeProvider from "../components/theme/theme-provider";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const theme = pageProps.theme || "lighter";
-  const router = useRouter();
-  const isHome = router.pathname === "/";
-  if (isHome) {
-    return (
-      <>
-        <DefaultSeo {...SEO} />
-        <Loader />
-        <Component {...pageProps} />
-      </>
-    );
-  }
   return (
-    <ThemeProvider themeName={theme}>
+    <>
+      <Header />
       <DefaultSeo {...SEO} />
       <Loader />
       <Component {...pageProps} />
-    </ThemeProvider>
+      <Footer />
+    </>
   );
 }
 

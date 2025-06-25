@@ -7,7 +7,7 @@
     { "name": "notspecified", "title": "Not Specified", "path": "" }
   ],
   "keywords": ["geospatial", "zip", "codes", "us"],
-  "organization": null,
+  "organization": "Poquoson",
   "resources": [
     {
       "name": "Complete dataset",

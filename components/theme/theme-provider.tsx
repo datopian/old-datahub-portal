@@ -1,12 +1,14 @@
 import _ThemeBase from "../../themes/default/layout";
 import { DefaultTheme } from "../../themes/default";
 import { LighterTheme } from "../../themes/lighter";
+import { CustomTheme } from "../../themes/custom";
 import { createContext, FC, ReactNode, useContext, useState } from "react";
 import { Theme } from "@/types/theme";
 
 const themes: Record<string, Theme> = {
   lighter: LighterTheme,
   default: DefaultTheme,
+  custom: CustomTheme,
 };
 
 interface ThemeContextProps {

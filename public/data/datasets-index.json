@@ -10,20 +10,37 @@
       "history",
       "lod"
     ],
-    "path": "datasets/ascdc/dataset-of-the-qing-secret-societies/datapackage.json"
+    "path": "datasets/ascdc/dataset-of-the-qing-secret-societies/datapackage.json",
+    "formats": [
+      "CSV",
+      "API"
+    ],
+    "licenses": [
+      "Creative Commons Zero"
+    ],
+    "created": "2025-05-31T02:25:00Z",
+    "modified": "2025-05-31T02:25:00Z"
   },
   {
     "id": "zip-codes-poquoson-va",
     "title": "Zip Codes – Poquoson, VA",
     "description": "List of ZIP codes for the city of Poquoson, Virginia.",
-    "organization": "",
+    "organization": "Poquoson",
     "tags": [
       "geospatial",
       "zip",
       "codes",
       "us"
     ],
-    "path": "datasets/poquoson/zip-codes-poquoson-va/datapackage.json"
+    "path": "datasets/poquoson/zip-codes-poquoson-va/datapackage.json",
+    "formats": [
+      "CSV"
+    ],
+    "licenses": [
+      "Not Specified"
+    ],
+    "created": "2025-05-30T06:05:06Z",
+    "modified": "2025-05-30T06:05:06Z"
   },
   {
     "id": "mallzee-dataset",
@@ -36,6 +53,14 @@
       "multiattribute",
       "recommendation"
     ],
-    "path": "datasets/rad/mallzee-dataset/datapackage.json"
+    "path": "datasets/rad/mallzee-dataset/datapackage.json",
+    "formats": [
+      "CSV"
+    ],
+    "licenses": [
+      "Creative Commons Attribution"
+    ],
+    "created": "2016-11-14T17:30:25Z",
+    "modified": "2022-01-05T14:20:30Z"
   }
 ]
