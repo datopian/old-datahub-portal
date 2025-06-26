@@ -1,25 +1,34 @@
 [
   {
     "id": "dataset-of-the-qing-secret-societies",
-    "title": "Dataset of the Qing Secret Societies",
-    "description": "Provision of LOD-based dataset of the Qing Secret Societies from the Academia Sinica Center for Digital Cultures.",
+    "title": "Dataset of the Qing Secret Societies (Sect of the Shifokou Wangs' Clan)",
+    "description": "The LOD dataset of ASCDC_Database of the Qing Secret Societies (Sect of the Shifokou Wangs' Clan) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the research project of the “The Secret Societies in Qing Dynasty” (清代檔案與數位人文研究──以官方查辦民間教門為核心). From 2022 to 2025, this project is funded by the National Science and Technology Council in Taiwan (NSTC 112-2423-H-001-002). The dataset is established and maintained by ASCDC at Academia Sinica in Taipei, Taiwan (ROC). The data includes the archives, persons, religious sects, sect events and place names related to the Chinese secret societies in the Jiaqing era (1796-1820), which can be served as authority files or controlled vocabularies for the study of the Chinese history. In particular, the data triples of the sect event of the Shifokou Wang’s Clan (石佛口王姓教案) will be focused in this dataset. Containing 8,810 data triples, the textual content within the LOD dataset is licensed under the Creative Commons Attribution (CC BY).",
     "organization": "Academia Sinica Center for Digital Cultures (ASCDC)",
     "tags": [
-      "archives",
+      "ASCDC",
+      "Academia Sinica",
+      "Academia Sinica Center for Digital Cultures",
+      "Archives",
+      "Chinese",
+      "Chinese History",
+      "History",
+      "Institute of History and Philology",
       "Qing",
-      "history",
-      "lod"
+      "Qing Dynasty",
+      "Religion",
+      "Secret Societies",
+      "archives",
+      "digital history",
+      "religion"
     ],
     "path": "datasets/ascdc/dataset-of-the-qing-secret-societies/datapackage.json",
     "formats": [
-      "CSV",
-      "API"
+      "TTL",
+      "XML, JSON, TTL, CSV."
     ],
-    "licenses": [
-      "Creative Commons Zero"
-    ],
-    "created": "2025-05-31T02:25:00Z",
-    "modified": "2025-05-31T02:25:00Z"
+    "licenses": [],
+    "created": null,
+    "modified": null
   },
   {
     "id": "zip-codes-poquoson-va",
@@ -45,22 +54,24 @@
   {
     "id": "mallzee-dataset",
     "title": "Mallzee Dataset",
-    "description": "Binary responses of users swiping items in Mallzee retail app.",
-    "organization": "Robust Autonomy and Decisions group",
+    "description": "Binary responses (swipes) to being presented a single item (piece of clothing) in the Mallzee retail app (https://mallzee.com/). The anonymised dataset is comprised of the real responses of 200 users to 500 items (different for each user) as they were interacting with the Mallzee app.\r\n\r\nItems are specified by multivariate descriptions; specifically (with dataset labels in parentheses):\r\n- the price during the user interaction (CurrentPrice)\r\n- the discount from the original price in absolute value (DiscountFromOriginal)\r\n- monetary currency in which the price is displayed (Currency)\r\n- the type of clothing (TypeOfClothing)\r\n- the intended gender for the item (Gender)\r\n- whether the item was in stock at the time of interaction (InStock)\r\n- the brand of the item (Brand)\r\n- the colour of the item (Colour)\r\n\r\n\"CurrentPrice\" and \"DiscountFromOriginal\" are continuous variables. The value of -1 for \"CurrentPrice\" represents the lack of a set price during the interaction (rather than a missing value). \"InStock\" is binary with 2 indicating that the item is in stock, and 1 that it is absent. All other variables are categorical, with each category labelled by an integer, starting from \"1\".\r\n\r\nUsers have been anonymised and are represented by a numerical id.\r\n\r\nUser responses are represented by a binary variable, where 0 indicates rejection (swiping left), and 1 indicates acceptance (swiping right). Accepting an item saves it to a list of items for potential future purchase.",
+    "organization": "Pavlos Andreadis",
     "tags": [
+      "Mallzee",
+      "SmartSociety",
       "binary responses",
-      "swipes",
       "multiattribute",
-      "recommendation"
+      "online retail",
+      "preference elicitation",
+      "recommendation",
+      "swipes"
     ],
     "path": "datasets/rad/mallzee-dataset/datapackage.json",
     "formats": [
       "CSV"
     ],
-    "licenses": [
-      "Creative Commons Attribution"
-    ],
-    "created": "2016-11-14T17:30:25Z",
-    "modified": "2022-01-05T14:20:30Z"
+    "licenses": [],
+    "created": null,
+    "modified": null
   }
 ]

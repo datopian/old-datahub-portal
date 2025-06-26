@@ -11,6 +11,21 @@ function getOrgTitle(org) {
   return '';
 }
 
+function getOrgString(dp) {
+  if (dp.organization) {
+    if (typeof dp.organization === 'string') {
+      return dp.organization;
+    }
+    if (typeof dp.organization === 'object') {
+      return dp.organization.title || dp.organization.name || '';
+    }
+  }
+  if (Array.isArray(dp.sources) && dp.sources.length > 0 && dp.sources[0].name) {
+    return dp.sources[0].name;
+  }
+  return '';
+}
+
 function getAllDatapackages(dir) {
   const orgs = fs.readdirSync(dir);
   let results = [];
@@ -35,7 +50,7 @@ function getAllDatapackages(dir) {
             id: dp.name,
             title: dp.title,
             description: dp.description,
-            organization: getOrgTitle(dp.organization),
+            organization: getOrgString(dp),
             tags: Array.isArray(dp.keywords) ? dp.keywords : [],
             path: `datasets/${org}/${ds}/datapackage.json`,
             formats,

@@ -218,7 +218,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                 <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#1d4ed8' }}>
                   <Link href={`/datasets/${ds.id}`}>{ds.title}</Link>
                 </h2>
-                <div style={{ color: '#444', margin: '10px 0 8px 0', fontSize: '1.05rem' }}>{ds.description}</div>
+                <div style={{ color: '#444', margin: '10px 0 8px 0', fontSize: '1.05rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{ds.description}</div>
                 <div style={{ fontSize: '0.97rem', color: '#666', marginBottom: 8 }}>
                   Organization: {ds.organization || <span style={{ color: '#bbb' }}>—</span>}
                 </div>
