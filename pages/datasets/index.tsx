@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GetStaticProps } from 'next';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 
@@ -324,7 +324,7 @@ function getAbsoluteUrl(path: string) {
 
 function DatasetFormats({ path }: { path: string }) {
   const [formats, setFormats] = useState<string[]>([]);
-  useState(() => {
+  useEffect(() => {
     const url = getAbsoluteUrl(`/data/${path}`);
     fetch(url)
       .then(res => res.json())
@@ -334,7 +334,7 @@ function DatasetFormats({ path }: { path: string }) {
           : [];
         setFormats(fmts as string[]);
       });
-  });
+  }, [path]);
   const formatColors: Record<string, string> = {
     CSV: '#2563eb',
     XLS: '#059669',
