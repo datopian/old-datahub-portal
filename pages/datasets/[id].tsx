@@ -114,7 +114,6 @@ export default function DatasetDetailPage({ dataset }: Props) {
         {tab === 'dataset' && (
           <>
             <div style={{ color: '#666', fontSize: '1.1rem', marginBottom: 18 }}>{dataset.description}</div>
-            <a href={downloadUrl} download style={{ display: 'inline-block', background: '#2563eb', color: '#fff', borderRadius: 6, padding: '10px 22px', fontWeight: 'bold', fontSize: '1.05rem', textDecoration: 'none', marginBottom: 24 }}>Download Data Package</a>
             <section style={{ margin: '32px 0 24px 0' }}>
               <h3 style={{ fontSize: '1.2rem', marginBottom: 12 }}>Data and Resources</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
