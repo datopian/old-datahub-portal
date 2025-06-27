@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import Tabs from '@/components/_shared/Tabs';
@@ -586,19 +586,10 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   );
 }
 
-function getAbsoluteUrl(relativePath: string): string {
-  if (typeof window !== 'undefined') {
-    return `${window.location.origin}${relativePath}`;
-  }
-  return relativePath;
-}
-
 function DatasetFormats({ path }: { path: string }) {
   const [formats, setFormats] = useState<string[]>([]);
-  
-  useState(() => {
-    const url = getAbsoluteUrl(`/data/${path}`);
-    fetch(url)
+  useEffect(() => {
+    fetch(`/${path}`)
       .then(res => res.json())
       .then((dp) => {
         const fmts = Array.isArray(dp.resources)
@@ -606,7 +597,7 @@ function DatasetFormats({ path }: { path: string }) {
           : [];
         setFormats(fmts as string[]);
       });
-  });
+  }, [path]);
   
   const formatColors: Record<string, string> = {
     CSV: '#2563eb',
