@@ -1,15 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const baseDir = path.join(__dirname, '../public/data/datasets');
-const outFile = path.join(__dirname, '../public/data/datasets-index.json');
-
-function getOrgTitle(org) {
-  if (!org) return '';
-  if (typeof org === 'string') return org;
-  if (typeof org === 'object') return org.title || org.name || '';
-  return '';
-}
+const baseDir = path.join(__dirname, '../datasets');
+const outFile = path.join(__dirname, '../datasets-index.json');
 
 function getOrgString(dp) {
   if (dp.organization) {
@@ -20,10 +13,34 @@ function getOrgString(dp) {
       return dp.organization.title || dp.organization.name || '';
     }
   }
-  if (Array.isArray(dp.sources) && dp.sources.length > 0 && dp.sources[0].name) {
-    return dp.sources[0].name;
-  }
   return '';
+}
+
+function getTags(dp) {
+  if (Array.isArray(dp.tags)) {
+    return dp.tags.map(t => t.name).filter(Boolean);
+  }
+  return [];
+}
+
+function getLicenses(dp) {
+  if (Array.isArray(dp.licenses) && dp.licenses.length > 0) {
+    return dp.licenses.map(l => l.title || l.name || 'Not specified').filter(Boolean);
+  }
+  if (dp.license_title) return [dp.license_title];
+  if (dp.license_id) return [dp.license_id];
+  return [];
+}
+
+function getFormats(dp) {
+  if (Array.isArray(dp.resources)) {
+    return Array.from(new Set(dp.resources.map(r => (r.format || '').toUpperCase()).filter(Boolean)));
+  }
+  return [];
+}
+
+function getDescription(dp) {
+  return dp.notes || dp.description || '';
 }
 
 function getAllDatapackages(dir) {
@@ -40,23 +57,17 @@ function getAllDatapackages(dir) {
         try {
           const raw = fs.readFileSync(dpPath, 'utf-8');
           const dp = JSON.parse(raw);
-          const formats = Array.isArray(dp.resources)
-            ? Array.from(new Set(dp.resources.map(r => (r.format || '').toUpperCase()).filter(Boolean)))
-            : [];
-          const licenses = Array.isArray(dp.licenses)
-            ? Array.from(new Set(dp.licenses.map(l => l.title || l.name || 'Not specified').filter(Boolean)))
-            : [];
           results.push({
             id: dp.name,
             title: dp.title,
-            description: dp.description,
+            description: getDescription(dp),
             organization: getOrgString(dp),
-            tags: Array.isArray(dp.keywords) ? dp.keywords : [],
+            tags: getTags(dp),
             path: `datasets/${org}/${ds}/datapackage.json`,
-            formats,
-            licenses,
-            created: dp.created || null,
-            modified: dp.modified || null
+            formats: getFormats(dp),
+            licenses: getLicenses(dp),
+            created: dp.metadata_created || dp.created || null,
+            modified: dp.metadata_modified || dp.modified || null
           });
         } catch (e) {
           console.error('Error reading', dpPath, e);

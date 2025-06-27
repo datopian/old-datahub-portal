@@ -639,7 +639,7 @@ function DatasetFormats({ path }: { path: string }) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const indexPath = path.join(process.cwd(), 'public/data/organizations-index.json');
+  const indexPath = path.join(process.cwd(), 'organizations-index.json');
   let organizations = [];
   
   try {
@@ -657,7 +657,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params as { name: string };
   
   // Load organization data
-  const orgPath = path.join(process.cwd(), 'public/data/organizations', name, 'organization.json');
+  const orgPath = path.join(process.cwd(), 'organizations', name, 'organization.json');
   let organization = null;
   
   try {
@@ -668,7 +668,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   
   // Load datasets for this organization
-  const datasetsIndexPath = path.join(process.cwd(), 'public/data/datasets-index.json');
+  const datasetsIndexPath = path.join(process.cwd(), 'datasets-index.json');
   let allDatasets = [];
   
   try {
@@ -678,7 +678,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     allDatasets = [];
   }
   
-  const datasets = allDatasets.filter((ds: any) => ds.organization === name);
+  const slugify = s => s && s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const datasets = allDatasets.filter((ds: any) => slugify(ds.organization) === name);
   
   // Calculate tag counts
   const tagCounts: Record<string, number> = {};

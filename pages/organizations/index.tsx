@@ -277,7 +277,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const filePath = path.join(process.cwd(), 'public/data/organizations-index.json');
+  const filePath = path.join(process.cwd(), 'organizations-index.json');
   
   let organizations = [];
   try {

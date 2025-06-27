@@ -1,0 +1,12 @@
+[
+  {
+    "id": "open-hampton-roads",
+    "name": "open-hampton-roads",
+    "title": "Open Hampton Roads",
+    "description": "Open data repository for Hampton Roads, Virginia.  \r\nThis data store's vision is to be the central repository for HRVA, covering the seventeen communities that span from the Southside, across the Peninsula, and into the Middle Peninsula, crossing the James and York Rivers, and the Chesapeake Bay.",
+    "image_url": null,
+    "created": "2014-02-08T11:36:04.446760",
+    "packages": 240,
+    "path": "organizations/open-hampton-roads/organization.json"
+  }
+]

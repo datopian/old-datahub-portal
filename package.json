@@ -25,6 +25,7 @@
     "minisearch": "^5.0.0",
     "next": "^13.0.0",
     "next-seo": "^5.5.0",
+    "node-fetch": "^2.7.0",
     "papaparse": "^5.5.1",
     "primereact": "^10.9.1",
     "rc-slider": "^11.1.8",

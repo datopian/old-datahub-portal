@@ -288,7 +288,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const filePath = path.join(process.cwd(), 'public/data/datasets-index.json');
+  const filePath = path.join(process.cwd(), 'datasets-index.json');
   const datasets = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
   const stats = {

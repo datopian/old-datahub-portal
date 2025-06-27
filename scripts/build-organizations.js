@@ -3,11 +3,17 @@ const path = require('path');
 const https = require('https');
 
 const CKAN_BASE_URL = 'https://old.datahub.io';
-const OUTPUT_DIR = path.join(__dirname, '../public/data/organizations');
-const INDEX_FILE = path.join(__dirname, '../public/data/organizations-index.json');
+const OUTPUT_DIR = path.join(__dirname, '../organizations');
+const INDEX_FILE = path.join(__dirname, '../organizations-index.json');
+const DATASETS_INDEX_FILE = path.join(__dirname, '../datasets-index.json');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+
+let datasetsIndex = [];
+if (fs.existsSync(DATASETS_INDEX_FILE)) {
+  datasetsIndex = JSON.parse(fs.readFileSync(DATASETS_INDEX_FILE, 'utf-8'));
 }
 
 function makeRequest(url) {
@@ -75,14 +81,18 @@ async function migrateOrganizations() {
         const orgFile = path.join(orgDir, 'organization.json');
         fs.writeFileSync(orgFile, JSON.stringify(orgDetails, null, 2));
         
+        const orgTitle = orgDetails.title || name;
+        const datasetCount = datasetsIndex.filter(ds => {
+          return ds.organization === orgTitle || ds.organization === name;
+        }).length;
         const indexEntry = {
           id: name,
           name: name,
-          title: orgDetails.title || name,
+          title: orgTitle,
           description: orgDetails.description || '',
           image_url: orgDetails.image_url || null,
           created: orgDetails.created || null,
-          packages: orgDetails.packages ? orgDetails.packages.length : 0,
+          packages: datasetCount,
           path: `organizations/${name}/organization.json`
         };
         

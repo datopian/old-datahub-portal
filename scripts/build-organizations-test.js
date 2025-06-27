@@ -3,8 +3,9 @@ const path = require('path');
 const https = require('https');
 
 const CKAN_BASE_URL = 'https://old.datahub.io';
-const OUTPUT_DIR = path.join(__dirname, '../public/data/organizations');
-const INDEX_FILE = path.join(__dirname, '../public/data/organizations-index.json');
+const OUTPUT_DIR = path.join(__dirname, '../organizations');
+const INDEX_FILE = path.join(__dirname, '../organizations-index.json');
+const DATASETS_INDEX_FILE = path.join(__dirname, '../datasets-index.json');
 
 if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
@@ -27,100 +28,51 @@ function makeRequest(url) {
   });
 }
 
-async function getOrganizationsList() {
-  console.log('Fetching organizations list...');
-  const response = await makeRequest(`${CKAN_BASE_URL}/api/3/action/organization_list`);
-  
-  if (!response.success) {
-    throw new Error('Failed to fetch organizations list');
-  }
-  
-  return response.result;
-}
-
 async function getOrganizationDetails(name) {
   console.log(`Fetching details for organization: ${name}`);
   const response = await makeRequest(`${CKAN_BASE_URL}/api/3/action/organization_show?id=${encodeURIComponent(name)}`);
-  
   if (!response.success) {
     throw new Error(`Failed to fetch organization details for ${name}`);
   }
-  
   return response.result;
 }
 
-async function migrateOrganizationsTest() {
+let datasetsIndex = [];
+if (fs.existsSync(DATASETS_INDEX_FILE)) {
+  datasetsIndex = JSON.parse(fs.readFileSync(DATASETS_INDEX_FILE, 'utf-8'));
+}
+
+async function saveOpenHamptonRoadsOrg() {
+  const orgName = 'open-hampton-roads';
   try {
-    const orgNames = await getOrganizationsList();
-    console.log(`Found ${orgNames.length} organizations total`);
-    
-    const testOrgNames = orgNames.slice(0, 3);
-    console.log(`Processing only first 3 organizations for test: ${testOrgNames.join(', ')}`);
-    
-    const organizations = [];
-    const failedOrgs = [];
-    
-    for (let i = 0; i < testOrgNames.length; i++) {
-      const name = testOrgNames[i];
-      
-      try {
-        if (i > 0) {
-          await new Promise(resolve => setTimeout(resolve, 1000));
-        }
-        
-        const orgDetails = await getOrganizationDetails(name);
-        
-        const orgDir = path.join(OUTPUT_DIR, name);
-        if (!fs.existsSync(orgDir)) {
-          fs.mkdirSync(orgDir, { recursive: true });
-        }
-        
-        const orgFile = path.join(orgDir, 'organization.json');
-        fs.writeFileSync(orgFile, JSON.stringify(orgDetails, null, 2));
-        
-        const indexEntry = {
-          id: name,
-          name: name,
-          title: orgDetails.title || name,
-          description: orgDetails.description || '',
-          image_url: orgDetails.image_url || null,
-          created: orgDetails.created || null,
-          packages: orgDetails.packages ? orgDetails.packages.length : 0,
-          path: `organizations/${name}/organization.json`
-        };
-        
-        organizations.push(indexEntry);
-        console.log(`✓ Processed: ${name} (${orgDetails.title || name})`);
-        
-      } catch (error) {
-        console.error(`✗ Failed to process ${name}:`, error.message);
-        failedOrgs.push({ name, error: error.message });
-      }
+    const orgDetails = await getOrganizationDetails(orgName);
+    const orgDir = path.join(OUTPUT_DIR, orgName);
+    if (!fs.existsSync(orgDir)) {
+      fs.mkdirSync(orgDir, { recursive: true });
     }
-    
-    fs.writeFileSync(INDEX_FILE, JSON.stringify(organizations, null, 2));
-    
-    console.log(`\nTest migration completed!`);
-    console.log(`✓ Successfully processed: ${organizations.length} organizations`);
-    console.log(`✗ Failed: ${failedOrgs.length} organizations`);
-    
-    if (failedOrgs.length > 0) {
-      console.log('\nFailed organizations:');
-      failedOrgs.forEach(org => {
-        console.log(`  - ${org.name}: ${org.error}`);
-      });
-    }
-    
-    console.log(`\nFiles created:`);
+    const orgFile = path.join(orgDir, 'organization.json');
+    const orgTitle = orgDetails.title || orgName;
+    const datasetCount = datasetsIndex.filter(ds => {
+      return ds.organization === orgTitle || ds.organization === orgName;
+    }).length;
+    fs.writeFileSync(orgFile, JSON.stringify(orgDetails, null, 2));
+    const indexEntry = {
+      id: orgName,
+      name: orgName,
+      title: orgTitle,
+      description: orgDetails.description || '',
+      image_url: orgDetails.image_url || null,
+      created: orgDetails.created || null,
+      packages: datasetCount,
+      path: `organizations/${orgName}/organization.json`
+    };
+    fs.writeFileSync(INDEX_FILE, JSON.stringify([indexEntry], null, 2));
+    console.log(`✓ Saved organization: ${orgName}`);
+    console.log(`  - ${orgFile}`);
     console.log(`  - ${INDEX_FILE}`);
-    organizations.forEach(org => {
-      console.log(`  - ${OUTPUT_DIR}/${org.name}/organization.json`);
-    });
-    
   } catch (error) {
-    console.error('Migration failed:', error);
-    process.exit(1);
+    console.error(`✗ Failed to process ${orgName}:`, error.message);
   }
 }
 
-migrateOrganizationsTest();
+saveOpenHamptonRoadsOrg();

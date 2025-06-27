@@ -29,6 +29,7 @@ interface Resource {
   description?: string;
   format?: string;
   path: string;
+  url?: string;
 }
 interface DatasetDetail {
   name: string;
@@ -69,10 +70,11 @@ export default function DatasetDetailPage({ dataset }: Props) {
     );
   }
   const org = dataset.organization || { name: 'Unknown' };
-  const orgLogo = org.logo || ORG_PLACEHOLDER.logo;
-  const orgDesc = org.description || ORG_PLACEHOLDER.description;
-  const orgSocials = org.socials || ORG_PLACEHOLDER.socials;
-  const orgTitle = org.title || org.name;
+  const isOrgString = typeof org === 'string';
+  const orgLogo = isOrgString ? null : (org.logo || ORG_PLACEHOLDER.logo);
+  const orgDesc = isOrgString ? null : (org.description || ORG_PLACEHOLDER.description);
+  const orgSocials = isOrgString ? ORG_PLACEHOLDER.socials : (org.socials || ORG_PLACEHOLDER.socials);
+  const orgTitle = isOrgString ? org : (org.title || org.name);
   const license = (dataset.licenses && dataset.licenses[0]) ? (dataset.licenses[0].title || dataset.licenses[0].name) : 'Not specified';
   const downloadUrl = `/data/datasets/${org.name?.toLowerCase() || 'unknown'}/${dataset.name}/datapackage.json`;
 
@@ -81,18 +83,20 @@ export default function DatasetDetailPage({ dataset }: Props) {
       {/* Left column: Organization */}
       <aside style={{ width: 320, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 28, height: 'fit-content' }}>
         <div style={{ textAlign: 'center', marginBottom: 18 }}>
-          <img src={orgLogo} alt={orgTitle} style={{ width: 80, height: 80, objectFit: 'contain', marginBottom: 10 }} />
+          {orgLogo && <img src={orgLogo} alt={orgTitle} style={{ width: 80, height: 80, objectFit: 'contain', marginBottom: 10 }} />}
           <h2 style={{ fontSize: '1.25rem', margin: 0 }}>{orgTitle}</h2>
         </div>
-        <div style={{ color: '#666', fontSize: '1rem', marginBottom: 16 }}>{orgDesc}</div>
-        <div style={{ marginBottom: 16 }}>
-          <b>Socials:</b>
-          <div style={{ display: 'flex', gap: 10, marginTop: 6 }}>
-            {orgSocials.map((s: any) => (
-              <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 'bold', fontSize: 18 }}>{s.name}</a>
-            ))}
+        {orgDesc && <div style={{ color: '#666', fontSize: '1rem', marginBottom: 16 }}>{orgDesc}</div>}
+        {orgSocials && (
+          <div style={{ marginBottom: 16 }}>
+            <b>Socials:</b>
+            <div style={{ display: 'flex', gap: 10, marginTop: 6 }}>
+              {orgSocials.map((s: any) => (
+                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 'bold', fontSize: 18 }}>{s.name}</a>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div style={{ marginBottom: 0 }}>
           <b>License:</b> <span style={{ color: '#2563eb' }}>{license}</span>
         </div>
@@ -122,7 +126,7 @@ export default function DatasetDetailPage({ dataset }: Props) {
                       <span style={{ background: '#2563eb', color: '#fff', borderRadius: 4, padding: '2px 10px', fontWeight: 'bold', fontSize: '0.97rem', marginRight: 8 }}>{res.format}</span>
                     </div>
                     <div style={{ display: 'flex', gap: 10 }}>
-                      <a href={res.path} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#2563eb', border: '1px solid #2563eb', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', textDecoration: 'none', fontSize: '1rem' }}>Go to resource</a>
+                      <a href={res.url || res.path} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#2563eb', border: '1px solid #2563eb', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', textDecoration: 'none', fontSize: '1rem' }}>Go to resource</a>
                       <button style={{ background: '#2563eb', color: '#fff', border: 'none', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>More info</button>
                     </div>
                   </div>
@@ -164,7 +168,7 @@ export default function DatasetDetailPage({ dataset }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const indexPath = path.join(process.cwd(), 'public/data/datasets-index.json');
+  const indexPath = path.join(process.cwd(), 'datasets-index.json');
   let datasets = [];
   try {
     const raw = fs.readFileSync(indexPath, 'utf-8');
@@ -181,7 +185,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { id } = context.params as { id: string };
-  const indexPath = path.join(process.cwd(), 'public/data/datasets-index.json');
+  const indexPath = path.join(process.cwd(), 'datasets-index.json');
   let datasets = [];
   try {
     const raw = fs.readFileSync(indexPath, 'utf-8');
@@ -195,7 +199,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const entry = datasets.find((ds: any) => ds.id === id);
   let dataset = null;
   if (entry && entry.path) {
-    const dpPath = path.join(process.cwd(), 'public/data', entry.path);
+    const dpPath = path.join(process.cwd(), entry.path);
     try {
       const raw = fs.readFileSync(dpPath, 'utf-8');
       dataset = JSON.parse(raw);
