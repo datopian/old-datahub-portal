@@ -62,7 +62,11 @@ const ORG_PLACEHOLDER = {
 export default function DatasetDetailPage({ dataset }: Props) {
   const [tab, setTab] = useState<'dataset' | 'groups' | 'activity'>('dataset');
   if (!dataset) {
-    return <div style={{ padding: 32 }}>Dataset not found.</div>;
+    return (
+      <div style={{ padding: 32 }}>
+        <div>Dataset not found.</div>
+      </div>
+    );
   }
   const org = dataset.organization || { name: 'Unknown' };
   const orgLogo = org.logo || ORG_PLACEHOLDER.logo;
