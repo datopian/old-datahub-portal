@@ -16,6 +16,7 @@ import Breadcrumbs from "../components/_shared/Breadcrumbs";
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   
+  // Determine breadcrumbs based on current path
   const getBreadcrumbs = () => {
     const path = router.pathname;
     const segments = path.split('/').filter(Boolean);
@@ -28,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       breadcrumbs.push({ label: 'Datasets', href: '/datasets' });
       
       if (segments[1]) {
+        // This is a single dataset page
         const datasetTitle = pageProps.dataset?.title || 'Dataset';
         breadcrumbs.push({ label: datasetTitle });
       }
@@ -38,13 +40,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       if (segments[1]) {
         breadcrumbs.push({ label: segments[1] });
       }
-    } else if (segments[0] === 'org') {
-      breadcrumbs.push({ label: 'Organizations', href: '/org' });
+    } else if (segments[0] === 'organizations') {
+      breadcrumbs.push({ label: 'Organizations', href: '/organizations' });
       if (segments[1]) {
-        breadcrumbs.push({ label: segments[1] });
-        if (segments[2]) {
-          breadcrumbs.push({ label: segments[2] });
-        }
+        // This is a single organization page
+        const organizationTitle = pageProps.organization?.title || segments[1];
+        breadcrumbs.push({ label: organizationTitle });
       }
     }
     

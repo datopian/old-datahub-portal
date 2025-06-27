@@ -78,7 +78,7 @@ export default function DatasetDetailPage({ dataset }: Props) {
 
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '2rem', display: 'flex', gap: 32 }}>
-      {/* Левая колонка: Организация */}
+      {/* Left column: Organization */}
       <aside style={{ width: 320, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 28, height: 'fit-content' }}>
         <div style={{ textAlign: 'center', marginBottom: 18 }}>
           <img src={orgLogo} alt={orgTitle} style={{ width: 80, height: 80, objectFit: 'contain', marginBottom: 10 }} />
@@ -97,7 +97,7 @@ export default function DatasetDetailPage({ dataset }: Props) {
           <b>License:</b> <span style={{ color: '#2563eb' }}>{license}</span>
         </div>
       </aside>
-      {/* Правая колонка: Датасет */}
+      {/* Right column: Dataset */}
       <main style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 18 }}>
           <h1 style={{ fontSize: '2rem', margin: 0 }}>{dataset.title}</h1>

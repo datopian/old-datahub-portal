@@ -1,0 +1,22 @@
+[
+  {
+    "id": "52-degree-north",
+    "name": "52-degree-north",
+    "title": "52°North GmbH",
+    "description": "The open source software initiative 52°North is an open international network of partners from research, industry and public administration. Its main purpose is to foster innovation in the field of Geoinformatics through a collaborative R&D process.\r\n\r\nThe 52°North R&D communities develop new concepts and technologies e.g. for managing near real-time sensor data, integrating geoprocessing technologies into SDIs, making use of GRID- and Cloud technologies. They evaluate new macro trends, such as the Internet of Things, the Semantic Web or Linked Open Data, and find ways to unfold their use in practice.\r\n\r\nAll 52°North partners have a long and outstanding record in the Geo-IT domain and actively contribute to the development of international standards, e.g. at W3C, ISO, OGC or INSPIRE.\r\n\r\nAll software developed within this collaborative development process is published under an open source license. 52°North is a trusted and well established entity in the Geoinformatics arena. Its software is widely used in operational IT environments, research labs and education.\r\n",
+    "image_url": "http://52north.org/templates/52n-2012/images/52n-logo.gif",
+    "created": "2015-07-04T14:53:09.189556",
+    "packages": 0,
+    "path": "organizations/52-degree-north/organization.json"
+  },
+  {
+    "id": "aac-isi",
+    "name": "aac-isi",
+    "title": "American Art Collaborative",
+    "description": "",
+    "image_url": null,
+    "created": "2018-03-14T09:30:13.693481",
+    "packages": 0,
+    "path": "organizations/aac-isi/organization.json"
+  }
+]
