@@ -283,52 +283,10 @@ export default function OrganizationPage({ organization, datasets, tags, formats
           >
             {'<'}
           </button>
-          
-          {/* Smart pagination - show only relevant page numbers */}
-          {(() => {
-            const pages = [];
-            const maxVisiblePages = 7; // Show max 7 page numbers
-            
-            if (totalPages <= maxVisiblePages) {
-              // If total pages is small, show all
-              for (let i = 1; i <= totalPages; i++) {
-                pages.push(i);
-              }
-            } else {
-              // Smart pagination for many pages
-              if (page <= 4) {
-                // Near the beginning
-                for (let i = 1; i <= 5; i++) {
-                  pages.push(i);
-                }
-                pages.push('...');
-                pages.push(totalPages);
-              } else if (page >= totalPages - 3) {
-                // Near the end
-                pages.push(1);
-                pages.push('...');
-                for (let i = totalPages - 4; i <= totalPages; i++) {
-                  pages.push(i);
-                }
-              } else {
-                // In the middle
-                pages.push(1);
-                pages.push('...');
-                for (let i = page - 1; i <= page + 1; i++) {
-                  pages.push(i);
-                }
-                pages.push('...');
-                pages.push(totalPages);
-              }
-            }
-            
-            return pages.map((pageNum, index) => (
-              pageNum === '...' ? (
-                <span key={`ellipsis-${index}`} style={{ margin: '0 6px', padding: '8px 14px', color: '#888' }}>
-                  ...
-                </span>
-              ) : (
-                <button
+          {getPaginationPages(page, totalPages).map((pageNum, index) => (
+            pageNum === '...'
+              ? <span key={`ellipsis-${index}`} style={{ margin: '0 6px', padding: '8px 14px', color: '#888' }}>...</span>
+              : <button
                   key={pageNum}
                   onClick={() => setPage(pageNum as number)}
                   style={{ 
@@ -344,10 +302,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                 >
                   {pageNum}
                 </button>
-              )
-            ));
-          })()}
-          
+          ))}
           <button
             onClick={() => setPage(page + 1)}
             disabled={page === totalPages}
@@ -629,6 +584,22 @@ function DatasetFormats({ path }: { path: string }) {
   );
 }
 
+function getPaginationPages(current: number, total: number) {
+  const maxVisible = 5;
+  if (total <= maxVisible) {
+    return Array.from({ length: total }, (_, i) => i + 1);
+  }
+  const pages = [];
+  if (current <= 3) {
+    pages.push(1, 2, 3, '...', total);
+  } else if (current >= total - 2) {
+    pages.push(1, '...', total - 2, total - 1, total);
+  } else {
+    pages.push(1, '...', current - 1, current, current + 1, '...', total);
+  }
+  return pages;
+}
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const indexPath = path.join(process.cwd(), 'organizations-index.json');
   let organizations = [];
@@ -669,8 +640,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
     allDatasets = [];
   }
   
-  const slugify = s => s && s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  const datasets = allDatasets.filter((ds: any) => slugify(ds.organization) === name);
+  const datasets = allDatasets.filter((ds: any) => {
+    return ds.organization && ds.organization.trim() === organization.title;
+  });
   
   // Calculate tag counts
   const tagCounts: Record<string, number> = {};

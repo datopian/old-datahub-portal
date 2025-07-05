@@ -78,6 +78,22 @@ export default function OrganizationsListPage({ organizations }: Props) {
 
   useMemo(() => { setPage(1); }, [query, sort]);
 
+  function getPaginationPages(current: number, total: number) {
+    const maxVisible = 5;
+    if (total <= maxVisible) {
+      return Array.from({ length: total }, (_, i) => i + 1);
+    }
+    const pages = [];
+    if (current <= 3) {
+      pages.push(1, 2, 3, '...', total);
+    } else if (current >= total - 2) {
+      pages.push(1, '...', total - 2, total - 1, total);
+    } else {
+      pages.push(1, '...', current - 1, current, current + 1, '...', total);
+    }
+    return pages;
+  }
+
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '2rem 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem' }}>
@@ -235,23 +251,25 @@ export default function OrganizationsListPage({ organizations }: Props) {
             >
               {'<'}
             </button>
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => setPage(i + 1)}
-                style={{ 
-                  margin: '0 6px', 
-                  padding: '8px 14px', 
-                  borderRadius: 6, 
-                  border: i + 1 === page ? '1px solid #2563eb' : '1px solid #ddd', 
-                  background: i + 1 === page ? '#2563eb' : '#fff', 
-                  color: i + 1 === page ? '#fff' : '#2563eb', 
-                  fontWeight: 'bold', 
-                  cursor: 'pointer' 
-                }}
-              >
-                {i + 1}
-              </button>
+            {getPaginationPages(page, totalPages).map((pageNum, index) => (
+              pageNum === '...'
+                ? <span key={`ellipsis-${index}`} style={{ margin: '0 6px', padding: '8px 14px', color: '#888' }}>...</span>
+                : <button
+                    key={pageNum}
+                    onClick={() => setPage(pageNum as number)}
+                    style={{ 
+                      margin: '0 6px', 
+                      padding: '8px 14px', 
+                      borderRadius: 6, 
+                      border: pageNum === page ? '1px solid #2563eb' : '1px solid #ddd', 
+                      background: pageNum === page ? '#2563eb' : '#fff', 
+                      color: pageNum === page ? '#fff' : '#2563eb', 
+                      fontWeight: 'bold', 
+                      cursor: 'pointer' 
+                    }}
+                  >
+                    {pageNum}
+                  </button>
             ))}
             <button
               onClick={() => setPage(page + 1)}
