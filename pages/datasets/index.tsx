@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GetStaticProps } from 'next';
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -30,6 +30,7 @@ interface Props {
 export default function DatasetListPage({ datasets, orgs, tags, formats, licenses }: Props) {
   const router = useRouter();
   const safeDatasets = Array.isArray(datasets) ? datasets : [];
+  const [searchInput, setSearchInput] = useState('');
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<'relevance' | 'date'>('relevance');
   const [activeOrg, setActiveOrg] = useState<string | null>(null);
@@ -43,17 +44,36 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   const [showAllFormats, setShowAllFormats] = useState(false);
   const [showAllLicenses, setShowAllLicenses] = useState(false);
 
-  const { idx, idMap } = useMemo(() => {
-    const idMap: Record<string, DatasetIndexEntry> = {};
-    const idx = lunr(function () {
-      this.ref('id');
-      this.field('title');
-      this.field('description');
-      this.field('organization');
-      this.field('tags');
-      safeDatasets.forEach((ds) => {
-        idMap[ds.id] = ds;
-        this.add({
+  // --- CHUNKED LUNR INDEX ---
+  const chunkSize = 1000;
+  const chunks = useMemo(() => {
+    const arr = [];
+    for (let i = 0; i < safeDatasets.length; i += chunkSize) {
+      arr.push(safeDatasets.slice(i, i + chunkSize));
+    }
+    return arr;
+  }, [safeDatasets]);
+
+  const [idx, setIdx] = useState<lunr.Index | null>(null);
+  const [indexedChunks, setIndexedChunks] = useState(0);
+  const idMapRef = useRef<Record<string, DatasetIndexEntry>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+    idMapRef.current = {};
+    setIdx(null);
+    setIndexedChunks(0);
+    function buildChunk(chunkIndex: number, prevIdx: lunr.Builder | null) {
+      if (cancelled) return;
+      const builder = prevIdx || new lunr.Builder();
+      builder.ref('id');
+      builder.field('title');
+      builder.field('description');
+      builder.field('organization');
+      builder.field('tags');
+      chunks[chunkIndex].forEach(ds => {
+        idMapRef.current[ds.id] = ds;
+        builder.add({
           id: ds.id,
           title: ds.title,
           description: ds.description,
@@ -61,19 +81,33 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           tags: ds.tags.join(' '),
         });
       });
-    });
-    return { idx, idMap };
-  }, [safeDatasets]);
+      setIndexedChunks(chunkIndex + 1);
+      if (chunkIndex < chunks.length - 1) {
+        setTimeout(() => buildChunk(chunkIndex + 1, builder), 0);
+      } else {
+        setIdx(builder.build());
+      }
+    }
+    if (chunks.length > 0) {
+      buildChunk(0, null);
+    }
+    return () => { cancelled = true; };
+  }, [chunks]);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    setQuery(searchInput);
+  };
 
   const searched = useMemo(() => {
-    if (!query) return safeDatasets;
+    if (!query || !idx) return safeDatasets.slice(0, indexedChunks * chunkSize);
     try {
       const results = idx.search(`*${query}*`);
-      return results.map((r: any) => idMap[r.ref]).filter(Boolean);
+      return results.map((r: any) => idMapRef.current[r.ref]).filter(Boolean);
     } catch {
       return [];
     }
-  }, [query, idx, idMap, safeDatasets]);
+  }, [query, idx, safeDatasets, indexedChunks]);
 
   const filtered = useMemo(() => {
     return searched.filter(ds => {
@@ -197,21 +231,30 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           </div>
         </aside>
         <main style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
-            <input
-              type="text"
-              placeholder="Search datasets..."
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              style={{ flex: 1, padding: 12, fontSize: '1rem', marginRight: 16, borderRadius: 8, border: '1px solid #ddd', background: '#fff' }}
-            />
-            <label style={{ marginRight: 8, color: '#555' }}>Order by:</label>
-            <select value={sort} onChange={e => setSort(e.target.value as any)} style={{ padding: 8, borderRadius: 6, border: '1px solid #ddd', background: '#fff' }}>
-              <option value="relevance">Relevance</option>
-              <option value="date">Date</option>
-            </select>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
+              <input
+                type="text"
+                value={searchInput}
+                onChange={e => setSearchInput(e.target.value)}
+                placeholder="Search datasets..."
+                style={{ flex: 1, minWidth: 580, padding: 12, fontSize: '1rem', marginRight: 16, borderRadius: 8, border: '1px solid #ddd', background: '#fff' }}
+              />
+              <button type="submit" style={{ padding: '12px 24px', borderRadius: 8, background: '#2563eb', color: '#fff', border: 'none', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>
+                Search
+              </button>
+              <label style={{ marginLeft: 16, marginRight: 8, color: '#555' }}>Order by:</label>
+              <select value={sort} onChange={e => setSort(e.target.value as any)} style={{ padding: 8, borderRadius: 6, border: '1px solid #ddd', background: '#fff' }}>
+                <option value="relevance">Relevance</option>
+                <option value="date">Date</option>
+              </select>
+            </form>
           </div>
-          <div style={{ marginBottom: 20, color: '#888', fontSize: '1.05rem' }}>{filtered.length} datasets found</div>
+          <div style={{ marginBottom: 20, color: '#888', fontSize: '1.05rem' }}>
+            {indexedChunks < chunks.length
+              ? 'Loading datasets…'
+              : `${filtered.length} datasets found`}
+          </div>
           {activeFilters.length > 0 && (
             <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
               {activeFilters.map(f => (
