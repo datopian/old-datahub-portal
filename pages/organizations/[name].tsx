@@ -35,15 +35,27 @@ interface DatasetIndexEntry {
   modified?: string | null;
 }
 
+interface ActivityStreamEntry {
+  user_id: string;
+  timestamp: string;
+  object_id: string;
+  revision_id: string;
+  data: any;
+  id: string;
+  activity_type: string;
+  user: { id: string; display_name: string; name: string };
+}
+
 interface Props {
   organization: Organization | null;
   datasets: DatasetIndexEntry[];
   tags: { name: string; count: number }[];
   formats: { name: string; count: number }[];
   licenses: { name: string; count: number }[];
+  activityStream: ActivityStreamEntry[];
 }
 
-export default function OrganizationPage({ organization, datasets, tags, formats, licenses }: Props) {
+export default function OrganizationPage({ organization, datasets, tags, formats, licenses, activityStream }: Props) {
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<'relevance' | 'date'>('relevance');
   const [activeTag, setActiveTag] = useState<string | null>(null);
@@ -325,20 +337,62 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   );
 
   // Activity Stream tab content
-  const ActivityStreamContent = () => (
-    <div style={{ 
-      textAlign: 'center', 
-      padding: 40, 
-      color: '#888', 
-      fontSize: '1.1rem' 
-    }}>
-      <div style={{ marginBottom: 16 }}>
-        <img src="/images/icons/clock.svg" alt="Activity" style={{ width: 48, height: 48, opacity: 0.5 }} />
+  const ActivityStreamContent = () => {
+    if (!activityStream || activityStream.length === 0) {
+      return (
+        <div style={{ textAlign: 'center', padding: 40, color: '#888', fontSize: '1.1rem' }}>
+          <div style={{ marginBottom: 16 }}>
+            <img src="/images/icons/clock.svg" alt="Activity" style={{ width: 48, height: 48, opacity: 0.5 }} />
+          </div>
+          <h3 style={{ marginBottom: 8, color: '#666' }}>Activity Stream</h3>
+          <p>No activity data available for this organization.</p>
+        </div>
+      );
+    }
+    return (
+      <div style={{ padding: '24px 0' }}>
+        {activityStream.map((entry, idx) => {
+          const isDataset = entry.data && entry.data.package;
+          const title = isDataset ? entry.data.package.title : (entry.data && entry.data.organization && entry.data.organization.title) || '';
+          const link = isDataset ? `/datasets/${entry.data.package.name}` : undefined;
+          const action = entry.activity_type.includes('package')
+            ? `${entry.user.display_name} updated the dataset`
+            : `${entry.user.display_name} updated the organisation`;
+          const color = isDataset ? '#f97316' : '#2563eb';
+          // Time ago
+          const timeAgo = (() => {
+            const now = new Date();
+            const then = new Date(entry.timestamp);
+            const diff = Math.floor((now.getTime() - then.getTime()) / 1000);
+            if (diff < 60) return `${diff} seconds ago`;
+            if (diff < 3600) return `${Math.floor(diff/60)} minutes ago`;
+            if (diff < 86400) return `${Math.floor(diff/3600)} hours ago`;
+            if (diff < 2592000) return `${Math.floor(diff/86400)} days ago`;
+            if (diff < 31536000) return `${Math.floor(diff/2592000)} months ago`;
+            return `${Math.floor(diff/31536000)} years ago`;
+          })();
+          return (
+            <div key={entry.id} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 28 }}>
+              <div style={{ width: 40, height: 40, borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', fontSize: 20, marginRight: 18 }}>
+                {entry.user.display_name[0]}
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: '1.05rem', marginBottom: 2 }}>
+                  <span style={{ color }}>{action}</span>{' '}
+                  {link ? (
+                    <a href={link} style={{ color: '#f97316', fontWeight: 500, textDecoration: 'underline' }}>{title}</a>
+                  ) : (
+                    <span style={{ color: '#2563eb', fontWeight: 500 }}>{title}</span>
+                  )}
+                </div>
+                <div style={{ color: '#888', fontSize: '0.97rem' }}>{timeAgo}</div>
+              </div>
+            </div>
+          );
+        })}
       </div>
-      <h3 style={{ marginBottom: 8, color: '#666' }}>Activity Stream</h3>
-      <p>No activity data available for this organization.</p>
-    </div>
-  );
+    );
+  };
 
   // About tab content
   const AboutContent = () => (
@@ -678,13 +732,24 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
   
+  // Load activity stream for this organization
+  const activityPath = path.join(process.cwd(), 'organizations', name, 'activity_stream.json');
+  let activityStream = [];
+  try {
+    const raw = fs.readFileSync(activityPath, 'utf-8');
+    activityStream = JSON.parse(raw);
+  } catch (e) {
+    activityStream = [];
+  }
+  
   return { 
     props: { 
       organization,
       datasets,
       tags,
       formats,
-      licenses
+      licenses,
+      activityStream
     } 
   };
 }; 
