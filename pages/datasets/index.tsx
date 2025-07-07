@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import { useState, useMemo, useEffect } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface DatasetIndexEntry {
   id: string;
@@ -27,6 +28,7 @@ interface Props {
 }
 
 export default function DatasetListPage({ datasets, orgs, tags, formats, licenses }: Props) {
+  const router = useRouter();
   const safeDatasets = Array.isArray(datasets) ? datasets : [];
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<'relevance' | 'date'>('relevance');
@@ -98,6 +100,17 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   const paged = sorted.slice((page - 1) * pageSize, page * pageSize);
 
   useMemo(() => { setPage(1); }, [query, activeOrg, activeTag, activeFormat, activeLicense]);
+
+  useEffect(() => {
+    if (router.isReady) {
+      const tagParam = router.query.tag;
+      if (typeof tagParam === 'string' && tagParam !== activeTag) {
+        setActiveTag(tagParam);
+      } else if (!tagParam && activeTag) {
+        setActiveTag(null);
+      }
+    }
+  }, [router.query.tag, router.isReady]);
 
   const isActive = (val: string | null, current: string) => val === current;
   const filterBtn = (label: string, active: boolean, onClick: () => void, count?: number) => (

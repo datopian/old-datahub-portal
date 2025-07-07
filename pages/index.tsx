@@ -197,9 +197,9 @@ export default function Home({ datasets, stats, popularTags }: Props) {
             justifyContent: 'center',
           }}>
             {popularTags.map((tag, i) => (
-              <Link
+              <button
                 key={tag.id}
-                href={`/datasets?tag=${encodeURIComponent(tag.id)}`}
+                onClick={() => router.push(`/datasets?tag=${encodeURIComponent(tag.id)}`)}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
@@ -213,6 +213,10 @@ export default function Home({ datasets, stats, popularTags }: Props) {
                   textDecoration: 'none',
                   transition: 'background 0.15s, border 0.15s, color 0.15s',
                   boxShadow: '0 2px 8px #6366f108',
+                  cursor: 'pointer',
+                  borderLeft: 'none',
+                  borderRight: 'none',
+                  outline: 'none',
                 }}
                 onMouseOver={e => {
                   e.currentTarget.style.background = '#6366f1';
@@ -226,7 +230,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
                 }}
               >
                 {tag.id}
-              </Link>
+              </button>
             ))}
           </div>
         </section>
@@ -288,12 +292,19 @@ export default function Home({ datasets, stats, popularTags }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const filePath = path.join(process.cwd(), 'datasets-index.json');
-  const datasets = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  const datasetsFilePath = path.join(process.cwd(), 'datasets-index.json');
+  const orgsFilePath = path.join(process.cwd(), 'organizations-index.json');
+  const datasets = JSON.parse(fs.readFileSync(datasetsFilePath, 'utf-8'));
+  let orgIndex = [];
+  try {
+    orgIndex = JSON.parse(fs.readFileSync(orgsFilePath, 'utf-8'));
+  } catch (e) {
+    orgIndex = [];
+  }
 
   const stats = {
     datasetCount: datasets.length,
-    organizationCount: new Set(datasets.map((d: any) => d.organization).filter(Boolean)).size
+    organizationCount: orgIndex.length
   };
 
   const tagCounts: Record<string, number> = {};

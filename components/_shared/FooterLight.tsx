@@ -10,12 +10,12 @@ export default function Footer() {
           <Link href="/datasets">Datasets</Link>
           <Link href="/organizations">Organizations</Link>
           <Link href="/about">About</Link>
-          <Link href="/api">API Docs</Link>
+          <Link href="https://docs.ckan.org/en/2.6/api/">API Docs</Link>
         </div>
         <div>
           <h4>PortalJS</h4>
-          <Link href="https://portaljs.org">PortalJS and CKAN</Link>
-          <Link href="https://portaljs.org/cloud">PortalJS Cloud</Link>
+          <Link href="https://portaljs.com">PortalJS and CKAN</Link>
+          <Link href="https://portaljs.com">PortalJS Cloud</Link>
         </div>
       </div>
       <div className={styles.powered}>
