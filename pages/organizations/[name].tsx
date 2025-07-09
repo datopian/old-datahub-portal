@@ -655,7 +655,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params as { name: string };
   
   // Load organization data
-  const orgPath = path.join(process.cwd(), 'organizations', name, 'organization.json');
+  const orgPath = path.join(process.cwd(), 'datasets', name, 'organization.json');
   let organization = null;
   
   try {
@@ -676,9 +676,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     allDatasets = [];
   }
   
-  const datasets = allDatasets.filter((ds: any) => {
-    return ds.organization && ds.organization.trim() === organization.title;
-  });
+  let datasets = [];
+  if (organization && organization.title) {
+    datasets = allDatasets.filter((ds: any) => {
+      return ds.organization && ds.organization.trim() === organization.title;
+    });
+  } else {
+    datasets = [];
+  }
   
   // Calculate tag counts
   const tagCounts: Record<string, number> = {};
@@ -715,7 +720,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .map(([name, count]) => ({ name, count }));
   
   // Load activity stream for this organization
-  const activityPath = path.join(process.cwd(), 'organizations', name, 'activity_stream.json');
+  const activityPath = path.join(process.cwd(), 'datasets', name, 'activity_stream.json');
   let activityStream = [];
   try {
     const raw = fs.readFileSync(activityPath, 'utf-8');
