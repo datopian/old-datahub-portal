@@ -143,8 +143,13 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
       } else if (!tagParam && activeTag) {
         setActiveTag(null);
       }
+      const qParam = router.query.q;
+      if (typeof qParam === 'string' && qParam !== searchInput) {
+        setSearchInput(qParam);
+        setQuery(qParam);
+      }
     }
-  }, [router.query.tag, router.isReady]);
+  }, [router.query.tag, router.query.q, router.isReady]);
 
   const isActive = (val: string | null, current: string) => val === current;
   const filterBtn = (label: string, active: boolean, onClick: () => void, count?: number) => (
@@ -155,7 +160,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        background: active ? '#2563eb' : '#f3f4f6',
+        background: active ? '#ff5722' : '#f3f4f6',
         color: active ? '#fff' : '#222',
         border: 'none',
         borderRadius: 6,
@@ -197,7 +202,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           <div style={{ marginBottom: 24 }}>
             {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
             {orgs.length > 10 && (
-              <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+              <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                 {showAllOrgs ? 'Show less' : 'Show more'}
               </button>
             )}
@@ -206,7 +211,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           <div style={{ marginBottom: 24 }}>
             {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
             {tags.length > 10 && (
-              <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+              <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                 {showAllTags ? 'Show less' : 'Show more'}
               </button>
             )}
@@ -215,7 +220,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           <div style={{ marginBottom: 24 }}>
             {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
             {formats.length > 10 && (
-              <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+              <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                 {showAllFormats ? 'Show less' : 'Show more'}
               </button>
             )}
@@ -224,7 +229,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           <div style={{ marginBottom: 0 }}>
             {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
             {licenses.length > 10 && (
-              <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+              <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                 {showAllLicenses ? 'Show less' : 'Show more'}
               </button>
             )}
@@ -240,7 +245,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                 placeholder="Search datasets..."
                 style={{ flex: 1, minWidth: 580, padding: 12, fontSize: '1rem', marginRight: 16, borderRadius: 8, border: '1px solid #ddd', background: '#fff' }}
               />
-              <button type="submit" style={{ padding: '12px 24px', borderRadius: 8, background: '#2563eb', color: '#fff', border: 'none', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>
+              <button type="submit" style={{ padding: '12px 24px', borderRadius: 8, background: '#ff5722', color: '#fff', border: 'none', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>
                 Search
               </button>
               <label style={{ marginLeft: 16, marginRight: 8, color: '#555' }}>Order by:</label>
@@ -258,7 +263,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           {activeFilters.length > 0 && (
             <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
               {activeFilters.map(f => (
-                <span key={f.type + f.value} style={{ background: '#2563eb', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
+                <span key={f.type + f.value} style={{ background: '#ff5722', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
                   {f.type}: {f.label}
                   <button onClick={f.onRemove} style={{ marginLeft: 8, background: 'none', border: 'none', color: '#fff', fontWeight: 'bold', fontSize: '1.1em', cursor: 'pointer', lineHeight: 1 }} title="Remove filter">×</button>
                 </span>
@@ -271,7 +276,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                 onMouseOver={e => (e.currentTarget.style.boxShadow = '0 4px 16px #0002')}
                 onMouseOut={e => (e.currentTarget.style.boxShadow = '0 2px 8px #0001')}
               >
-                <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#1d4ed8' }}>
+                <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#ff5722' }}>
                   <Link href={`/datasets/${ds.id}`}>{ds.title}</Link>
                 </h2>
                 <div style={{ color: '#444', margin: '10px 0 8px 0', fontSize: '1.05rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{ds.description}</div>
@@ -291,7 +296,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             <button
               onClick={() => setPage(page - 1)}
               disabled={page === 1}
-              style={{ margin: '0 6px', padding: '8px 14px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', color: page === 1 ? '#bbb' : '#2563eb', fontWeight: 'bold', cursor: page === 1 ? 'not-allowed' : 'pointer' }}
+              style={{ margin: '0 6px', padding: '8px 14px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', color: page === 1 ? '#bbb' : '#ff5722', fontWeight: 'bold', cursor: page === 1 ? 'not-allowed' : 'pointer' }}
             >{'<'}</button>
             
             {/* Smart pagination - show only relevant page numbers */}
@@ -345,9 +350,9 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                       margin: '0 6px', 
                       padding: '8px 14px', 
                       borderRadius: 6, 
-                      border: pageNum === page ? '1px solid #2563eb' : '1px solid #ddd', 
-                      background: pageNum === page ? '#2563eb' : '#fff', 
-                      color: pageNum === page ? '#fff' : '#2563eb', 
+                      border: pageNum === page ? '1px solid #ff5722' : '1px solid #ddd', 
+                      background: pageNum === page ? '#ff5722' : '#fff', 
+                      color: pageNum === page ? '#fff' : '#ff5722', 
                       fontWeight: 'bold', 
                       cursor: 'pointer' 
                     }}
@@ -361,7 +366,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             <button
               onClick={() => setPage(page + 1)}
               disabled={page === totalPages}
-              style={{ margin: '0 6px', padding: '8px 14px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', color: page === totalPages ? '#bbb' : '#2563eb', fontWeight: 'bold', cursor: page === totalPages ? 'not-allowed' : 'pointer' }}
+              style={{ margin: '0 6px', padding: '8px 14px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', color: page === totalPages ? '#bbb' : '#ff5722', fontWeight: 'bold', cursor: page === totalPages ? 'not-allowed' : 'pointer' }}
             >{'>'}</button>
           </div>
         </main>
@@ -392,7 +397,7 @@ function DatasetFormats({ path }: { path: string }) {
       });
   }, [path]);
   const formatColors: Record<string, string> = {
-    CSV: '#2563eb',
+    CSV: '#ff5722',
     XLS: '#059669',
     JSON: '#f59e42',
     PDF: '#dc2626',

@@ -140,7 +140,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
         alignItems: 'center',
         justifyContent: 'space-between',
         width: '100%',
-        background: active ? '#2563eb' : '#f3f4f6',
+        background: active ? '#ff5722' : '#f3f4f6',
         color: active ? '#fff' : '#222',
         border: 'none',
         borderRadius: 6,
@@ -218,7 +218,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
       {activeFilters.length > 0 && (
         <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
           {activeFilters.map(f => (
-            <span key={f.type + f.value} style={{ background: '#2563eb', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
+            <span key={f.type + f.value} style={{ background: '#ff5722', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
               {f.type}: {f.label}
               <button onClick={f.onRemove} style={{ marginLeft: 8, background: 'none', border: 'none', color: '#fff', fontWeight: 'bold', fontSize: '1.1em', cursor: 'pointer', lineHeight: 1 }} title="Remove filter">×</button>
             </span>
@@ -242,7 +242,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
             onMouseOver={e => (e.currentTarget.style.boxShadow = '0 4px 16px #0002')}
             onMouseOut={e => (e.currentTarget.style.boxShadow = '0 2px 8px #0001')}
           >
-            <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#1d4ed8' }}>
+            <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#ff5722' }}>
               <Link href={`/datasets/${ds.id}`}>{ds.title}</Link>
             </h2>
             <div style={{ 
@@ -288,7 +288,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
               borderRadius: 6, 
               border: '1px solid #ddd', 
               background: '#fff', 
-              color: page === 1 ? '#bbb' : '#2563eb', 
+              color: page === 1 ? '#bbb' : '#ff5722', 
               fontWeight: 'bold', 
               cursor: page === 1 ? 'not-allowed' : 'pointer' 
             }}
@@ -305,9 +305,9 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                     margin: '0 6px', 
                     padding: '8px 14px', 
                     borderRadius: 6, 
-                    border: pageNum === page ? '1px solid #2563eb' : '1px solid #ddd', 
-                    background: pageNum === page ? '#2563eb' : '#fff', 
-                    color: pageNum === page ? '#fff' : '#2563eb', 
+                    border: pageNum === page ? '1px solid #ff5722' : '1px solid #ddd', 
+                    background: pageNum === page ? '#ff5722' : '#fff', 
+                    color: pageNum === page ? '#fff' : '#ff5722', 
                     fontWeight: 'bold', 
                     cursor: 'pointer' 
                   }}
@@ -324,7 +324,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
               borderRadius: 6, 
               border: '1px solid #ddd', 
               background: '#fff', 
-              color: page === totalPages ? '#bbb' : '#2563eb', 
+              color: page === totalPages ? '#bbb' : '#ff5722', 
               fontWeight: 'bold', 
               cursor: page === totalPages ? 'not-allowed' : 'pointer' 
             }}
@@ -336,68 +336,50 @@ export default function OrganizationPage({ organization, datasets, tags, formats
     </div>
   );
 
-  // Activity Stream tab content
+  function timeAgo(dateStr: string) {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+    if (diff < 60) return `${diff} seconds ago`;
+    if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+    if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+    if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
+    if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
+    return `${Math.floor(diff / 31536000)} years ago`;
+  }
+
   const ActivityStreamContent = () => {
     if (!activityStream || activityStream.length === 0) {
       return (
-        <div style={{ textAlign: 'center', padding: 40, color: '#888', fontSize: '1.1rem' }}>
-          <div style={{ marginBottom: 16 }}>
-            <img src="/images/icons/clock.svg" alt="Activity" style={{ width: 48, height: 48, opacity: 0.5 }} />
-          </div>
-          <h3 style={{ marginBottom: 8, color: '#666' }}>Activity Stream</h3>
-          <p>No activity data available for this organization.</p>
-        </div>
+        <div style={{ color: '#888', fontSize: '1.05rem', marginTop: 32 }}>No activity found for this organization.</div>
       );
     }
     return (
-      <div style={{ padding: '24px 0' }}>
-        {activityStream.map((entry, idx) => {
-          const isDataset = entry.data && entry.data.package;
-          const title = isDataset ? entry.data.package.title : (entry.data && entry.data.organization && entry.data.organization.title) || '';
-          const link = isDataset ? `/datasets/${entry.data.package.name}` : undefined;
-          const action = entry.activity_type.includes('package')
-            ? `${entry.user.display_name} updated the dataset`
-            : `${entry.user.display_name} updated the organisation`;
-          const color = isDataset ? '#f97316' : '#2563eb';
-          // Time ago
-          const timeAgo = (() => {
-            const now = new Date();
-            const then = new Date(entry.timestamp);
-            const diff = Math.floor((now.getTime() - then.getTime()) / 1000);
-            if (diff < 60) return `${diff} seconds ago`;
-            if (diff < 3600) return `${Math.floor(diff/60)} minutes ago`;
-            if (diff < 86400) return `${Math.floor(diff/3600)} hours ago`;
-            if (diff < 2592000) return `${Math.floor(diff/86400)} days ago`;
-            if (diff < 31536000) return `${Math.floor(diff/2592000)} months ago`;
-            return `${Math.floor(diff/31536000)} years ago`;
-          })();
-          return (
-            <div key={entry.id} style={{ display: 'flex', alignItems: 'flex-start', marginBottom: 28 }}>
-              <div style={{ width: 40, height: 40, borderRadius: '50%', background: color, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 'bold', fontSize: 20, marginRight: 18 }}>
-                {entry.user.display_name[0]}
+      <section style={{ marginTop: 32 }}>
+        <h3 style={{ fontSize: '1.2rem', marginBottom: 18 }}>Activity Stream</h3>
+        <div style={{ borderLeft: '3px solid #ff5722', marginLeft: 8, paddingLeft: 24, display: 'flex', flexDirection: 'column', gap: 28 }}>
+          {activityStream.map((act, i) => (
+            <div key={act.id || i} style={{ display: 'flex', alignItems: 'flex-start', gap: 18 }}>
+              <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#e0e7ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 22, color: '#ff5722', marginTop: 2 }}>
+                {(act.user && act.user.display_name && act.user.display_name !== act.user.id)
+                  ? act.user.display_name[0].toUpperCase()
+                  : (act.user && act.user.id ? act.user.id[0] : '?')}
               </div>
               <div style={{ flex: 1 }}>
-                <div style={{ fontSize: '1.05rem', marginBottom: 2 }}>
-                  <span style={{ color }}>{action}</span>{' '}
-                  {link ? (
-                    <a href={link} style={{ color: '#f97316', fontWeight: 500, textDecoration: 'underline' }}>{title}</a>
-                  ) : (
-                    <span style={{ color: '#2563eb', fontWeight: 500 }}>{title}</span>
-                  )}
-                </div>
-                <div style={{ color: '#888', fontSize: '0.97rem' }}>{timeAgo}</div>
+                <div style={{ fontWeight: 'bold', color: '#ff5722', fontSize: '1.08rem' }}>{getActivityMessage(act)}</div>
+                <div style={{ color: '#888', fontSize: '0.98rem' }}>{timeAgo(act.timestamp)}</div>
               </div>
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      </section>
     );
   };
 
   // About tab content
   const AboutContent = () => (
     <div style={{ background: '#fff', borderRadius: 12, padding: 24 }}>
-      <h3 style={{ fontSize: '1.3rem', marginBottom: 16, color: '#1d4ed8' }}>About {organization.title}</h3>
+      <h3 style={{ fontSize: '1.3rem', marginBottom: 16, color: '#ff5722' }}>About {organization.title}</h3>
       
       <div style={{ marginBottom: 24 }}>
         <h4 style={{ fontSize: '1.1rem', marginBottom: 8, color: '#333' }}>Description</h4>
@@ -410,16 +392,16 @@ export default function OrganizationPage({ organization, datasets, tags, formats
         <h4 style={{ fontSize: '1.1rem', marginBottom: 8, color: '#333' }}>Statistics</h4>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 16 }}>
           <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-            <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1d4ed8' }}>{organization.num_followers || 0}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{organization.num_followers || 0}</div>
             <div style={{ color: '#666', fontSize: '0.9rem' }}>Followers</div>
           </div>
           <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-            <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1d4ed8' }}>{organization.package_count || datasets.length}</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{organization.package_count || datasets.length}</div>
             <div style={{ color: '#666', fontSize: '0.9rem' }}>Datasets</div>
           </div>
           {organization.created && (
             <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#1d4ed8' }}>{new Date(organization.created).getFullYear()}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{new Date(organization.created).getFullYear()}</div>
               <div style={{ color: '#666', fontSize: '0.9rem' }}>Created</div>
             </div>
           )}
@@ -477,7 +459,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                 marginBottom: 12
               }} 
             />
-            <h2 style={{ fontSize: '1.25rem', margin: '0 0 8px 0', color: '#1d4ed8' }}>
+            <h2 style={{ fontSize: '1.25rem', margin: '0 0 8px 0', color: '#ff5722' }}>
               {organization.title}
             </h2>
             <div style={{ textAlign: 'left' }}>
@@ -500,7 +482,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                   style={{
                     background: 'none',
                     border: 'none',
-                    color: '#2563eb',
+                    color: '#ff5722',
                     cursor: 'pointer',
                     fontWeight: 'bold',
                     fontSize: '0.9rem',
@@ -514,11 +496,11 @@ export default function OrganizationPage({ organization, datasets, tags, formats
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', fontSize: '0.9rem', color: '#888' }}>
               <div>
-                <div style={{ fontWeight: 'bold', color: '#1d4ed8' }}>{organization.num_followers || 0}</div>
+                <div style={{ fontWeight: 'bold', color: '#ff5722' }}>{organization.num_followers || 0}</div>
                 <div>Followers</div>
               </div>
               <div>
-                <div style={{ fontWeight: 'bold', color: '#1d4ed8' }}>{organization.package_count || datasets.length}</div>
+                <div style={{ fontWeight: 'bold', color: '#ff5722' }}>{organization.package_count || datasets.length}</div>
                 <div>Datasets</div>
               </div>
             </div>
@@ -528,7 +510,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
           <div style={{ marginBottom: 24 }}>
             <h3 style={{ fontSize: '1rem', marginBottom: 8, color: '#555' }}>Current Organization</h3>
             <div style={{
-              background: '#2563eb',
+              background: '#ff5722',
               color: '#fff',
               borderRadius: 6,
               padding: '8px 12px',
@@ -548,7 +530,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                 filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count)
               )}
               {tags.length > 10 && (
-                <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllTags ? 'Show less' : 'Show more'}
                 </button>
               )}
@@ -563,7 +545,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                 filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count)
               )}
               {formats.length > 10 && (
-                <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllFormats ? 'Show less' : 'Show more'}
                 </button>
               )}
@@ -578,7 +560,7 @@ export default function OrganizationPage({ organization, datasets, tags, formats
                 filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count)
               )}
               {licenses.length > 10 && (
-                <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#2563eb', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllLicenses ? 'Show less' : 'Show more'}
                 </button>
               )}
@@ -609,7 +591,7 @@ function DatasetFormats({ path }: { path: string }) {
   }, [path]);
   
   const formatColors: Record<string, string> = {
-    CSV: '#2563eb',
+    CSV: '#ff5722',
     XLS: '#059669',
     JSON: '#f59e42',
     PDF: '#dc2626',
@@ -752,4 +734,33 @@ export const getStaticProps: GetStaticProps = async (context) => {
       activityStream
     } 
   };
-}; 
+};
+
+function getActivityMessage(act: any) {
+  const user = act.user && act.user.display_name && act.user.display_name !== act.user.id
+    ? act.user.display_name
+    : (act.user && act.user.id ? act.user.id.slice(0, 6) : 'Unknown');
+  const type = act.activity_type;
+  if (type === 'new package') {
+    return `${user} created the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed package') {
+    return `${user} updated the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'new resource') {
+    return `${user} added the resource "${act.data?.resource?.name || ''}" to the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed resource') {
+    return `${user} updated the resource "${act.data?.resource?.name || ''}" in the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'deleted resource') {
+    return `${user} deleted the resource "${act.data?.resource?.name || ''}" from the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed organization') {
+    return `${user} updated the organization "${act.data?.organization?.title || act.data?.organization?.name || ''}"`;
+  }
+  if (type === 'new organization') {
+    return `${user} created the organization "${act.data?.organization?.title || act.data?.organization?.name || ''}"`;
+  }
+  return `${user} did ${type}`;
+} 

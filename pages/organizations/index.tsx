@@ -99,7 +99,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 2rem' }}>
         {/* Header */}
         <div style={{ marginBottom: 32 }}>
-          <h1 style={{ fontSize: '1.8rem', margin: '0 0 16px 0', color: '#1d4ed8' }}>What are Organisations?</h1>
+          <h1 style={{ fontSize: '1.8rem', margin: '0 0 16px 0', color: '#ff5722' }}>What are Organisations?</h1>
           <p style={{ fontSize: '1.1rem', color: '#666', margin: '0 0 24px 0', lineHeight: 1.6 }}>
             CKAN Organisations are used to create, manage and publish collections of datasets. Users can have different roles within an Organisation, depending on their level of authorisation to create, edit and publish.
           </p>
@@ -191,7 +191,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
                 <h2 style={{ 
                   margin: '0 0 12px 0', 
                   fontSize: '1.3rem', 
-                  color: '#1d4ed8',
+                  color: '#ff5722',
                   textAlign: 'center'
                 }}>
                   {org.title}
@@ -244,7 +244,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
                 borderRadius: 6, 
                 border: '1px solid #ddd', 
                 background: '#fff', 
-                color: page === 1 ? '#bbb' : '#2563eb', 
+                color: page === 1 ? '#bbb' : '#ff5722', 
                 fontWeight: 'bold', 
                 cursor: page === 1 ? 'not-allowed' : 'pointer' 
               }}
@@ -261,9 +261,9 @@ export default function OrganizationsListPage({ organizations }: Props) {
                       margin: '0 6px', 
                       padding: '8px 14px', 
                       borderRadius: 6, 
-                      border: pageNum === page ? '1px solid #2563eb' : '1px solid #ddd', 
-                      background: pageNum === page ? '#2563eb' : '#fff', 
-                      color: pageNum === page ? '#fff' : '#2563eb', 
+                      border: pageNum === page ? '1px solid #ff5722' : '1px solid #ddd', 
+                      background: pageNum === page ? '#ff5722' : '#fff', 
+                      color: pageNum === page ? '#fff' : '#ff5722', 
                       fontWeight: 'bold', 
                       cursor: 'pointer' 
                     }}
@@ -280,7 +280,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
                 borderRadius: 6, 
                 border: '1px solid #ddd', 
                 background: '#fff', 
-                color: page === totalPages ? '#bbb' : '#2563eb', 
+                color: page === totalPages ? '#bbb' : '#ff5722', 
                 fontWeight: 'bold', 
                 cursor: page === totalPages ? 'not-allowed' : 'pointer' 
               }}

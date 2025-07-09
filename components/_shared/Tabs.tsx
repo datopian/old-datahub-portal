@@ -32,8 +32,8 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
               padding: '12px 24px',
               border: 'none',
               background: 'none',
-              borderBottom: activeTab === tab.id ? '3px solid #2563eb' : '3px solid transparent',
-              color: activeTab === tab.id ? '#2563eb' : '#666',
+              borderBottom: activeTab === tab.id ? '3px solid #ff5722' : '3px solid transparent',
+              color: activeTab === tab.id ? '#ff5722' : '#666',
               fontWeight: activeTab === tab.id ? 'bold' : 'normal',
               fontSize: '1rem',
               cursor: 'pointer',
@@ -42,7 +42,7 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
             }}
             onMouseOver={e => {
               if (activeTab !== tab.id) {
-                e.currentTarget.style.color = '#2563eb';
+                e.currentTarget.style.color = '#ff5722';
               }
             }}
             onMouseOut={e => {

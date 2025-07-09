@@ -48,6 +48,7 @@ interface DatasetDetail {
 
 interface Props {
   dataset: DatasetDetail | null;
+  activityStream?: any[];
 }
 
 const ORG_PLACEHOLDER = {
@@ -60,7 +61,36 @@ const ORG_PLACEHOLDER = {
   ],
 };
 
-export default function DatasetDetailPage({ dataset }: Props) {
+function getActivityMessage(act: any) {
+  const user = act.user && act.user.display_name && act.user.display_name !== act.user.id
+    ? act.user.display_name
+    : (act.user && act.user.id ? act.user.id.slice(0, 6) : 'Unknown');
+  const type = act.activity_type;
+  if (type === 'new package') {
+    return `${user} created the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed package') {
+    return `${user} updated the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'new resource') {
+    return `${user} added the resource "${act.data?.resource?.name || ''}" to the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed resource') {
+    return `${user} updated the resource "${act.data?.resource?.name || ''}" in the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'deleted resource') {
+    return `${user} deleted the resource "${act.data?.resource?.name || ''}" from the dataset "${act.data?.package?.title || act.data?.package?.name || ''}"`;
+  }
+  if (type === 'changed organization') {
+    return `${user} updated the organization "${act.data?.organization?.title || act.data?.organization?.name || ''}"`;
+  }
+  if (type === 'new organization') {
+    return `${user} created the organization "${act.data?.organization?.title || act.data?.organization?.name || ''}"`;
+  }
+  return `${user} did ${type}`;
+}
+
+export default function DatasetDetailPage({ dataset, activityStream = [] }: Props) {
   const [tab, setTab] = useState<'dataset' | 'groups' | 'activity'>('dataset');
   if (!dataset) {
     return (
@@ -92,23 +122,23 @@ export default function DatasetDetailPage({ dataset }: Props) {
             <b>Socials:</b>
             <div style={{ display: 'flex', gap: 10, marginTop: 6 }}>
               {orgSocials.map((s: any) => (
-                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'none', fontWeight: 'bold', fontSize: 18 }}>{s.name}</a>
+                <a key={s.name} href={s.url} target="_blank" rel="noopener noreferrer" style={{ color: '#ff5722', textDecoration: 'none', fontWeight: 'bold', fontSize: 18 }}>{s.name}</a>
               ))}
             </div>
           </div>
         )}
         <div style={{ marginBottom: 0 }}>
-          <b>License:</b> <span style={{ color: '#2563eb' }}>{license}</span>
+          <b>License:</b> <span style={{ color: '#ff5722' }}>{license}</span>
         </div>
       </aside>
       {/* Right column: Dataset */}
       <main style={{ flex: 1 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 18 }}>
-          <h1 style={{ fontSize: '2rem', margin: 0 }}>{dataset.title}</h1>
+          <h1 style={{ fontSize: '2rem', margin: 0, color: '#ff5722' }}>{dataset.title}</h1>
           <div style={{ display: 'flex', gap: 0 }}>
-            <button onClick={() => setTab('dataset')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #2563eb' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#2563eb' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
-            <button onClick={() => setTab('groups')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #2563eb' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#2563eb' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
-            <button onClick={() => setTab('activity')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #2563eb' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#2563eb' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
+            <button onClick={() => setTab('dataset')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
+            <button onClick={() => setTab('groups')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
+            <button onClick={() => setTab('activity')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
           </div>
         </div>
         {tab === 'dataset' && (
@@ -120,13 +150,13 @@ export default function DatasetDetailPage({ dataset }: Props) {
                 {dataset.resources && dataset.resources.length > 0 ? dataset.resources.map(res => (
                   <div key={res.name} style={{ background: '#f3f4f6', borderRadius: 8, padding: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
                     <div>
-                      <div style={{ fontWeight: 'bold', fontSize: '1.08rem', color: '#1d4ed8' }}>{res.name}</div>
+                      <div style={{ fontWeight: 'bold', fontSize: '1.08rem', color: '#ff5722' }}>{res.name}</div>
                       <div style={{ color: '#666', fontSize: '0.98rem', marginBottom: 4 }}>{res.description}</div>
-                      <span style={{ background: '#2563eb', color: '#fff', borderRadius: 4, padding: '2px 10px', fontWeight: 'bold', fontSize: '0.97rem', marginRight: 8 }}>{res.format}</span>
+                      <span style={{ background: '#ff5722', color: '#fff', borderRadius: 4, padding: '2px 10px', fontWeight: 'bold', fontSize: '0.97rem', marginRight: 8 }}>{res.format}</span>
                     </div>
                     <div style={{ display: 'flex', gap: 10 }}>
-                      <a href={res.url || res.path} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#2563eb', border: '1px solid #2563eb', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', textDecoration: 'none', fontSize: '1rem' }}>Go to resource</a>
-                      <button style={{ background: '#2563eb', color: '#fff', border: 'none', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>More info</button>
+                      <a href={res.url || res.path} target="_blank" rel="noopener noreferrer" style={{ background: '#fff', color: '#ff5722', border: '1px solid #ff5722', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', textDecoration: 'none', fontSize: '1rem' }}>Go to resource</a>
+                      <button style={{ background: '#ff5722', color: '#fff', border: 'none', borderRadius: 6, padding: '7px 16px', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>More info</button>
                     </div>
                   </div>
                 )) : <div>No resources found.</div>}
@@ -136,7 +166,7 @@ export default function DatasetDetailPage({ dataset }: Props) {
               <h3 style={{ fontSize: '1.1rem', marginBottom: 10 }}>Tags</h3>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {(dataset.keywords || []).map(tag => (
-                  <button key={tag} style={{ background: '#e0e7ff', color: '#2563eb', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag}</button>
+                  <button key={tag} style={{ background: '#fff3e6', color: '#ff5722', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag}</button>
                 ))}
               </div>
             </section>
@@ -159,11 +189,44 @@ export default function DatasetDetailPage({ dataset }: Props) {
           <div style={{ color: '#888', fontSize: '1.1rem', marginTop: 32 }}>No groups info.</div>
         )}
         {tab === 'activity' && (
-          <div style={{ color: '#888', fontSize: '1.1rem', marginTop: 32 }}>No activity stream.</div>
+          <section style={{ marginTop: 32 }}>
+            <h3 style={{ fontSize: '1.2rem', marginBottom: 18 }}>Activity Stream</h3>
+            {activityStream.length === 0 ? (
+              <div style={{ color: '#888', fontSize: '1.05rem' }}>No activity found for this dataset.</div>
+            ) : (
+              <div style={{ borderLeft: '3px solid #ff5722', marginLeft: 8, paddingLeft: 24, display: 'flex', flexDirection: 'column', gap: 28 }}>
+                {activityStream.map((act, i) => (
+                  <div key={act.id || i} style={{ display: 'flex', alignItems: 'flex-start', gap: 18 }}>
+                    <div style={{ width: 48, height: 48, borderRadius: '50%', background: '#e0e7ff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: 22, color: '#2563eb', marginTop: 2 }}>
+                      {(act.user && act.user.display_name && act.user.display_name !== act.user.id)
+                        ? act.user.display_name[0].toUpperCase()
+                        : (act.user && act.user.id ? act.user.id[0] : '?')}
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontWeight: 'bold', color: '#2563eb', fontSize: '1.08rem' }}>{getActivityMessage(act)}</div>
+                      <div style={{ color: '#888', fontSize: '0.98rem' }}>{timeAgo(act.timestamp)}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
         )}
       </main>
     </div>
   );
+}
+
+function timeAgo(dateStr: string) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+  if (diff < 60) return `${diff} seconds ago`;
+  if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+  if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
+  if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
+  return `${Math.floor(diff / 31536000)} years ago`;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -197,6 +260,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
   const entry = datasets.find((ds: any) => ds.id === id);
   let dataset = null;
+  let activityStream = [];
   if (entry && entry.path) {
     const dpPath = path.join(process.cwd(), entry.path);
     try {
@@ -205,6 +269,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     } catch (e) {
       dataset = null;
     }
+    const activityPath = path.join(path.dirname(dpPath), 'activity_stream.json');
+    if (fs.existsSync(activityPath)) {
+      try {
+        const raw = fs.readFileSync(activityPath, 'utf-8');
+        activityStream = JSON.parse(raw);
+      } catch (e) {
+        activityStream = [];
+      }
+    }
   }
-  return { props: { dataset } };
+  return { props: { dataset, activityStream } };
 };
