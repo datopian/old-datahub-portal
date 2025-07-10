@@ -5,6 +5,7 @@ import { useState, useMemo, useEffect } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import Tabs from '@/components/_shared/Tabs';
+import styles from '../../styles/OrganizationPage.module.css';
 
 interface Organization {
   id: string;
@@ -177,32 +178,19 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   const DatasetsContent = () => (
     <div>
       {/* Search and sorting */}
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
+      <div className={styles.searchSortRow}>
         <input
           type="text"
           placeholder="Search datasets..."
           value={query}
           onChange={e => setQuery(e.target.value)}
-          style={{ 
-            flex: 1, 
-            padding: 12, 
-            fontSize: '1rem', 
-            marginRight: 16, 
-            borderRadius: 8, 
-            border: '1px solid #ddd', 
-            background: '#fff' 
-          }}
+          className={styles.searchInput}
         />
-        <label style={{ marginRight: 8, color: '#555' }}>Order by:</label>
+        <label className={styles.sortLabel}>Order by:</label>
         <select 
           value={sort} 
           onChange={e => setSort(e.target.value as any)} 
-          style={{ 
-            padding: 8, 
-            borderRadius: 6, 
-            border: '1px solid #ddd', 
-            background: '#fff' 
-          }}
+          className={styles.sortSelect}
         >
           <option value="relevance">Relevance</option>
           <option value="date">Date</option>
@@ -442,134 +430,96 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   ];
 
   return (
-    <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '2rem 0' }}>
-      <div style={{ display: 'flex', maxWidth: 1200, margin: '0 auto' }}>
+    <div className={styles.pageBg}>
+      <div className={styles.pageContainer}>
         {/* Left column: Organization info and filters */}
-        <aside style={{ width: 320, marginRight: 32, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 24, height: 'fit-content' }}>
+        <aside className={styles.sidebar}>
           {/* Organization info */}
-          <div style={{ textAlign: 'center', marginBottom: 24 }}>
+          <div className={styles.orgInfo}>
             <img 
               src={organization.image_url || '/images/logos/DefaultOrgLogo.svg'} 
               alt={organization.title}
-              style={{ 
-                width: 80, 
-                height: 80, 
-                objectFit: 'contain',
-                borderRadius: 8,
-                marginBottom: 12
-              }} 
+              className={styles.orgLogo}
             />
-            <h2 style={{ fontSize: '1.25rem', margin: '0 0 8px 0', color: '#ff5722' }}>
+            <h2 className={styles.orgTitle}>
               {organization.title}
             </h2>
-            <div style={{ textAlign: 'left' }}>
-              <p style={{ 
-                fontSize: '0.95rem', 
-                color: '#666', 
-                margin: '0 0 16px 0',
-                lineHeight: 1.5,
-                display: showFullDescription ? 'block' : '-webkit-box',
-                WebkitLineClamp: showFullDescription ? 'unset' : 2,
-                WebkitBoxOrient: showFullDescription ? 'unset' : 'vertical',
-                overflow: showFullDescription ? 'visible' : 'hidden',
-                textOverflow: showFullDescription ? 'unset' : 'ellipsis'
-              }}>
+            <div className={styles.orgDescWrap}>
+              <p className={styles.orgDesc + (showFullDescription ? ' ' + styles.showFull : '')}>
                 {organization.description || 'No description available.'}
               </p>
               {organization.description && organization.description.length > 100 && (
                 <button 
                   onClick={() => setShowFullDescription(!showFullDescription)}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: '#ff5722',
-                    cursor: 'pointer',
-                    fontWeight: 'bold',
-                    fontSize: '0.9rem',
-                    padding: 0,
-                    marginBottom: 16
-                  }}
+                  className={styles.readMoreBtn}
                 >
                   {showFullDescription ? 'Show less' : 'Read more'}
                 </button>
               )}
             </div>
-            <div style={{ display: 'flex', justifyContent: 'space-around', fontSize: '0.9rem', color: '#888' }}>
+            <div className={styles.orgStatsRow}>
               <div>
-                <div style={{ fontWeight: 'bold', color: '#ff5722' }}>{organization.num_followers || 0}</div>
+                <div className={styles.orgStatNum}>{organization.num_followers || 0}</div>
                 <div>Followers</div>
               </div>
               <div>
-                <div style={{ fontWeight: 'bold', color: '#ff5722' }}>{organization.package_count || datasets.length}</div>
+                <div className={styles.orgStatNum}>{organization.package_count || datasets.length}</div>
                 <div>Datasets</div>
               </div>
             </div>
           </div>
-
           {/* Current organization filter (always active) */}
-          <div style={{ marginBottom: 24 }}>
-            <h3 style={{ fontSize: '1rem', marginBottom: 8, color: '#555' }}>Current Organization</h3>
-            <div style={{
-              background: '#ff5722',
-              color: '#fff',
-              borderRadius: 6,
-              padding: '8px 12px',
-              fontWeight: 'bold',
-              fontSize: '0.95rem',
-              textAlign: 'center'
-            }}>
+          <div className={styles.currentOrgFilter}>
+            <h3 className={styles.filterTitle}>Current Organization</h3>
+            <div className={styles.currentOrgName}>
               {organization.title}
             </div>
           </div>
-
           {/* Tags filter */}
-          <div style={{ marginBottom: 24 }}>
-            <h3 style={{ fontSize: '1rem', marginBottom: 8, color: '#555' }}>Tags</h3>
+          <div className={styles.filterBlock}>
+            <h3 className={styles.filterTitle}>Tags</h3>
             <div>
               {(showAllTags ? tags : tags.slice(0, 10)).map(tag => 
                 filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count)
               )}
               {tags.length > 10 && (
-                <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllTags(v => !v)} className={styles.showMoreBtn}>
                   {showAllTags ? 'Show less' : 'Show more'}
                 </button>
               )}
             </div>
           </div>
-
           {/* Formats filter */}
-          <div style={{ marginBottom: 24 }}>
-            <h3 style={{ fontSize: '1rem', marginBottom: 8, color: '#555' }}>Formats</h3>
+          <div className={styles.filterBlock}>
+            <h3 className={styles.filterTitle}>Formats</h3>
             <div>
               {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => 
                 filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count)
               )}
               {formats.length > 10 && (
-                <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllFormats(v => !v)} className={styles.showMoreBtn}>
                   {showAllFormats ? 'Show less' : 'Show more'}
                 </button>
               )}
             </div>
           </div>
-
           {/* Licenses filter */}
-          <div style={{ marginBottom: 0 }}>
-            <h3 style={{ fontSize: '1rem', marginBottom: 8, color: '#555' }}>Licenses</h3>
+          <div className={styles.filterBlock}>
+            <h3 className={styles.filterTitle}>Licenses</h3>
             <div>
               {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => 
                 filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count)
               )}
               {licenses.length > 10 && (
-                <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                <button onClick={() => setShowAllLicenses(v => !v)} className={styles.showMoreBtn}>
                   {showAllLicenses ? 'Show less' : 'Show more'}
                 </button>
               )}
             </div>
           </div>
         </aside>
-
         {/* Main content: Tabs */}
-        <main style={{ flex: 1 }}>
+        <main className={styles.mainContent}>
           <Tabs tabs={tabs} defaultTab="datasets" />
         </main>
       </div>

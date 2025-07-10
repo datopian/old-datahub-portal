@@ -5,6 +5,7 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import styles from '../../styles/DatasetsListPage.module.css';
 
 interface DatasetIndexEntry {
   id: string;
@@ -25,6 +26,19 @@ interface Props {
   tags: { name: string; count: number }[];
   formats: { name: string; count: number }[];
   licenses: { name: string; count: number }[];
+}
+
+// Simple media query hook
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) setMatches(media.matches);
+    const listener = () => setMatches(media.matches);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
+  return matches;
 }
 
 export default function DatasetListPage({ datasets, orgs, tags, formats, licenses }: Props) {
@@ -194,62 +208,66 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   if (activeFormat) activeFilters.push({ label: activeFormat, value: activeFormat, onRemove: () => setActiveFormat(null), type: 'Format' });
   if (activeLicense) activeFilters.push({ label: activeLicense, value: activeLicense, onRemove: () => setActiveLicense(null), type: 'License' });
 
+  const isMobile = useMediaQuery('(max-width: 900px)');
+
   return (
-    <div style={{ background: '#f8fafc', minHeight: '100vh', padding: '2rem 0' }}>
-      <div style={{ display: 'flex', maxWidth: 1200, margin: '0 auto' }}>
-        <aside style={{ width: 260, marginRight: 32, background: '#fff', borderRadius: 12, boxShadow: '0 2px 8px #0001', padding: 24, height: 'fit-content' }}>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Organizations</h3>
-          <div style={{ marginBottom: 24 }}>
-            {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
-            {orgs.length > 10 && (
-              <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
-                {showAllOrgs ? 'Show less' : 'Show more'}
-              </button>
-            )}
-          </div>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Tags</h3>
-          <div style={{ marginBottom: 24 }}>
-            {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
-            {tags.length > 10 && (
-              <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
-                {showAllTags ? 'Show less' : 'Show more'}
-              </button>
-            )}
-          </div>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Formats</h3>
-          <div style={{ marginBottom: 24 }}>
-            {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
-            {formats.length > 10 && (
-              <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
-                {showAllFormats ? 'Show less' : 'Show more'}
-              </button>
-            )}
-          </div>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Licenses</h3>
-          <div style={{ marginBottom: 0 }}>
-            {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
-            {licenses.length > 10 && (
-              <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
-                {showAllLicenses ? 'Show less' : 'Show more'}
-              </button>
-            )}
-          </div>
-        </aside>
-        <main style={{ flex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <form onSubmit={handleSearch} style={{ display: 'flex', alignItems: 'center', marginBottom: 24 }}>
+    <div className={styles.pageBg}>
+      <div className={styles.pageContainer}>
+        {!isMobile && (
+          <aside className={styles.sidebar}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Organizations</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
+              {orgs.length > 10 && (
+                <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllOrgs ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Tags</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
+              {tags.length > 10 && (
+                <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllTags ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Formats</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
+              {formats.length > 10 && (
+                <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllFormats ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Licenses</h3>
+            <div style={{ marginBottom: 0 }}>
+              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
+              {licenses.length > 10 && (
+                <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllLicenses ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+          </aside>
+        )}
+        <main className={styles.mainContent}>
+          <div className={styles.searchSortRow}>
+            <form onSubmit={handleSearch} className={styles.searchForm}>
               <input
                 type="text"
                 value={searchInput}
                 onChange={e => setSearchInput(e.target.value)}
                 placeholder="Search datasets..."
-                style={{ flex: 1, minWidth: 580, padding: 12, fontSize: '1rem', marginRight: 16, borderRadius: 8, border: '1px solid #ddd', background: '#fff' }}
+                className={styles.searchInput}
               />
-              <button type="submit" style={{ padding: '12px 24px', borderRadius: 8, background: '#ff5722', color: '#fff', border: 'none', fontWeight: 'bold', fontSize: '1rem', cursor: 'pointer' }}>
+              <button type="submit" className={styles.searchBtn}>
                 Search
               </button>
-              <label style={{ marginLeft: 16, marginRight: 8, color: '#555' }}>Order by:</label>
-              <select value={sort} onChange={e => setSort(e.target.value as any)} style={{ padding: 8, borderRadius: 6, border: '1px solid #ddd', background: '#fff' }}>
+              <label className={styles.sortLabel}>Order by:</label>
+              <select value={sort} onChange={e => setSort(e.target.value as any)} className={styles.sortSelect}>
                 <option value="relevance">Relevance</option>
                 <option value="date">Date</option>
               </select>
@@ -370,6 +388,46 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             >{'>'}</button>
           </div>
         </main>
+        {isMobile && (
+          <aside className={styles.sidebar}>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Organizations</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
+              {orgs.length > 10 && (
+                <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllOrgs ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Tags</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
+              {tags.length > 10 && (
+                <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllTags ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Formats</h3>
+            <div style={{ marginBottom: 24 }}>
+              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
+              {formats.length > 10 && (
+                <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllFormats ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+            <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Licenses</h3>
+            <div style={{ marginBottom: 0 }}>
+              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
+              {licenses.length > 10 && (
+                <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
+                  {showAllLicenses ? 'Show less' : 'Show more'}
+                </button>
+              )}
+            </div>
+          </aside>
+        )}
       </div>
     </div>
   );

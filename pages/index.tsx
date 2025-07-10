@@ -4,6 +4,7 @@ import { GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import styles from '../styles/HomePage.module.css';
 
 interface Dataset {
   id: string;
@@ -110,33 +111,12 @@ export default function Home({ datasets, stats, popularTags }: Props) {
           </form>
         </section>
 
-        <h2 style={{ fontSize: '1.18rem', fontWeight: 800, color: '#222', margin: '0 0 18px 0', letterSpacing: '-0.5px', textAlign: 'left' }}>Portal Stats</h2>
+        <h2 className={styles.sectionTitle}>Portal Stats</h2>
         {/* Stats */}
-        <section style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          gap: '2.5rem',
-          margin: '0 0 2.5rem 0',
-          flexWrap: 'nowrap',
-        }}>
+        <section className={styles.statsSection}>
           <div
+            className={styles.statsCard}
             onClick={() => router.push('/datasets')}
-            style={{
-              flex: 1,
-              background: '#fdfaf7',
-              border: '1.5px solid #f3f3f3',
-              borderRadius: 16,
-              boxShadow: '0 2px 12px #ff572208',
-              padding: '2.2rem 2.2rem',
-              textAlign: 'left',
-              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-              position: 'relative',
-              overflow: 'hidden',
-              minWidth: 0,
-              minHeight: 140,
-              cursor: 'pointer',
-              transition: 'box-shadow 0.2s, border 0.2s',
-            }}
             onMouseOver={e => {
               e.currentTarget.style.boxShadow = '0 4px 24px #ff572233';
               e.currentTarget.style.border = '1.5px solid #ff5722';
@@ -146,34 +126,15 @@ export default function Home({ datasets, stats, popularTags }: Props) {
               e.currentTarget.style.border = '1.5px solid #f3f3f3';
             }}
           >
-            <div style={{
-              width: 44, height: 44, borderRadius: '50%', background: '#ff5722',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', marginBottom: 18,
-              color: '#fff', boxShadow: '0 2px 8px #ff572233', flexShrink: 0
-            }}>
+            <div className={styles.statsIconWrap}>
               <img src="/icons/visualization.png" alt="Datasets" width={28} height={28} style={{display:'block'}} />
             </div>
-            <div style={{ fontWeight: 800, fontSize: '1.35rem', color: '#222', letterSpacing: '-1px', marginBottom: 6 }}>Datasets</div>
-            <div style={{ color: '#bbb', fontSize: '1.08rem', fontWeight: 500 }}>{stats.datasetCount.toLocaleString()} available</div>
+            <div className={styles.statsCardTitle}>Datasets</div>
+            <div className={styles.statsCardDesc}>{stats.datasetCount.toLocaleString()} available</div>
           </div>
           <div
+            className={styles.statsCard}
             onClick={() => router.push('/organizations')}
-            style={{
-              flex: 1,
-              background: '#fdfaf7',
-              border: '1.5px solid #f3f3f3',
-              borderRadius: 16,
-              boxShadow: '0 2px 12px #ff572208',
-              padding: '2.2rem 2.2rem',
-              textAlign: 'left',
-              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-              position: 'relative',
-              overflow: 'hidden',
-              minWidth: 0,
-              minHeight: 140,
-              cursor: 'pointer',
-              transition: 'box-shadow 0.2s, border 0.2s',
-            }}
             onMouseOver={e => {
               e.currentTarget.style.boxShadow = '0 4px 24px #ff572233';
               e.currentTarget.style.border = '1.5px solid #ff5722';
@@ -183,15 +144,11 @@ export default function Home({ datasets, stats, popularTags }: Props) {
               e.currentTarget.style.border = '1.5px solid #f3f3f3';
             }}
           >
-            <div style={{
-              width: 44, height: 44, borderRadius: '50%', background: '#ff5722',
-              display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem', marginBottom: 18,
-              color: '#fff', boxShadow: '0 2px 8px #ff572233', flexShrink: 0
-            }}>
+            <div className={styles.statsIconWrap}>
               <img src="/icons/old-building.png" alt="Organizations" width={28} height={28} style={{display:'block'}} />
             </div>
-            <div style={{ fontWeight: 800, fontSize: '1.35rem', color: '#222', letterSpacing: '-1px', marginBottom: 6 }}>Organizations</div>
-            <div style={{ color: '#bbb', fontSize: '1.08rem', fontWeight: 500 }}>{stats.organizationCount.toLocaleString()} publishers</div>
+            <div className={styles.statsCardTitle}>Organizations</div>
+            <div className={styles.statsCardDesc}>{stats.organizationCount.toLocaleString()} publishers</div>
           </div>
         </section>
 

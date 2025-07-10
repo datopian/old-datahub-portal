@@ -75,3 +75,75 @@
     margin-top: 0.5rem;
   }
 }
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0.5rem 0.5rem;
+    min-height: unset;
+  }
+  .left {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand {
+    font-size: 1.2rem;
+    text-align: center;
+    flex: 1;
+  }
+  .nav {
+    display: none;
+    flex-direction: column;
+    margin: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px #0002;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0.5rem 1rem;
+  }
+  .nav.open {
+    display: flex;
+  }
+  .nav a {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: none;
+    border-radius: 6px;
+    text-align: left;
+  }
+  .right {
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    text-align: left;
+    min-width: unset;
+    display: none;
+  }
+  .hamburger {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    z-index: 101;
+  }
+  .hamburger span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #222;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+}
