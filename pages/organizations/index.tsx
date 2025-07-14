@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { GetStaticProps } from 'next';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import styles from '../../styles/OrganizationsListPage.module.css';
@@ -28,35 +28,36 @@ export default function OrganizationsListPage({ organizations }: Props) {
   const [page, setPage] = useState(1);
   const pageSize = 12;
 
-  const { idx, idMap } = useMemo(() => {
+  const [idx, setIdx] = useState<lunr.Index | null>(null);
+  const [loadingIdx, setLoadingIdx] = useState(true);
+  const idMapRef = useRef<Record<string, OrganizationIndexEntry>>({});
+
+  useEffect(() => {
     const idMap: Record<string, OrganizationIndexEntry> = {};
-    const idx = lunr(function () {
-      this.ref('id');
-      this.field('name');
-      this.field('title');
-      this.field('description');
-      safeOrganizations.forEach((org) => {
+    safeOrganizations.forEach(org => {
         idMap[org.id] = org;
-        this.add({
-          id: org.id,
-          name: org.name,
-          title: org.title,
-          description: org.description,
-        });
-      });
     });
-    return { idx, idMap };
+    idMapRef.current = idMap;
+    setLoadingIdx(true);
+    fetch('/data/lunr-org-index.json')
+      .then(res => res.json())
+      .then(idxJson => {
+        setIdx(lunr.Index.load(idxJson));
+        setLoadingIdx(false);
+      })
+      .catch(() => setLoadingIdx(false));
   }, [safeOrganizations]);
 
   const searched = useMemo(() => {
-    if (!query) return safeOrganizations;
+    if (loadingIdx) return [];
+    if (!query || !idx) return safeOrganizations;
     try {
       const results = idx.search(`*${query}*`);
-      return results.map((r: any) => idMap[r.ref]).filter(Boolean);
+      return results.map((r: any) => idMapRef.current[r.ref]).filter(Boolean);
     } catch {
       return [];
     }
-  }, [query, idx, idMap, safeOrganizations]);
+  }, [query, idx, safeOrganizations, loadingIdx]);
 
   const sorted = useMemo(() => {
     return [...searched].sort((a, b) => {
@@ -129,7 +130,7 @@ export default function OrganizationsListPage({ organizations }: Props) {
 
         {/* Statistics */}
         <div className={styles.statsText}>
-          {sorted.length} organizations found
+          {loadingIdx ? 'Loading organizations…' : `${sorted.length} organizations found`}
         </div>
 
         {/* Organizations grid */}

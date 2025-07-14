@@ -1,127 +1,66 @@
-//const fs = require('fs');
-//const path = require('path');
-//const https = require('https');
-//
-//const CKAN_BASE_URL = 'https://old.datahub.io';
-//const OUTPUT_DIR = path.join(__dirname, '../organizations');
-//const INDEX_FILE = path.join(__dirname, '../organizations-index.json');
-//const DATASETS_INDEX_FILE = path.join(__dirname, '../datasets-index.json');
-//
-//if (!fs.existsSync(OUTPUT_DIR)) {
-//  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-//}
-//
-//let datasetsIndex = [];
-//if (fs.existsSync(DATASETS_INDEX_FILE)) {
-//  datasetsIndex = JSON.parse(fs.readFileSync(DATASETS_INDEX_FILE, 'utf-8'));
-//}
-//
-//function makeRequest(url) {
-//  return new Promise((resolve, reject) => {
-//    https.get(url, (res) => {
-//      let data = '';
-//      res.on('data', (chunk) => data += chunk);
-//      res.on('end', () => {
-//        try {
-//          const parsed = JSON.parse(data);
-//          resolve(parsed);
-//        } catch (e) {
-//          reject(e);
-//        }
-//      });
-//    }).on('error', reject);
-//  });
-//}
-//
-//async function getOrganizationsList() {
-//  console.log('Fetching organizations list...');
-//  const response = await makeRequest(`${CKAN_BASE_URL}/api/3/action/organization_list`);
-//
-//  if (!response.success) {
-//    throw new Error('Failed to fetch organizations list');
-//  }
-//
-//  return response.result;
-//}
-//
-//async function getOrganizationDetails(name) {
-//  console.log(`Fetching details for organization: ${name}`);
-//  const response = await makeRequest(`${CKAN_BASE_URL}/api/3/action/organization_show?id=${encodeURIComponent(name)}`);
-//
-//  if (!response.success) {
-//    throw new Error(`Failed to fetch organization details for ${name}`);
-//  }
-//
-//  return response.result;
-//}
-//
-//async function migrateOrganizations() {
-//  try {
-//    const orgNames = await getOrganizationsList();
-//    console.log(`Found ${orgNames.length} organizations`);
-//
-//    const organizations = [];
-//    const failedOrgs = [];
-//
-//    for (let i = 0; i < orgNames.length; i++) {
-//      const name = orgNames[i];
-//
-//      try {
-//        if (i > 0) {
-//          await new Promise(resolve => setTimeout(resolve, 1000));
-//        }
-//
-//        const orgDetails = await getOrganizationDetails(name);
-//
-//        const orgDir = path.join(OUTPUT_DIR, name);
-//        if (!fs.existsSync(orgDir)) {
-//          fs.mkdirSync(orgDir, { recursive: true });
-//        }
-//
-//        const orgFile = path.join(orgDir, 'organization.json');
-//        fs.writeFileSync(orgFile, JSON.stringify(orgDetails, null, 2));
-//
-//        const orgTitle = orgDetails.title || name;
-//        const datasetCount = datasetsIndex.filter(ds => {
-//          return ds.organization === orgTitle || ds.organization === name;
-//        }).length;
-//        const indexEntry = {
-//          id: name,
-//          name: name,
-//          title: orgTitle,
-//          description: orgDetails.description || '',
-//          image_url: orgDetails.image_url || null,
-//          created: orgDetails.created || null,
-//          packages: datasetCount,
-//          path: `organizations/${name}/organization.json`
-//        };
-//
-//        organizations.push(indexEntry);
-//        console.log(`✓ Processed: ${name}`);
-//
-//      } catch (error) {
-//        console.error(`✗ Failed to process ${name}:`, error.message);
-//        failedOrgs.push({ name, error: error.message });
-//      }
-//    }
-//
-//    fs.writeFileSync(INDEX_FILE, JSON.stringify(organizations, null, 2));
-//
-//    console.log(`\nMigration completed!`);
-//    console.log(`✓ Successfully processed: ${organizations.length} organizations`);
-//    console.log(`✗ Failed: ${failedOrgs.length} organizations`);
-//
-//    if (failedOrgs.length > 0) {
-//      console.log('\nFailed organizations:');
-//      failedOrgs.forEach(org => {
-//        console.log(`  - ${org.name}: ${org.error}`);
-//      });
-//    }
-//
-//  } catch (error) {
-//    console.error('Migration failed:', error);
-//    process.exit(1);
-//  }
-//}
-//
-//migrateOrganizations();
+const fs = require('fs');
+const path = require('path');
+
+const DATASETS_DIR = path.join(__dirname, '../datasets');
+const INDEX_FILE = path.join(__dirname, '../organizations-index.json');
+const DATASETS_INDEX_FILE = path.join(__dirname, '../datasets-index.json');
+
+if (!fs.existsSync(DATASETS_DIR)) {
+  fs.mkdirSync(DATASETS_DIR, { recursive: true });
+}
+
+let datasetsIndex = [];
+if (fs.existsSync(DATASETS_INDEX_FILE)) {
+  datasetsIndex = JSON.parse(fs.readFileSync(DATASETS_INDEX_FILE, 'utf-8'));
+}
+
+async function rebuildOrganizationsIndex() {
+  const orgDirs = fs.readdirSync(DATASETS_DIR, { withFileTypes: true })
+    .filter(dirent => dirent.isDirectory())
+    .map(dirent => dirent.name);
+  const organizations = [];
+  for (const name of orgDirs) {
+    const orgFile = path.join(DATASETS_DIR, name, 'organization.json');
+    if (fs.existsSync(orgFile)) {
+      const orgDetails = JSON.parse(fs.readFileSync(orgFile, 'utf-8'));
+      const orgTitle = (orgDetails.title || name).trim();
+      const orgName = (name || '').trim();
+      const datasetCount = datasetsIndex.filter(ds => {
+        return ds.organization === orgTitle || ds.organization === orgName;
+      }).length;
+      organizations.push({
+        id: orgName,
+        name: orgName,
+        title: orgTitle,
+        description: (orgDetails.description || '').trim(),
+        image_url: orgDetails.image_url || null,
+        created: orgDetails.created || null,
+        packages: datasetCount,
+        path: `datasets/${orgName}/organization.json`
+      });
+    }
+  }
+  fs.writeFileSync(INDEX_FILE, JSON.stringify(organizations, null, 2));
+  console.log(`Organizations index rebuilt: ${organizations.length} organizations`);
+
+  const lunr = require('lunr');
+  const lunrOrgIndex = lunr(function () {
+    this.ref('id');
+    this.field('name');
+    this.field('title');
+    this.field('description');
+    organizations.forEach(org => {
+      this.add({
+        id: org.id,
+        name: org.name,
+        title: org.title,
+        description: org.description,
+      });
+    });
+  });
+  const lunrOrgIndexPath = path.join(__dirname, '../public/data/lunr-org-index.json');
+  fs.writeFileSync(lunrOrgIndexPath, JSON.stringify(lunrOrgIndex));
+  console.log('lunr-org-index.json generated:', lunrOrgIndexPath);
+}
+
+rebuildOrganizationsIndex();

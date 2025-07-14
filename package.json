@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "node scripts/build-data.js && node scripts/build-organizations.js && next build",
     "start": "next start",
     "typecheck": "tsc --noEmit --incremental false",
     "lint": "eslint . --ext .ts,.tsx",
