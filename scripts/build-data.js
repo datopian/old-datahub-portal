@@ -7,10 +7,10 @@ const outFile = path.join(__dirname, '../datasets-index.json');
 function getOrgString(dp) {
  if (dp.organization) {
    if (typeof dp.organization === 'string') {
-     return dp.organization;
+     return dp.organization.trim();
    }
    if (typeof dp.organization === 'object') {
-     return dp.organization.title || dp.organization.name || '';
+     return (dp.organization.title || dp.organization.name || '').trim();
    }
  }
  return '';
@@ -81,3 +81,24 @@ function getAllDatapackages(dir) {
 const index = getAllDatapackages(baseDir);
 fs.writeFileSync(outFile, JSON.stringify(index, null, 2));
 console.log('datasets-index.json generated:', outFile);
+
+const lunr = require('lunr');
+const lunrIndex = lunr(function () {
+  this.ref('id');
+  this.field('title');
+  this.field('description');
+  this.field('organization');
+  this.field('tags');
+  index.forEach(ds => {
+    this.add({
+      id: ds.id,
+      title: ds.title,
+      description: ds.description,
+      organization: ds.organization,
+      tags: (ds.tags || []).join(' '),
+    });
+  });
+});
+const lunrIndexPath = path.join(__dirname, '../public/data/lunr-index.json');
+fs.writeFileSync(lunrIndexPath, JSON.stringify(lunrIndex));
+console.log('lunr-index.json generated:', lunrIndexPath);

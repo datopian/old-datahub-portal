@@ -58,55 +58,25 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   const [showAllFormats, setShowAllFormats] = useState(false);
   const [showAllLicenses, setShowAllLicenses] = useState(false);
 
-  // --- CHUNKED LUNR INDEX ---
-  const chunkSize = 1000;
-  const chunks = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < safeDatasets.length; i += chunkSize) {
-      arr.push(safeDatasets.slice(i, i + chunkSize));
-    }
-    return arr;
-  }, [safeDatasets]);
-
   const [idx, setIdx] = useState<lunr.Index | null>(null);
-  const [indexedChunks, setIndexedChunks] = useState(0);
+  const [loadingIdx, setLoadingIdx] = useState(true);
   const idMapRef = useRef<Record<string, DatasetIndexEntry>>({});
 
   useEffect(() => {
-    let cancelled = false;
-    idMapRef.current = {};
-    setIdx(null);
-    setIndexedChunks(0);
-    function buildChunk(chunkIndex: number, prevIdx: lunr.Builder | null) {
-      if (cancelled) return;
-      const builder = prevIdx || new lunr.Builder();
-      builder.ref('id');
-      builder.field('title');
-      builder.field('description');
-      builder.field('organization');
-      builder.field('tags');
-      chunks[chunkIndex].forEach(ds => {
-        idMapRef.current[ds.id] = ds;
-        builder.add({
-          id: ds.id,
-          title: ds.title,
-          description: ds.description,
-          organization: ds.organization,
-          tags: ds.tags.join(' '),
-        });
-      });
-      setIndexedChunks(chunkIndex + 1);
-      if (chunkIndex < chunks.length - 1) {
-        setTimeout(() => buildChunk(chunkIndex + 1, builder), 0);
-      } else {
-        setIdx(builder.build());
-      }
-    }
-    if (chunks.length > 0) {
-      buildChunk(0, null);
-    }
-    return () => { cancelled = true; };
-  }, [chunks]);
+    const idMap: Record<string, DatasetIndexEntry> = {};
+    safeDatasets.forEach(ds => {
+      idMap[ds.id] = ds;
+    });
+    idMapRef.current = idMap;
+    setLoadingIdx(true);
+    fetch('/data/lunr-index.json')
+      .then(res => res.json())
+      .then(idxJson => {
+        setIdx(lunr.Index.load(idxJson));
+        setLoadingIdx(false);
+      })
+      .catch(() => setLoadingIdx(false));
+  }, [safeDatasets]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -114,14 +84,15 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   };
 
   const searched = useMemo(() => {
-    if (!query || !idx) return safeDatasets.slice(0, indexedChunks * chunkSize);
+    if (loadingIdx) return [];
+    if (!query || !idx) return safeDatasets;
     try {
       const results = idx.search(`*${query}*`);
       return results.map((r: any) => idMapRef.current[r.ref]).filter(Boolean);
     } catch {
       return [];
     }
-  }, [query, idx, safeDatasets, indexedChunks]);
+  }, [query, idx, safeDatasets, loadingIdx]);
 
   const filtered = useMemo(() => {
     return searched.filter(ds => {
@@ -274,9 +245,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </form>
           </div>
           <div style={{ marginBottom: 20, color: '#888', fontSize: '1.05rem' }}>
-            {indexedChunks < chunks.length
-              ? 'Loading datasets…'
-              : `${filtered.length} datasets found`}
+            {loadingIdx ? 'Loading datasets…' : `${filtered.length} datasets found`}
           </div>
           {activeFilters.length > 0 && (
             <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
