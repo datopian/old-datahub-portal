@@ -22,7 +22,7 @@
       "description": "This ontology describes a degree of higher education and the direction of bachelor's and master's degrees in the Russian Federation and their compliance with the various official lists. It is assumed that a given ontology can be used in various applications of the Semantic Web in Russian higher education.",
       "name": "Russian University Specialities",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/c8bb2280-5919-4fbb-85b1-52d03d403e21/resource/38b05231-715e-411e-9c04-4752d08dfa6d/download/specialitydatahub.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/38b05231-715e-411e-9c04-4752d08dfa6d/specialitydatahub.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c8bb2280-5919-4fbb-85b1-52d03d403e21",

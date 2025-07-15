@@ -66,7 +66,7 @@
       "description": "Metadata about the Geohive fulldump.nq",
       "name": "Geohive fulldump metadata",
       "format": "rdf/turtle",
-      "url": "https://old.datahub.io/dataset/d292899c-e0be-4a35-be3a-7f2948ce7941/resource/f75063f9-d907-4f4c-a7a3-789816fd1b47/download/fulldumpmetadata.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f75063f9-d907-4f4c-a7a3-789816fd1b47/fulldumpmetadata.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d292899c-e0be-4a35-be3a-7f2948ce7941",

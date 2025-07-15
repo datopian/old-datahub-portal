@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Portuguese RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/a61de4d7-5612-43dc-ab6c-663f52c7e4d3/resource/7232dc5a-7909-4a7d-b02c-471d1bc79347/download/udportuguese.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/7232dc5a-7909-4a7d-b02c-471d1bc79347/udportuguese.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a61de4d7-5612-43dc-ab6c-663f52c7e4d3",

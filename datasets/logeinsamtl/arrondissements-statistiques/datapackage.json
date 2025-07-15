@@ -22,7 +22,7 @@
       "description": "Regroupement de différentes statistiques par arrondissement.",
       "name": "Arrondissements - Statistiques",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/f7355a13-41f6-4344-9dff-71950788904e/resource/1cedfa29-327f-4e05-9abc-7925f0a91362/download/arrondissementstatistiques.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/1cedfa29-327f-4e05-9abc-7925f0a91362/arrondissementstatistiques.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "f7355a13-41f6-4344-9dff-71950788904e",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "quality of life 2",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/afc43730-69d8-49d4-b7a8-6ffd13cb9a94/resource/c66fb718-96fd-449d-81a3-58a1dfc8415a/download/qualityoflifereconstructed.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c66fb718-96fd-449d-81a3-58a1dfc8415a/qualityoflifereconstructed.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "afc43730-69d8-49d4-b7a8-6ffd13cb9a94",

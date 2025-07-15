@@ -22,7 +22,7 @@
       "description": "Déclarations des exterminations de punaises de lit par des gestionnaires de parasites (corrigé)",
       "name": "Déclarations des exterminations de punaises de lit par des gestionnaires de parasites (corrigé)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/4d281319-1f55-4df6-857d-c8b4c22c29f5/resource/590a6c14-27ec-462c-b410-e69dc2919f11/download/declarations.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/590a6c14-27ec-462c-b410-e69dc2919f11/declarations.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "4d281319-1f55-4df6-857d-c8b4c22c29f5",

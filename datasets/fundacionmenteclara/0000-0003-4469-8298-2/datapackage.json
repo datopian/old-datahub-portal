@@ -22,7 +22,7 @@
       "description": "Firma escaneada de uno de sus libros",
       "name": "Firma escaneada de uno de sus libros",
       "format": "JPEG",
-      "url": "https://old.datahub.io/dataset/f68d84fc-c950-46e5-9f9e-700c912f5bb1/resource/6ebfa1e8-b978-433e-995c-dcb29fccc661/download/firmalibroosy.jpg",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6ebfa1e8-b978-433e-995c-dcb29fccc661/firmalibroosy.jpg",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f68d84fc-c950-46e5-9f9e-700c912f5bb1",

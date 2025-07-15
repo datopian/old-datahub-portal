@@ -22,7 +22,7 @@
       "description": "Valuation in $bn\r\nRank - these should probably be disregarded\r\nDescription - written by myself\r\nName of Business\r\nLegal Name of Business\r\nFounded - year\r\nFounders\r\nRounds - funding presented by year and amount raised in whatever currency represented the bulk of that year's fundraising\r\nCategories - labels for the business such as \"E-Commerce\"\r\nEmployees - estimate of number of employees in a series of ranges\r\nInvestors - cumulative across all rounds\r\nLocation of company HQ",
       "name": "January 2016 Unicorn Startups",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/9bde14f0-d58c-49b8-b758-dae9edb29dfa/resource/5f6713df-8dad-4202-85ae-8a42eb93c6c6/download/masterdict.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5f6713df-8dad-4202-85ae-8a42eb93c6c6/masterdict.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "9bde14f0-d58c-49b8-b758-dae9edb29dfa",

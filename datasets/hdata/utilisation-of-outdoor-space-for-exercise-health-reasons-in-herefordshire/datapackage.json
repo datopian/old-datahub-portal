@@ -46,7 +46,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "Percentage of Herefordshire residents taking a visit to the natural environment for health or exercise purposes.",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/572e2211-0cbe-49b3-b5b2-247b2b381099/resource/b102f466-593f-4b80-ac1e-a88a0e003ab5/download/utilisation-of-outdoor-space.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b102f466-593f-4b80-ac1e-a88a0e003ab5/utilisation-of-outdoor-space.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "572e2211-0cbe-49b3-b5b2-247b2b381099",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "soil_types_recognition_datasets",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/ada1aa56-8154-41af-9d06-3f211d554670/resource/1dfc5502-ef80-44ad-8804-531e8d1afc9e/download/soiltypesrecognitiondatasets.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/1dfc5502-ef80-44ad-8804-531e8d1afc9e/soiltypesrecognitiondatasets.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "ada1aa56-8154-41af-9d06-3f211d554670",

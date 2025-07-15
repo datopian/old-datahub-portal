@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Ancient_Greek_PROIEL RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/e4de1d13-faec-45f3-afbf-9d80abc5a732/resource/c53c368e-41f1-46a3-95b5-7034bd2dc407/download/udancientgreek-proiel.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c53c368e-41f1-46a3-95b5-7034bd2dc407/udancientgreek-proiel.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e4de1d13-faec-45f3-afbf-9d80abc5a732",

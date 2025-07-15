@@ -22,7 +22,7 @@
       "description": "Philosophy of mind ontology in OWL 2 format.",
       "name": "OWL Ontology",
       "format": "OWL",
-      "url": "https://old.datahub.io/dataset/ae8af9a1-0156-4429-b858-1b4d3b1d553f/resource/2e2fb885-73ac-4086-8738-62fecaba2e84/download/philmind.owl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/2e2fb885-73ac-4086-8738-62fecaba2e84/philmind.owl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "ae8af9a1-0156-4429-b858-1b4d3b1d553f",

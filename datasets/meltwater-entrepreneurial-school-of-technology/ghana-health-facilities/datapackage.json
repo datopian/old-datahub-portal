@@ -22,7 +22,7 @@
       "description": "This dataset will provide you with the information on the total no. of health facilities in Ghana by regions and districts. It also provides information about the type of facility",
       "name": "Health Facilities in Ghana",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/a85254dc-ee7e-4ff3-b7ea-75470d9eeead/resource/b4abaccf-958e-48a8-afca-497dc7f41998/download/health-facilities-in-ghana.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b4abaccf-958e-48a8-afca-497dc7f41998/health-facilities-in-ghana.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a85254dc-ee7e-4ff3-b7ea-75470d9eeead",

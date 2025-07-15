@@ -22,7 +22,7 @@
       "description": "",
       "name": "Survey results",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/a26eb42d-c258-49e7-81bc-c389da360e90/resource/5d3b5d38-b0de-44f6-9ab4-c17ec1741614/download/annex-d-survey-results.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5d3b5d38-b0de-44f6-9ab4-c17ec1741614/annex-d-survey-results.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "a26eb42d-c258-49e7-81bc-c389da360e90",

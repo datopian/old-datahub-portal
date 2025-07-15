@@ -22,7 +22,7 @@
       "description": "S&P 500 Daily Historical 01-02-1986 to 08-31-2017",
       "name": "S&P 500 Daily Historical 01-02-1986 to 08-31-2017",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/22677756-db12-42ce-aef3-089d96098e0b/resource/1f8ddc71-034f-447e-a1ab-91cd91744525/download/dailypricehistory.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/1f8ddc71-034f-447e-a1ab-91cd91744525/dailypricehistory.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "22677756-db12-42ce-aef3-089d96098e0b",

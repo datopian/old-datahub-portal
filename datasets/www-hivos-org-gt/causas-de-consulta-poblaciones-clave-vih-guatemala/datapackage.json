@@ -22,7 +22,7 @@
       "description": "Las causas de consulta médica más frecuentes en las poblaciones clave de la respuesta a la epidemia de VIH en Guatemala, registrados por los servicios de salud y recopliados por la iniciativa de Monitoreo Ciudadano.",
       "name": "Causas de consulta medica poblaciones clave VIH Guatemala",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/a6644727-9c11-46aa-b0e2-44b546a6198e/resource/cbb0633e-71bf-4c3b-a3a3-ea3ade4af45e/download/mccausasdeconsulta.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/cbb0633e-71bf-4c3b-a3a3-ea3ade4af45e/mccausasdeconsulta.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a6644727-9c11-46aa-b0e2-44b546a6198e",

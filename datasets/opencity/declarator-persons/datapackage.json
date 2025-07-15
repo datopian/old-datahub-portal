@@ -22,7 +22,7 @@
       "description": "",
       "name": "Officials June 2016",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/bc88e490-096e-4520-91a5-e5da71c691f8/resource/a53da220-84a7-4faf-92f3-5a22422574b1/download/person.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a53da220-84a7-4faf-92f3-5a22422574b1/person.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "bc88e490-096e-4520-91a5-e5da71c691f8",

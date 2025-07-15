@@ -22,7 +22,7 @@
       "description": "",
       "name": "Ozone Forecast",
       "format": "n-triples",
-      "url": "https://old.datahub.io/dataset/213421be-e98e-443b-a346-ef6dc752b7d4/resource/a80a3b2f-6325-44d6-b5f2-821d442e94ce/download/atmospheretime.nt",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a80a3b2f-6325-44d6-b5f2-821d442e94ce/atmospheretime.nt",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "213421be-e98e-443b-a346-ef6dc752b7d4",

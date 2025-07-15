@@ -22,7 +22,7 @@
       "description": "",
       "name": "bysykkel-stations-oslo",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/96079db6-ddf1-4335-8443-9947253c3047/resource/8f337519-c15a-4217-8848-edbab10d18dd/download/bysykkel.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/8f337519-c15a-4217-8848-edbab10d18dd/bysykkel.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "96079db6-ddf1-4335-8443-9947253c3047",

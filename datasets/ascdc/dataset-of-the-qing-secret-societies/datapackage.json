@@ -7,7 +7,7 @@
     }
   ],
   "version": "1.0",
-  "description": "The LOD dataset of ASCDC_Database of the Qing Secret Societies (Sect of the Shifokou Wangs' Clan) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the research project of the \u201cThe Secret Societies in Qing Dynasty\u201d (\u6e05\u4ee3\u6a94\u6848\u8207\u6578\u4f4d\u4eba\u6587\u7814\u7a76\u2500\u2500\u4ee5\u5b98\u65b9\u67e5\u8fa6\u6c11\u9593\u6559\u9580\u70ba\u6838\u5fc3). From 2022 to 2025, this project is funded by the National Science and Technology Council in Taiwan (NSTC 112-2423-H-001-002). The dataset is established and maintained by ASCDC at Academia Sinica in Taipei, Taiwan (ROC). The data includes the archives, persons, religious sects, sect events and place names related to the Chinese secret societies in the Jiaqing era (1796-1820), which can be served as authority files or controlled vocabularies for the study of the Chinese history. In particular, the data triples of the sect event of the Shifokou Wang\u2019s Clan (\u77f3\u4f5b\u53e3\u738b\u59d3\u6559\u6848) will be focused in this dataset. Containing 8,810 data triples, the textual content within the LOD dataset is licensed under the Creative Commons Attribution (CC BY).",
+  "description": "The LOD dataset of ASCDC_Database of the Qing Secret Societies (Sect of the Shifokou Wangs' Clan) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the research project of the “The Secret Societies in Qing Dynasty” (清代檔案與數位人文研究──以官方查辦民間教門為核心). From 2022 to 2025, this project is funded by the National Science and Technology Council in Taiwan (NSTC 112-2423-H-001-002). The dataset is established and maintained by ASCDC at Academia Sinica in Taipei, Taiwan (ROC). The data includes the archives, persons, religious sects, sect events and place names related to the Chinese secret societies in the Jiaqing era (1796-1820), which can be served as authority files or controlled vocabularies for the study of the Chinese history. In particular, the data triples of the sect event of the Shifokou Wang’s Clan (石佛口王姓教案) will be focused in this dataset. Containing 8,810 data triples, the textual content within the LOD dataset is licensed under the Creative Commons Attribution (CC BY).",
   "license": {
     "url": "http://www.opendefinition.org/licenses/cc-zero",
     "type": "cc-zero",
@@ -37,7 +37,7 @@
   },
   "resources": [
     {
-      "path": "https://old.datahub.io/dataset/5fb04b8a-da09-4e07-ae10-923b19d66990/resource/595b5509-20ce-4d9a-a9ce-877c19ca0f59/download/ascdc-css-1.ttl",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/595b5509-20ce-4d9a-a9ce-877c19ca0f59/ascdc-css-1.ttl",
       "title": "Dataset of the Qing Secret Societies_Sect of the Shifokou Wangs' Clan",
       "description": "Provision of LOD-based dataset of the Qing Secret Societies from the histotical archives of the Institute of History and Philology, Academia Sinica and National Palace Museum in Taipei and the First Historical Archives of China in Beijing.",
       "name": "dataset-of-the-qing-secret-societies-sect-of-the-shifokou-wangs-clan",

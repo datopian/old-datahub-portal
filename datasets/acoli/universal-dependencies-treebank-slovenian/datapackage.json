@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Slovenian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/2e3023d2-2321-4520-a763-06951dd7cf05/resource/5d96ef33-fbf8-4f7a-baa4-1411d844afb2/download/udslovenian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5d96ef33-fbf8-4f7a-baa4-1411d844afb2/udslovenian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "2e3023d2-2321-4520-a763-06951dd7cf05",

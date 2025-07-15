@@ -22,7 +22,7 @@
       "description": "",
       "name": "ruter-routes",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/30781008-7487-4451-b85f-e0093e1b89df/resource/ee7c83b3-9feb-45e1-aa7c-7a16656bde2f/download/routes.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ee7c83b3-9feb-45e1-aa7c-7a16656bde2f/routes.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "30781008-7487-4451-b85f-e0093e1b89df",

@@ -22,7 +22,7 @@
       "description": "This dataset consists of the members organisations of NGO Federation of Nepal from Far-Western Development Region of Nepal. This data is obtained from http://www.ngofederation.org/index.php membership profiles.",
       "name": "NGO Federation of Nepal member organisations from Far-Western Region",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/ef4c287b-dde9-4e26-b44c-4ae80cee38b9/resource/7e8238c0-8aa7-46dd-93b7-eb0115634385/download/ngo-federation-of-nepal-member-organisations-from-far-western-region.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/7e8238c0-8aa7-46dd-93b7-eb0115634385/ngo-federation-of-nepal-member-organisations-from-far-western-region.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "ef4c287b-dde9-4e26-b44c-4ae80cee38b9",

@@ -22,7 +22,7 @@
       "description": "File expected to change in October 2016",
       "name": "Taxonomy of Herefordshire Indicators",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/f63b6782-c5e2-44ea-8791-9a8e6ca027ca/resource/a8466282-461c-486c-894a-b8b71ff0ae1a/download/taxonomy.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a8466282-461c-486c-894a-b8b71ff0ae1a/taxonomy.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f63b6782-c5e2-44ea-8791-9a8e6ca027ca",

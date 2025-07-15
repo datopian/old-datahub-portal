@@ -22,7 +22,7 @@
       "description": "The LOD dataset of ASCDC_Database of Chinese Rare Books (CRB) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the metadata from the online database of “a Digital Library of Chinese Rare Books” (古漢籍善本數位化資料庫, http://rarebookdl.ihp.sinica.edu.tw/rarebook/Search/index.jsp). This digital library is established and maintained by the Fu Ssu-nien Library at the Institute of History and Philology, Academia Sinica, Taipei, Taiwan (ROC). The data includes titles and information on more than 900 Chinese rare books and manuscripts collected by the Library of Congress, Princeton University Library, Harvard–Yenching Library and Fu Ssu-nien Library. Containing 39,911 data records and over 140,638 triples, the dataset is downloadable in ttl file format. The textual content of the LOD dataset is licensed with the Creative Common Attribution (CC0).",
       "name": "LOD dataset of CRB",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/c84e589e-c6b7-4fe2-a81f-64662134f045/resource/88566eb9-78d4-4c2c-b993-03993caceb52/download/dump_crb_20181206_000001.ttl.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/88566eb9-78d4-4c2c-b993-03993caceb52/dump_crb_20181206_000001.ttl.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c84e589e-c6b7-4fe2-a81f-64662134f045",

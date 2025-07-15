@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Portuguese-Bosque RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/86f72658-3781-482e-a8c5-274ad1f0aede/resource/92feb211-a382-4ee3-b629-ab1949c5f9ca/download/udportuguese-bosque.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/92feb211-a382-4ee3-b629-ab1949c5f9ca/udportuguese-bosque.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "86f72658-3781-482e-a8c5-274ad1f0aede",

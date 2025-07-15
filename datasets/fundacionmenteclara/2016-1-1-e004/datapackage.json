@@ -22,7 +22,7 @@
       "description": "Realizo una lectura no lineal del Kularnava Tantra para lo cual he transformado el texto previamente en grafo textual usando R, y luego lo he visualizado y analizado con Gephi, tomando como referencia indicadores provenientes de la teoría de grafos, tal como se emplea en el análisis empírico de redes sociales. Este procedimiento me  ha permitido recuperar el patrón argumentativo central del Kularnava, su agenda central, que vertebra las diferentes comunidades temáticas del grafo, creando el camino por el cual circula el significado del texto. Esta agenda principal, señala que  el gurú es la llave para, a través del conocimiento y del deseo de Shakti, facilitar al hombre el descubrimiento de su deidad interior.",
       "name": "KULARNAVA TANTRA. CAMINO DE CIRCULACIÓN DEL SIGNIFICADO",
       "format": "PDF",
-      "url": "https://old.datahub.io/dataset/f5d20300-969f-4ce2-96ee-35ea9f2ff971/resource/25082b60-1e28-42bb-8644-cf0f46adfd6c/download/vol.1.1.e04.2016-issn2469-0783.pdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/25082b60-1e28-42bb-8644-cf0f46adfd6c/vol.1.1.e04.2016-issn2469-0783.pdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f5d20300-969f-4ce2-96ee-35ea9f2ff971",

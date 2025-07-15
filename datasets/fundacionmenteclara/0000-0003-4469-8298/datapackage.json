@@ -22,7 +22,7 @@
       "description": "Oscar R. Gómez' Biography",
       "name": "Oscar R. Gómez' Biography",
       "format": "HTML",
-      "url": "https://old.datahub.io/dataset/74ec4b51-f745-4282-bb26-3c3746bf0f4e/resource/90232f11-5ac6-4dbf-b784-084bd51b3fd5/download/osybiography.htm",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/90232f11-5ac6-4dbf-b784-084bd51b3fd5/osybiography.htm",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "74ec4b51-f745-4282-bb26-3c3746bf0f4e",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "data file in excel",
-      "url": "https://old.datahub.io/dataset/d08180e8-7798-4a9f-b98a-00dfd1a042cf/resource/0310f13c-d1ba-4a79-af58-db8254a0d6a5/download/fakeyword.data",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0310f13c-d1ba-4a79-af58-db8254a0d6a5/fakeyword.data",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d08180e8-7798-4a9f-b98a-00dfd1a042cf",

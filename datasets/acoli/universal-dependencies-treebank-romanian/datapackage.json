@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Romanian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/45bbfb77-9de4-42a8-8e71-05f08a5d3b76/resource/75f51566-8cc4-45fe-94a0-fd012e10c757/download/udromanian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/75f51566-8cc4-45fe-94a0-fd012e10c757/udromanian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "45bbfb77-9de4-42a8-8e71-05f08a5d3b76",

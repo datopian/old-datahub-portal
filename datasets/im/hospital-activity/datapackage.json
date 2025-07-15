@@ -22,7 +22,7 @@
       "description": "Nobles and Ramsey Cottage Hospital activity (2009-2014): A&E attendances, hospital admissions, consultant led outpatient attendances",
       "name": "Hospital Activity (2009-2014)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/9a1f5d6c-5447-4e48-a41c-8be03457410c/resource/0b945d6b-5cd4-47d2-a35e-de56b3449770/download/hospital.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0b945d6b-5cd4-47d2-a35e-de56b3449770/hospital.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "9a1f5d6c-5447-4e48-a41c-8be03457410c",

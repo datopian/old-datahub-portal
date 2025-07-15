@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Irish RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/e92a687f-fd4e-4d4d-85d6-544621586f75/resource/2f124d90-e144-479b-99df-30ae7bffc45e/download/udirish.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/2f124d90-e144-479b-99df-30ae7bffc45e/udirish.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e92a687f-fd4e-4d4d-85d6-544621586f75",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "Mid-2015 Population Density for Lower Layer Super Output Areas in Herefordshire",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/80534caf-5de3-4649-afea-623b3ca712c7/resource/39f624af-01b4-424a-a485-dd26ffb2f3a6/download/mid-2015-lsoa-populations-and-density-for-herefordshire.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/39f624af-01b4-424a-a485-dd26ffb2f3a6/mid-2015-lsoa-populations-and-density-for-herefordshire.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "80534caf-5de3-4649-afea-623b3ca712c7",

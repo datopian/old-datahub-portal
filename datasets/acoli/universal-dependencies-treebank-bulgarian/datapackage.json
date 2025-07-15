@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Bulgarian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/cb7d1e3f-bc09-4785-bcf6-25f745a8e90d/resource/09000b85-b50a-4c55-b331-2fd673f260c1/download/udbulgarian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/09000b85-b50a-4c55-b331-2fd673f260c1/udbulgarian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "cb7d1e3f-bc09-4785-bcf6-25f745a8e90d",

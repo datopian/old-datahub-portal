@@ -22,7 +22,7 @@
       "description": "",
       "name": "harmonogram",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/aa64475a-2281-4cbb-aac8-bd55f09a8e88/resource/ac304f85-3363-494a-9723-3e856fa409cd/download/harmonogram-svozu-sko.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ac304f85-3363-494a-9723-3e856fa409cd/harmonogram-svozu-sko.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "aa64475a-2281-4cbb-aac8-bd55f09a8e88",

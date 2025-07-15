@@ -44,7 +44,7 @@
       "description": "Data in JSON fomat (useful for developers)",
       "name": "Fuel poverty 2010-2015",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/6c207ba8-1893-4ddc-a397-7c93376b16b7/resource/fe17d98e-ce83-46b8-88da-99e8d53ea807/download/fuel-poverty.json.txt",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/fe17d98e-ce83-46b8-88da-99e8d53ea807/fuel-poverty.json.txt",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "6c207ba8-1893-4ddc-a397-7c93376b16b7",

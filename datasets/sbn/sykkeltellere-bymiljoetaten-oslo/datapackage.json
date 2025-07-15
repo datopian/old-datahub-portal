@@ -22,7 +22,7 @@
       "description": "",
       "name": "sykkeltellere-bymiljoetaten-oslo",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/2e1beab7-1e71-4b5b-8703-bec218ee1c4c/resource/5894642f-a943-4cb7-b8d0-5dd85f40aa19/download/sykkeltellere.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5894642f-a943-4cb7-b8d0-5dd85f40aa19/sykkeltellere.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "2e1beab7-1e71-4b5b-8703-bec218ee1c4c",

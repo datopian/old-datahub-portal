@@ -22,7 +22,7 @@
       "description": "Text Mining Data generated with UIMA ConceptMapper using MeSH, DrugBank, and AGROVOC on LIVIVO corpus with 55 Million citations.\r\n\r\nUsed in demo prototype on http://labs.livivo.com",
       "name": "LIVIVO Text Mining Data",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/513cf3ff-59dd-4e59-b36f-6f310a356524/resource/4dfef67a-735a-4c0c-8790-e1d2a987bcad/download/tdmtotalcounts.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/4dfef67a-735a-4c0c-8790-e1d2a987bcad/tdmtotalcounts.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "513cf3ff-59dd-4e59-b36f-6f310a356524",

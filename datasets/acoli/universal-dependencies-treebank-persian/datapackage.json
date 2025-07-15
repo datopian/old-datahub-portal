@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Persian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/d785e076-8d76-440a-9745-87193dd084f2/resource/f9ae7160-2b97-455b-a7a3-129f0a7227c8/download/udpersian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f9ae7160-2b97-455b-a7a3-129f0a7227c8/udpersian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d785e076-8d76-440a-9745-87193dd084f2",

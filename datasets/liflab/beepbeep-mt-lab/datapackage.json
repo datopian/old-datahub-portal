@@ -22,7 +22,7 @@
       "description": "See the readme inside the archive for instructions on how to use this lab.",
       "name": "LabPal Laboratory",
       "format": "LabPal",
-      "url": "https://old.datahub.io/dataset/8f079f97-e1dd-417f-830f-3afcfd52250c/resource/b270bc55-75c9-4866-b960-c719f7c528dd/download/beepbeep-mt-lab.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b270bc55-75c9-4866-b960-c719f7c528dd/beepbeep-mt-lab.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "8f079f97-e1dd-417f-830f-3afcfd52250c",

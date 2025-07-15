@@ -46,7 +46,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "Household Waste (tonnes) 2006 - 16",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/3f7698e8-d840-4644-804b-362bc449d7b5/resource/b6d7deb3-27da-45d1-8c47-a3e44d7372f1/download/waste-collected.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b6d7deb3-27da-45d1-8c47-a3e44d7372f1/waste-collected.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "3f7698e8-d840-4644-804b-362bc449d7b5",

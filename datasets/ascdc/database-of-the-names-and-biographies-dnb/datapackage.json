@@ -22,7 +22,7 @@
       "description": "The LOD dataset of ASCDC_Database of Names and Biographies (DNB) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the metadata from the online “Database of Names and Biographies” (人名權威人物傳記資料庫, http://archive.ihp.sinica.edu.tw/ttsweb/html_name/), which is established and maintained by the Institute of History and Philology, Academia Sinica, Taipei, Taiwan (ROC). The data includes the names of Chinese historical persons, mostly from the Ming to Qing dynasty, and their biographical information, which can serve as authority files or controlled vocabularies for names in the study of Chinese history. Containing 35,251 data records and 2,142,642, triples, the dataset is downloadable in ttl file format. The textual content of the LOD dataset is licensed with the Creative Common Attribution (CC BY).",
       "name": "LOD dataset of DNB",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/f2d96429-4157-4445-b396-b9e7dedd43c8/resource/e9125037-1f7f-4257-8b55-1d6048476fb7/download/dump_dnb_20181212_000001.ttl.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/e9125037-1f7f-4257-8b55-1d6048476fb7/dump_dnb_20181212_000001.ttl.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f2d96429-4157-4445-b396-b9e7dedd43c8",

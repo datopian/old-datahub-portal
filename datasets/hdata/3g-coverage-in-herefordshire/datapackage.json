@@ -22,7 +22,7 @@
       "description": "Data sourced from OfCom Infrastructure Reports showing % geography without a reliable 3G signal",
       "name": "3G coverage in Herefordshire",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/56ab3361-7f4e-4ec3-86c0-fce776d57885/resource/36d4e30b-5543-472f-aa52-63cc5afa31c6/download/csvjson.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/36d4e30b-5543-472f-aa52-63cc5afa31c6/csvjson.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "56ab3361-7f4e-4ec3-86c0-fce776d57885",

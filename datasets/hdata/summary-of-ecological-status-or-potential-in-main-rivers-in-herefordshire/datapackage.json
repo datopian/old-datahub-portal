@@ -44,7 +44,7 @@
       "description": "In JSON format",
       "name": "Ecological status of rivers ",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/ebb12ca7-9c76-4f86-a6ab-562c2a3b7ce7/resource/3afd6ccd-a594-4e1c-8b7d-a1aa121abf67/download/river-quality.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3afd6ccd-a594-4e1c-8b7d-a1aa121abf67/river-quality.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "ebb12ca7-9c76-4f86-a6ab-562c2a3b7ce7",

@@ -88,7 +88,7 @@
       "description": "",
       "name": "VOID description",
       "format": "rdf/turtle",
-      "url": "https://old.datahub.io/dataset/6c9ea600-1c75-4f81-b245-45563c5190e8/resource/9d3820b2-f6ae-445d-a546-81dd54b90986/download/void.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/9d3820b2-f6ae-445d-a546-81dd54b90986/void.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "6c9ea600-1c75-4f81-b245-45563c5190e8",

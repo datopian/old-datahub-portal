@@ -22,7 +22,7 @@
       "description": "",
       "name": "Leaf Area Index for Paris",
       "format": "n-triples",
-      "url": "https://old.datahub.io/dataset/cb753cd7-dd5a-4b98-bcc5-f02a93d974ef/resource/3ecaa759-7905-423a-9807-5fba9f601c2a/download/lai.nt",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3ecaa759-7905-423a-9807-5fba9f601c2a/lai.nt",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "cb753cd7-dd5a-4b98-bcc5-f02a93d974ef",

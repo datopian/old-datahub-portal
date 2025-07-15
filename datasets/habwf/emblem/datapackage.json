@@ -22,7 +22,7 @@
       "description": "1118121 Triples / 12329 Entities",
       "name": "Emblems as of 11/2017",
       "format": "text/ntriples",
-      "url": "https://old.datahub.io/dataset/5e1c4067-fe98-420b-9b48-163dd3b09816/resource/2258d89c-dbac-4621-aacd-75bcf3adc380/download/emblems.nt.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/2258d89c-dbac-4621-aacd-75bcf3adc380/emblems.nt.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "5e1c4067-fe98-420b-9b48-163dd3b09816",

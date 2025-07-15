@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Dutch RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/781f6ad5-3fa5-4063-a4f6-1c8e5dd9fa5e/resource/35c5d6cb-44c5-49a6-bdca-1c687d1891b1/download/uddutch.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/35c5d6cb-44c5-49a6-bdca-1c687d1891b1/uddutch.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "781f6ad5-3fa5-4063-a4f6-1c8e5dd9fa5e",

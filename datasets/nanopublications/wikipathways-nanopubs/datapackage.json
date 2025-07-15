@@ -22,7 +22,7 @@
       "description": "",
       "name": "Nanopublications",
       "format": "Gzipped TriG file",
-      "url": "https://old.datahub.io/dataset/c830df94-bd9a-4920-b6c5-b3c2e9bfeb02/resource/0aed1da3-d386-425c-8e8d-fea39756fdfa/download/wp-monthy_all.trig.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0aed1da3-d386-425c-8e8d-fea39756fdfa/wp-monthy_all.trig.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c830df94-bd9a-4920-b6c5-b3c2e9bfeb02",

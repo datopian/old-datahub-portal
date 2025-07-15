@@ -22,7 +22,7 @@
       "description": "",
       "name": "Rozpoctova Data - Brno",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/24436324-51e8-4cf4-afd6-d4afb2bbbfa3/resource/5cf2fc51-a80d-4a53-a0ef-c2929cfff478/download/rozpoctovadata.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5cf2fc51-a80d-4a53-a0ef-c2929cfff478/rozpoctovadata.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "24436324-51e8-4cf4-afd6-d4afb2bbbfa3",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "GAS Protein Cluster Alignments",
       "format": "fasta",
-      "url": "https://old.datahub.io/dataset/dd31b14d-1d5b-4266-a373-8d8a72ff5967/resource/0efe4aaa-68e4-41cc-b2a6-76b9132f66ce/download/clusters.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0efe4aaa-68e4-41cc-b2a6-76b9132f66ce/clusters.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "dd31b14d-1d5b-4266-a373-8d8a72ff5967",

@@ -22,7 +22,7 @@
       "description": "births and deaths",
       "name": "Births and Deaths (2005-2015)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/1a2cf703-d086-4cac-a4fe-94239995394e/resource/a67077de-235e-46c2-9438-e4ccf5b4e4db/download/births-deaths.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a67077de-235e-46c2-9438-e4ccf5b4e4db/births-deaths.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1a2cf703-d086-4cac-a4fe-94239995394e",

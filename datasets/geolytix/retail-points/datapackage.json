@@ -22,7 +22,7 @@
       "description": "Latest release of GEOLYTIX open Retail Points comprising locations and attributes for the major supermarkets in the UK",
       "name": "Retail Points",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/78b9622b-fddb-46fa-a462-7aae210236cd/resource/f4a903d4-8e38-4a0f-882c-d804d8bb0e55/download/retailpointsversion10june17.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f4a903d4-8e38-4a0f-882c-d804d8bb0e55/retailpointsversion10june17.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "78b9622b-fddb-46fa-a462-7aae210236cd",

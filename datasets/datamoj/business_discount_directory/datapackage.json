@@ -22,7 +22,7 @@
       "description": "Business Discount Directory for Seniors Business Discount Card and Carer Business Discount Card schemes, as at June 2016.\n\nBusinesses registered in the Carer Business Discount Card scheme and/or the Seniors Business Discount Card scheme which provide discounts or offers to holders of a Seniors Card, a Seniors Card +go, a Seniors Business Discount Card and/or a Carer Business.\n\nNote. not all businesses provide discounts to all card holder types.\n\nDiscounts listed are in general valid until June 2016 unless stated otherwise. Listed discounts are offered by participating businesses at the election of the business, and as such the State of Queensland and the Department do not guarantee listed offers will remain unchanged. For up to date business details check online at http://www.qld.gov.au/seniors/legal-finance-concessions/seniors-card/ or http://www.qld.gov.au/community/support-for-carers/carer-card/.",
       "name": "Business Discount Directory for Senior and Carer Cardholders",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/c376d42e-05cc-471b-a906-b5d01882cdec/resource/418dbc34-5083-458b-872e-2d7d97f6bba9/download/business-discount-directory.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/418dbc34-5083-458b-872e-2d7d97f6bba9/business-discount-directory.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c376d42e-05cc-471b-a906-b5d01882cdec",

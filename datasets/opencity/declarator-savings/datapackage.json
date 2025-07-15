@@ -22,7 +22,7 @@
       "description": "",
       "name": "Сбережения (счета) June 2016",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/1face64b-c72a-4fc9-a347-8f89fcee3294/resource/5064e780-cfcc-4155-b513-8d8e9442718c/download/savings.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5064e780-cfcc-4155-b513-8d8e9442718c/savings.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1face64b-c72a-4fc9-a347-8f89fcee3294",

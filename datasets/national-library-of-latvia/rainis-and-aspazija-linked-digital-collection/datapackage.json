@@ -176,7 +176,7 @@
       "description": "This file lists URIs of all resources from the \"Rainis and Aspazija\" (RunA) Linked Digital Collection.\r\n\r\nNote: the URIs listed are without the trailing slash. This is a temporary measure due to a bug (being fixed) that prevents content negotiation on RunA URIs with a trailing slash. When crawling the dataset please use URIs without the trailing slash.",
       "name": "List of URIs (for crawling)",
       "format": "TXT",
-      "url": "https://old.datahub.io/dataset/4329e622-a001-4922-b111-60b9046c4660/resource/85f69bce-c988-4100-aa2a-656038956347/download/runaalluris.txt",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/85f69bce-c988-4100-aa2a-656038956347/runaalluris.txt",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "4329e622-a001-4922-b111-60b9046c4660",

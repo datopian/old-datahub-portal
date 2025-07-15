@@ -22,7 +22,7 @@
       "description": "Infant Mortality, Causes Considered Preventable, Cardiovascular Disease (Age < 75 years), Cancer (Age < 75 years)\r\n",
       "name": "Mortality Rates (2014)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/5d418d55-df7a-4e45-b3a7-a5741624f232/resource/79350ce2-796f-4a9b-a9d1-48ea6a745e2d/download/mortality-rates.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/79350ce2-796f-4a9b-a9d1-48ea6a745e2d/mortality-rates.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "5d418d55-df7a-4e45-b3a7-a5741624f232",

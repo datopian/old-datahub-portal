@@ -22,7 +22,7 @@
       "description": "This RDF dump contains all the weather / climate datasets registered in the RING as of 10/06/2018.",
       "name": "RDF dump of registered weather / climate datasets",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/b9d33e69-c17f-4013-a3aa-0ad6155729dd/resource/bf17a318-8844-40b5-bce4-67a209e482da/download/ring-weather-datasets.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/bf17a318-8844-40b5-bce4-67a209e482da/ring-weather-datasets.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "b9d33e69-c17f-4013-a3aa-0ad6155729dd",

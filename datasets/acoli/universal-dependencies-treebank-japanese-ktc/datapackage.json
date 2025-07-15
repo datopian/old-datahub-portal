@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Japanese-KTC RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/f861988b-eac3-4949-95b8-27504d0365b0/resource/236a8317-989f-4ebc-a580-03432c3403ce/download/udjapanese-ktc.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/236a8317-989f-4ebc-a580-03432c3403ce/udjapanese-ktc.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f861988b-eac3-4949-95b8-27504d0365b0",

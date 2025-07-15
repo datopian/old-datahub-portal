@@ -22,7 +22,7 @@
       "description": "Adresy senzorů",
       "name": "Adresy senzorů",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/1a4e68e1-ac74-4b58-9011-8d7e0146d239/resource/cc320c39-5996-4253-b65c-5c659bff065f/download/adresace-zdroj-s-gps.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/cc320c39-5996-4253-b65c-5c659bff065f/adresace-zdroj-s-gps.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1a4e68e1-ac74-4b58-9011-8d7e0146d239",

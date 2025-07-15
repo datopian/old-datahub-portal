@@ -22,7 +22,7 @@
       "description": "",
       "name": "Life Expectancy at birth (2014)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e5962fd8-e5d4-4d07-9933-6ebd6ca0a7eb/resource/5b3735af-54d8-4e9c-889c-62982b2a6851/download/life-expectancy.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5b3735af-54d8-4e9c-889c-62982b2a6851/life-expectancy.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e5962fd8-e5d4-4d07-9933-6ebd6ca0a7eb",

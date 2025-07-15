@@ -22,7 +22,7 @@
       "description": "this is the first note",
       "name": "the first notes",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/f77d7f76-a454-4a81-8b6f-c7b70fac2b9f/resource/455bfa18-10de-429d-9fde-b8c6aaef530e/download/test.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/455bfa18-10de-429d-9fde-b8c6aaef530e/test.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f77d7f76-a454-4a81-8b6f-c7b70fac2b9f",

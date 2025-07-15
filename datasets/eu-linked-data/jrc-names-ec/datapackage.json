@@ -88,7 +88,7 @@
       "description": "This descripton extends the one provided by:\r\nhttps://datahub.io/dataset/jrc-names-ec.rdf",
       "name": "Dataset description in DCAT",
       "format": "turtle",
-      "url": "https://old.datahub.io/dataset/dffd3b0a-a85c-49e9-9f42-e5e7e0a0b19e/resource/b1c0f769-0d04-4c73-9a96-a7b4b4541617/download/jrc-names-ec-dcat.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b1c0f769-0d04-4c73-9a96-a7b4b4541617/jrc-names-ec-dcat.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "dffd3b0a-a85c-49e9-9f42-e5e7e0a0b19e",

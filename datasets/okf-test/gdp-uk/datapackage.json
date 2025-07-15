@@ -22,7 +22,7 @@
       "description": "",
       "name": "gdp-uk",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e4ba34eb-aabb-473f-92ab-24a8b9574db1/resource/6b1e9533-14fb-45a5-a62b-b47c4cf0814f/download/data.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6b1e9533-14fb-45a5-a62b-b47c4cf0814f/data.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "e4ba34eb-aabb-473f-92ab-24a8b9574db1",

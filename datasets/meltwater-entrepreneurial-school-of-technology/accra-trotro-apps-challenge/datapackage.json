@@ -22,7 +22,7 @@
       "description": "Data collected by Concordia University on public transport in Accra, Ghana. Used for the TroTro Apps Challenge.",
       "name": "TroTro Apps Challenge Data",
       "format": "ZIP",
-      "url": "https://old.datahub.io/dataset/91381c5a-0845-45e6-bbd4-8653fc088015/resource/0402dce7-54bf-492f-a689-6cb9325e9c50/download/trotro-apps-challenge-data.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0402dce7-54bf-492f-a689-6cb9325e9c50/trotro-apps-challenge-data.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "91381c5a-0845-45e6-bbd4-8653fc088015",

@@ -22,7 +22,7 @@
       "description": "Liste des organismes communautaires pour locataires.",
       "name": "Organismes communautaires",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/5006cd1e-14e1-4586-97f8-a42a9b85a363/resource/c52a4e6c-7259-4b39-865b-dadbf85f39cb/download/organismescommunautaires.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c52a4e6c-7259-4b39-865b-dadbf85f39cb/organismescommunautaires.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "5006cd1e-14e1-4586-97f8-a42a9b85a363",

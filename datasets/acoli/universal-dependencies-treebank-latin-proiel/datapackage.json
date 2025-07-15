@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Latin-PROIEL RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/53daee93-f868-401d-a83d-55ae58ae4c11/resource/0aae3178-5c2f-4391-b9db-791f3def7161/download/udlatin-proiel.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0aae3178-5c2f-4391-b9db-791f3def7161/udlatin-proiel.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "53daee93-f868-401d-a83d-55ae58ae4c11",

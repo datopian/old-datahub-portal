@@ -22,7 +22,7 @@
       "description": "",
       "name": "Olfaction and Presence Datahub 1.0",
       "format": "jmp",
-      "url": "https://old.datahub.io/dataset/05c71ea7-8d10-48cf-aec1-e582e0865cf6/resource/ece15aef-ddfd-4513-a0ad-7c0bf79a1fde/download/olfaction-presence-datahub-1.0.jmp",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ece15aef-ddfd-4513-a0ad-7c0bf79a1fde/olfaction-presence-datahub-1.0.jmp",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "05c71ea7-8d10-48cf-aec1-e582e0865cf6",

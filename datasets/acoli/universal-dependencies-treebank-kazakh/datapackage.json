@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Kazakh RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/a425a448-ac4c-48cd-94e9-aca8c5f1d0d9/resource/4c91a6a1-ed1f-4cc8-bf69-4c3c8b624121/download/udkazakh.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/4c91a6a1-ed1f-4cc8-bf69-4c3c8b624121/udkazakh.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a425a448-ac4c-48cd-94e9-aca8c5f1d0d9",

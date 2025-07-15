@@ -46,7 +46,7 @@
       "description": "In Json format",
       "name": "Herefordshire Recycling (tonnes) 2006- 2016",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/bd535a4e-1c1d-4f39-973a-edeaa0d9aae6/resource/60e99cea-8470-4ac0-b85f-e1a98a62a0ef/download/recycling.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/60e99cea-8470-4ac0-b85f-e1a98a62a0ef/recycling.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "bd535a4e-1c1d-4f39-973a-edeaa0d9aae6",

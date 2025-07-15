@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Old_Church_Slavonic RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/8e1b3a4f-9f5f-4f8c-8ad7-9599e0bc85c0/resource/08f808b5-e5da-444e-8702-ee2cac1bf059/download/udoldchurchslavonic.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/08f808b5-e5da-444e-8702-ee2cac1bf059/udoldchurchslavonic.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "8e1b3a4f-9f5f-4f8c-8ad7-9599e0bc85c0",

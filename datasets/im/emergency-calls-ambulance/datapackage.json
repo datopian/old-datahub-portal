@@ -22,7 +22,7 @@
       "description": "999 ambulance calls, GP calls, air ambulance transfers",
       "name": "Emergency Calls Ambulance (2005-2015)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e19757b5-096b-41bc-bf15-bad12867ef88/resource/d0430ea3-587a-45b3-a6c5-ebd708e254a0/download/emergency-calls-ambulance.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/d0430ea3-587a-45b3-a6c5-ebd708e254a0/emergency-calls-ambulance.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e19757b5-096b-41bc-bf15-bad12867ef88",

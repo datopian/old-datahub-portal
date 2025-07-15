@@ -22,7 +22,7 @@
       "description": "Shapefiles de las unidades administrativas de Puerto Rico.",
       "name": "Municipios de Puerto Rico",
       "format": "SHP",
-      "url": "https://old.datahub.io/dataset/44e8c696-7031-4dc9-91c5-2643ee47baa4/resource/15fc5673-c39f-4a18-9960-894116c0a67b/download/priadm.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/15fc5673-c39f-4a18-9960-894116c0a67b/priadm.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "44e8c696-7031-4dc9-91c5-2643ee47baa4",

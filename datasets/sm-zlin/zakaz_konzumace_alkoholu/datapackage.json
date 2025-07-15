@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "shp, geojson",
-      "url": "https://old.datahub.io/dataset/e5f399d7-b95b-4e2a-9ac6-e14829a5dcd0/resource/67adebc7-6bdc-4e3b-bb76-aca2d2ebad36/download/zakaz_konzumace_alkoholu.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/67adebc7-6bdc-4e3b-bb76-aca2d2ebad36/zakaz_konzumace_alkoholu.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e5f399d7-b95b-4e2a-9ac6-e14829a5dcd0",

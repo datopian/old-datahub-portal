@@ -22,7 +22,7 @@
       "description": "Provided to hackathon",
       "name": "Telenor Location data from Oslo",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/3eb150f2-1f20-4797-bcf4-4b4c2298a6bd/resource/e786d087-17f0-4637-bf76-98f65450e764/download/telenor-location-lon-lat.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/e786d087-17f0-4637-bf76-98f65450e764/telenor-location-lon-lat.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "3eb150f2-1f20-4797-bcf4-4b4c2298a6bd",

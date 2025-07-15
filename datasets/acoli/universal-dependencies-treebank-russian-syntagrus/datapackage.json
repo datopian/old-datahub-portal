@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Russian-SynTagRus RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/fc0ba360-fcb3-4957-a856-4126bbc16979/resource/5a64d47e-3d2c-4bf1-a7d3-714c2930ef10/download/udrussian-syntagrus.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5a64d47e-3d2c-4bf1-a7d3-714c2930ef10/udrussian-syntagrus.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "fc0ba360-fcb3-4957-a856-4126bbc16979",

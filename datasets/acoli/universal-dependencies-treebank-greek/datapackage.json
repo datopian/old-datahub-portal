@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Greek RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/eb7ad740-c521-4993-85c0-c980bfd9b00e/resource/d93a63d0-e39d-41dd-a698-bb1cf89432ea/download/udgreek.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/d93a63d0-e39d-41dd-a698-bb1cf89432ea/udgreek.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "eb7ad740-c521-4993-85c0-c980bfd9b00e",

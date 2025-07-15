@@ -22,7 +22,7 @@
       "description": "See the readme inside the archive for instructions on how to use this lab.",
       "name": "LabPal Laboratory",
       "format": "LabPal",
-      "url": "https://old.datahub.io/dataset/f863eb4e-05f1-4b13-9d38-7b900809b5cf/resource/4014c2dd-abb2-4acb-8861-44d4b6b70731/download/artichoke-x-lab.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/4014c2dd-abb2-4acb-8861-44d4b6b70731/artichoke-x-lab.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f863eb4e-05f1-4b13-9d38-7b900809b5cf",

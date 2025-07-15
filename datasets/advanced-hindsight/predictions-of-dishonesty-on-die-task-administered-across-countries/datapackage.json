@@ -22,7 +22,7 @@
       "description": "",
       "name": "Predictions of Dishonesty on Die Task Administered Across Countries",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e0b1b190-f919-411c-9119-58ab4871ee80/resource/240617e0-bb98-4752-bd27-4932655c0986/download/predictions-of-dishonesty-on-the-die-task-from-a-cross-cultural-online-sample.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/240617e0-bb98-4752-bd27-4932655c0986/predictions-of-dishonesty-on-the-die-task-from-a-cross-cultural-online-sample.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e0b1b190-f919-411c-9119-58ab4871ee80",

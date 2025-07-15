@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Swedish-LinES RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/d4103a8b-c7fb-469f-8c4e-44e045ced3c3/resource/bca3d029-2560-4ccd-9075-2bf46fcce399/download/udswedish-lines.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/bca3d029-2560-4ccd-9075-2bf46fcce399/udswedish-lines.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d4103a8b-c7fb-469f-8c4e-44e045ced3c3",

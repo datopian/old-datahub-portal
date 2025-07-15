@@ -22,7 +22,7 @@
       "description": "",
       "name": "UK Vehicle Authorisation",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/960ddfb5-6c27-438a-bdd9-af3c387319e5/resource/7e9b4111-7e00-42ac-bd3e-31a3b06951e4/download/motsitelist2015.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/7e9b4111-7e00-42ac-bd3e-31a3b06951e4/motsitelist2015.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "960ddfb5-6c27-438a-bdd9-af3c387319e5",

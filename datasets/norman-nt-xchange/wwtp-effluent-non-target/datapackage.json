@@ -22,7 +22,7 @@
       "description": "",
       "name": "UoA_LC-ESI-QTOF_Wastewater effluent_Athens_Greece_07.03.2015_TREMEPOL_12700_12564",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/31c652f6-5781-4751-aa7d-f7cd4e1aa468/resource/fc186eb5-f604-4a41-b26f-45737e1234fa/download/uoalc-esi-qtofwastewater-effluentathensgreece07.03.2015tremepol1270012564.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/fc186eb5-f604-4a41-b26f-45737e1234fa/uoalc-esi-qtofwastewater-effluentathensgreece07.03.2015tremepol1270012564.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "31c652f6-5781-4751-aa7d-f7cd4e1aa468",

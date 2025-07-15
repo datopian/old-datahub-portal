@@ -44,7 +44,7 @@
       "description": "Ukazka pohyb jednoho svozoveho vozu v roce 2017. Data slouzi pro modelaci. Pristup k datum v realnem case po dohode se spolecnosti SAKO.",
       "name": "Jeden vuz 2017",
       "format": "ZIP",
-      "url": "https://old.datahub.io/dataset/0604ae1c-401e-4f3c-9135-1ed5b948eae5/resource/5b7ef900-8a9b-4ff0-9400-380747caeb30/download/6b2-2480popis-trasyledendube2017.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5b7ef900-8a9b-4ff0-9400-380747caeb30/6b2-2480popis-trasyledendube2017.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "0604ae1c-401e-4f3c-9135-1ed5b948eae5",

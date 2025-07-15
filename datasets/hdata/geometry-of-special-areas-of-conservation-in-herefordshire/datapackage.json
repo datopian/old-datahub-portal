@@ -22,7 +22,7 @@
       "description": "Snapshot from the Council's Rest Service on 10 May 2016",
       "name": "Geometries of SACs in Herefordshire",
       "format": "GeoJSON",
-      "url": "https://old.datahub.io/dataset/4fbb4828-748e-407a-9cbf-86ad4fc622c4/resource/f192c45a-3968-4542-9369-2e189764be97/download/sac-herefordshire.js",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f192c45a-3968-4542-9369-2e189764be97/sac-herefordshire.js",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "4fbb4828-748e-407a-9cbf-86ad4fc622c4",

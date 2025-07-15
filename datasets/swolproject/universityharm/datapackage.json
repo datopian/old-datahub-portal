@@ -22,7 +22,7 @@
       "description": "whole linked data - harms",
       "name": "univharms",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/1c41c2ac-c847-4f02-bd1b-be19a27e3bfa/resource/c519a973-a651-47e0-b9aa-57791e03e3b3/download/sparql.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c519a973-a651-47e0-b9aa-57791e03e3b3/sparql.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1c41c2ac-c847-4f02-bd1b-be19a27e3bfa",

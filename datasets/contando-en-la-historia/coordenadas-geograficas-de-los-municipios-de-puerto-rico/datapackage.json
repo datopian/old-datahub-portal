@@ -22,7 +22,7 @@
       "description": "Base con la identificación de los centroides para los 78 municipios de Puerto Rico. Incluye la identificación de la longitud y latitud, y los códigos FIPS (Federal Information Processing Standard) para su armonización con las bases de datos sobre Puerto Rico, del U.S. Census Bureau.",
       "name": "Coordenadas geograficas de los municipios de Puerto Rico",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/3f586710-c46d-44a8-92e1-9197e9be8c7d/resource/81e6707d-1ce0-4522-8a5a-aac0211183cd/download/centroidesmunicipioslatlong.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/81e6707d-1ce0-4522-8a5a-aac0211183cd/centroidesmunicipioslatlong.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "3f586710-c46d-44a8-92e1-9197e9be8c7d",

@@ -22,7 +22,7 @@
       "description": "Test PDF",
       "name": "Archive Principles",
       "format": "PDF",
-      "url": "https://old.datahub.io/dataset/d68aa2e7-73d1-49f6-b1fe-55e9ca5d176d/resource/87de869a-f124-46a1-b74b-211e896cb085/download/archive-principles.pdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/87de869a-f124-46a1-b74b-211e896cb085/archive-principles.pdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d68aa2e7-73d1-49f6-b1fe-55e9ca5d176d",

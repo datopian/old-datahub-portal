@@ -22,7 +22,7 @@
       "description": "",
       "name": "ruter-calendar-dates",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/3dabe8bf-83c4-4e43-b625-e53d224e7cc2/resource/361118de-9a20-49aa-a9c4-98d7bc380172/download/calendardates.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/361118de-9a20-49aa-a9c4-98d7bc380172/calendardates.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "3dabe8bf-83c4-4e43-b625-e53d224e7cc2",

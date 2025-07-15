@@ -22,7 +22,7 @@
       "description": "",
       "name": "geolocations",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/7e72e7c9-369f-4e4b-9602-aca943a9b16d/resource/3967152e-c271-4b34-b0d1-fdcf38d56fec/download/geolocations.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3967152e-c271-4b34-b0d1-fdcf38d56fec/geolocations.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "7e72e7c9-369f-4e4b-9602-aca943a9b16d",

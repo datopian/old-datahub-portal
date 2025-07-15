@@ -88,7 +88,7 @@
       "description": "Link to an example data item within the dataset (RDF/XML). The actual URI is http://www.influencetracker.com/resource/User/barackobama, which redirects via 303 to application/rdf+xml.",
       "name": "Link to an example data item within the dataset (RDF/XML)",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/22501d75-4348-4e67-a1c2-7ecf58420ff7/resource/05eb2dfa-97e6-45ba-8aec-3b9ac3b8e826/download/barackobama.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/05eb2dfa-97e6-45ba-8aec-3b9ac3b8e826/barackobama.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "22501d75-4348-4e67-a1c2-7ecf58420ff7",

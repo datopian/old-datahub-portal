@@ -22,7 +22,7 @@
       "description": "",
       "name": "misq",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/937864cf-b965-4cfa-8723-26d7c0cefafc/resource/b3de87c9-85a3-4224-8e11-6e1a705f29e0/download/misq19772017march.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/b3de87c9-85a3-4224-8e11-6e1a705f29e0/misq19772017march.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "937864cf-b965-4cfa-8723-26d7c0cefafc",

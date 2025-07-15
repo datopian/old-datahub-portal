@@ -22,7 +22,7 @@
       "description": "",
       "name": "LVSPE sample Velica Morava non-target screening results",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/14553bbe-3469-417b-a7ef-1f3fb2ef22b8/resource/89d9fe58-02c3-474a-80c1-60b0c73c8afb/download/ufzlcesi-ltqorbitraplvspevelicamorava.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/89d9fe58-02c3-474a-80c1-60b0c73c8afb/ufzlcesi-ltqorbitraplvspevelicamorava.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "14553bbe-3469-417b-a7ef-1f3fb2ef22b8",

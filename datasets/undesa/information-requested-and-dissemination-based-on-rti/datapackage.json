@@ -22,7 +22,7 @@
       "description": "Namelist of RTI requestor on Sidharthanagar Municipality, Nepal",
       "name": "Information requested and dissemination based on RTI",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/1a938bd8-235b-4f23-8e82-e2ba302839ae/resource/9ace0101-49b5-47fe-97ab-2f5a365bea9d/download/0.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/9ace0101-49b5-47fe-97ab-2f5a365bea9d/0.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1a938bd8-235b-4f23-8e82-e2ba302839ae",

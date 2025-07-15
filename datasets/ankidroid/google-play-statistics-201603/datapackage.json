@@ -22,7 +22,7 @@
       "description": "",
       "name": "google-play-statistics-201603",
       "format": "ZIP",
-      "url": "https://old.datahub.io/dataset/4684e6f2-7bf3-44a0-a0bd-01365adf3cc8/resource/ac63d637-e509-4ed0-94ac-270401e8306a/download/installscom.ichi2.anki201603.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ac63d637-e509-4ed0-94ac-270401e8306a/installscom.ichi2.anki201603.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "4684e6f2-7bf3-44a0-a0bd-01365adf3cc8",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/dd7a09fa-b570-45e4-8d50-2daa78ce3dc9/resource/07523ebb-2a66-41df-b4ad-84857746ab7d/download/dpmbsample.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/07523ebb-2a66-41df-b4ad-84857746ab7d/dpmbsample.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "dd7a09fa-b570-45e4-8d50-2daa78ce3dc9",

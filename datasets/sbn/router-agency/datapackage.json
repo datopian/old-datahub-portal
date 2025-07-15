@@ -22,7 +22,7 @@
       "description": "",
       "name": "router-agency",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e0a964fe-b42c-4191-9e95-cb034fec899e/resource/64c89a65-c6e9-4d85-8999-223584f27f8a/download/agency.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/64c89a65-c6e9-4d85-8999-223584f27f8a/agency.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "e0a964fe-b42c-4191-9e95-cb034fec899e",

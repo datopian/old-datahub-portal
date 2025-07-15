@@ -22,7 +22,7 @@
       "description": "ruter stops file",
       "name": "ruter-stops",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/d32b4f36-03f3-4e6c-ba68-581ec057e0b3/resource/6a4bdd2c-6216-44a5-a0a3-2a2c6f5c34b0/download/stops.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6a4bdd2c-6216-44a5-a0a3-2a2c6f5c34b0/stops.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "d32b4f36-03f3-4e6c-ba68-581ec057e0b3",

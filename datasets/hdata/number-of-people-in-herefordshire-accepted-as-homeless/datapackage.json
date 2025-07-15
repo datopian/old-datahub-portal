@@ -46,7 +46,7 @@
       "description": "Data in JSON (useful for developers)",
       "name": "Number of people in Herefordshire accepted as homeless",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/22d268f8-fbf3-46c6-9deb-b02168280d74/resource/e9737de0-b41f-4f01-abb7-7607cfc4431a/download/number-of-homesless.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/e9737de0-b41f-4f01-abb7-7607cfc4431a/number-of-homesless.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "22d268f8-fbf3-46c6-9deb-b02168280d74",

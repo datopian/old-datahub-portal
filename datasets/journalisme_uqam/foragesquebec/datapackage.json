@@ -22,7 +22,7 @@
       "description": "Localisation et date du forage, état du puits, etc.\r\n---\r\nData includes GPS coord., date of drilling, well status, etc.",
       "name": "Oil and gas drillings in Quebec (1860-present)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/2d9372b7-8567-47a4-8a38-539380bb69be/resource/f386a8b8-d092-486e-8a5e-2df6861cab37/download/puits-2014.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f386a8b8-d092-486e-8a5e-2df6861cab37/puits-2014.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "2d9372b7-8567-47a4-8a38-539380bb69be",

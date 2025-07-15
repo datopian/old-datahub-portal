@@ -22,7 +22,7 @@
       "description": "The LOD dataset of Qing Official Titles (DQOT) is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the metadata from “The Database of Qing Official Titles” (清代職官資料庫, http://archive.ihp.sinica.edu.tw/officerc/officerkm2), which is established and maintained by the Institute of History and Philology, Academia Sinica, Taipei, Taiwan (ROC). The data includes the names, hierarchies, and other information of official titles in the Qing Dynasty. In addition, some of the triples in this dataset even linked to the LOD-dataset of Database Names and Bioographies (DNB). Containing 6,846 data records and 147,677 triples, the dataset is downloadable in N-triple format. The textual content of the dataset is licensed with the Creative Common Attribution (CC BY).",
       "name": "LOD Dataset of Qing Official Titles ",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/91ee04ed-6a94-4348-80c2-e40e12e12e1e/resource/5fd80e54-92eb-4eae-be24-2d6a0bb538eb/download/dump_dqot_20190919_000001.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5fd80e54-92eb-4eae-be24-2d6a0bb538eb/dump_dqot_20190919_000001.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "91ee04ed-6a94-4348-80c2-e40e12e12e1e",

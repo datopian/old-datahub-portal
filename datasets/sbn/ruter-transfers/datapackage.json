@@ -22,7 +22,7 @@
       "description": "transfers from ruter",
       "name": "ruter-transfers",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/1c7baba9-6a08-416f-b3c5-b3327c7e109a/resource/bf5bf938-0499-484e-b1f4-4a8c487dfaf2/download/transfers.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/bf5bf938-0499-484e-b1f4-4a8c487dfaf2/transfers.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "1c7baba9-6a08-416f-b3c5-b3327c7e109a",

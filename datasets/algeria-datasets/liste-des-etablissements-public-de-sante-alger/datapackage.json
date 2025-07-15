@@ -22,7 +22,7 @@
       "description": "",
       "name": "Etablissements.csv",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/b9769ccd-931c-4d78-8803-872e2cab4703/resource/ef50c898-12c3-4237-b6f1-d22bf1cfb389/download/etablissements.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ef50c898-12c3-4237-b6f1-d22bf1cfb389/etablissements.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "b9769ccd-931c-4d78-8803-872e2cab4703",

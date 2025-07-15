@@ -22,7 +22,7 @@
       "description": "",
       "name": "regional election candidates kpu 2015",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/c436b1b5-c998-48fb-95f6-93bb269093ae/resource/36a37806-bc35-415a-80e4-28b11e446856/download/paslonpilkada20151016.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/36a37806-bc35-415a-80e4-28b11e446856/paslonpilkada20151016.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "c436b1b5-c998-48fb-95f6-93bb269093ae",

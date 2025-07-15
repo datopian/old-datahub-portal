@@ -154,7 +154,7 @@
       "description": "The Norwegian SoE dataset VoID description.",
       "name": "VoID description",
       "format": "void",
-      "url": "https://old.datahub.io/dataset/605a1c6a-306e-407d-988f-9c1d34ed0324/resource/f5a83fbb-4324-43c2-a3da-5865b1f2d44e/download/soe.void",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f5a83fbb-4324-43c2-a3da-5865b1f2d44e/soe.void",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "605a1c6a-306e-407d-988f-9c1d34ed0324",

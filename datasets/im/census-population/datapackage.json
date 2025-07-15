@@ -22,7 +22,7 @@
       "description": "",
       "name": "Census Population (1951-2011)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/ce625a6b-3dad-45a9-943d-345bd66514ae/resource/482ed076-9b30-4a32-96cf-75c2a04cca82/download/census-population.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/482ed076-9b30-4a32-96cf-75c2a04cca82/census-population.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "ce625a6b-3dad-45a9-943d-345bd66514ae",

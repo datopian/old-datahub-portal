@@ -22,7 +22,7 @@
       "description": "",
       "name": "Population Trend",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e5d47387-d93d-4baa-8465-26a482ee746e/resource/33d16aff-8fb5-42c3-975e-39aa980cace8/download/population-trend.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/33d16aff-8fb5-42c3-975e-39aa980cace8/population-trend.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e5d47387-d93d-4baa-8465-26a482ee746e",

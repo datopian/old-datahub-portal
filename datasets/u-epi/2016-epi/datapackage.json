@@ -17,7 +17,7 @@
       "name": "2016_EPI",
       "description": "",
       "format": "TXT",
-      "path": "https://old.datahub.io/dataset/95842aa8-ea64-48fd-afae-c2d708ee2620/resource/943b6d95-dc09-4cb4-81a7-31f158fadeac/download/2016epidraftsummary.txt",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/943b6d95-dc09-4cb4-81a7-31f158fadeac/2016epidraftsummary.txt",
       "mediatype": "",
       "size": null,
       "created": "2016-07-07T14:39:49.839394",

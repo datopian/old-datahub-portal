@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "nt",
-      "url": "https://old.datahub.io/dataset/7197558b-685e-44d3-be41-47ef157b0b8c/resource/9095da7f-d9c3-45a9-bdb0-f25ee95edf4d/download/sebase.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/9095da7f-d9c3-45a9-bdb0-f25ee95edf4d/sebase.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "7197558b-685e-44d3-be41-47ef157b0b8c",

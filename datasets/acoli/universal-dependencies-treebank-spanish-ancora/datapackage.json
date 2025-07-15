@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Spanish-AnCora RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/4020fff0-316b-4263-be86-72241c2ff5fa/resource/ca85cd13-29b7-464b-b5ba-9075042b93ad/download/udspanish-ancora.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ca85cd13-29b7-464b-b5ba-9075042b93ad/udspanish-ancora.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "4020fff0-316b-4263-be86-72241c2ff5fa",

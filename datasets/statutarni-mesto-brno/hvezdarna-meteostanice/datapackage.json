@@ -22,7 +22,7 @@
       "description": "",
       "name": "meteo",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/744c2f70-4bab-4448-8d49-78090235323b/resource/c33263d0-b288-4dad-9bb2-54c140627b61/download/meteo.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c33263d0-b288-4dad-9bb2-54c140627b61/meteo.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "744c2f70-4bab-4448-8d49-78090235323b",

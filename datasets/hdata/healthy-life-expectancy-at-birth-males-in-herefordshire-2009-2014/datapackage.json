@@ -22,7 +22,7 @@
       "description": "in JSON format",
       "name": "healthy-life-expectancy-at-age 65 (female/male average)-2009-2014",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/a6ef1c29-7839-4402-85c8-24bede343b0e/resource/6bd7749a-31aa-4793-b520-69d3830a612d/download/hle-age-65-average.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6bd7749a-31aa-4793-b520-69d3830a612d/hle-age-65-average.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a6ef1c29-7839-4402-85c8-24bede343b0e",

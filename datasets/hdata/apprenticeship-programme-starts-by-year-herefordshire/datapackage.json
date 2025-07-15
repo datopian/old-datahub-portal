@@ -46,7 +46,7 @@
       "description": "Data is JSON format (useful for developers)",
       "name": "Apprenticeships in Herefordshire",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/417395a5-1c77-43bc-b1fa-b0b14de44c96/resource/89d395fe-09bf-4a23-8397-2d6822bf6034/download/apprenticeship-programme-starts-by-year-herefordshire-2016..json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/89d395fe-09bf-4a23-8397-2d6822bf6034/apprenticeship-programme-starts-by-year-herefordshire-2016..json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "417395a5-1c77-43bc-b1fa-b0b14de44c96",

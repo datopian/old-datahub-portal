@@ -33,7 +33,7 @@
       "cache_url": null,
       "name": "Hourly Pollutant Files for Site Leominster in Automatic Urban Monitoring Network",
       "created": "2018-08-14T16:33:32.642616",
-      "url": "https://old.datahub.io/dataset/fe8a93c3-d46b-4a6d-81e5-c087f2327a6a/resource/3caf3420-5c99-4852-97b7-07d3f78c59bb/download/leominster_hourly_pollutant_2018.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3caf3420-5c99-4852-97b7-07d3f78c59bb/leominster_hourly_pollutant_2018.csv",
       "mimetype_inner": null,
       "position": 0,
       "revision_id": "6ff867a7-ca2b-42a9-a4c2-4b6447a37453",

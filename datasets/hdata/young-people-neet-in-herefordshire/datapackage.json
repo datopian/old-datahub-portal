@@ -46,7 +46,7 @@
       "description": "In JSON format",
       "name": "% of young people not in education, employment or training",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/e499ca9f-4b49-41bb-bbfb-ce523cd9755b/resource/ddd8c305-cfe0-4394-83c2-c6ad3b12e48e/download/neets.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ddd8c305-cfe0-4394-83c2-c6ad3b12e48e/neets.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e499ca9f-4b49-41bb-bbfb-ce523cd9755b",

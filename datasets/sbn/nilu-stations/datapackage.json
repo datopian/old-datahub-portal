@@ -22,7 +22,7 @@
       "description": "",
       "name": "nilu-stations",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/5cc22b9c-c562-4b00-8932-065b538ca8a6/resource/ca04d164-e738-43c6-992a-5f055be791e5/download/nilustations.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ca04d164-e738-43c6-992a-5f055be791e5/nilustations.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "5cc22b9c-c562-4b00-8932-065b538ca8a6",

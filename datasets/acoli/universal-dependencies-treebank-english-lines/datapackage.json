@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_English-LinES RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/3f7e0bb8-f83b-4587-9cc2-7b37b5e79897/resource/abebded2-7d24-45a3-b8b5-9e88b121b663/download/udenglish-lines.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/abebded2-7d24-45a3-b8b5-9e88b121b663/udenglish-lines.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "3f7e0bb8-f83b-4587-9cc2-7b37b5e79897",

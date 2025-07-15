@@ -132,7 +132,7 @@
       "description": "",
       "name": "VOID file for The European Library Open Dataset",
       "format": "text/rdf+ttl",
-      "url": "https://old.datahub.io/dataset/71714db9-6dd7-4551-b021-83f0ed82ab87/resource/5b33837e-2588-4295-bef0-90051c9547ac/download/theeuropeanlibraryopendataset.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5b33837e-2588-4295-bef0-90051c9547ac/theeuropeanlibraryopendataset.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "71714db9-6dd7-4551-b021-83f0ed82ab87",

@@ -22,7 +22,7 @@
       "description": "The LOD dataset of the archive of the “Chen Cheng-po’s Paintings and Documents” (陳澄波畫作與文書檔) in the Taiwan Archive Information System at the Institute of Taiwan History (ITH), Academia Sinica is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the metadata from online database of the “Taiwan Archive Information System” (臺灣史檔案資源系統, http://tais.ith.sinica.edu.tw/sinicafrsFront/browsingLevel1.jsp?xmlId=0000283891), which is established and maintained by the Institute of Taiwan History, Academia Sinica, in Taipei, Taiwan (ROC). The data includes the archival resources in hierarchical structure and is focused on the creations made by Chen Cheng-po, such his works, personal objects and collections of books, collages, postcards and others related to his personal life. Containing 1,522 data records and more than 44,647 triples, the dataset is downloadable in ttl format. The textual content of the LOD dataset is licensed with the Creative Common Attribution (CC0).",
       "name": "Database of Chen Cheng-po’s Paintings and Documents (CCP) in Taiwan Archive Information System",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/38deb9fc-22b7-4fe3-b1b3-9ffb0af6949b/resource/dfa02a5e-6538-4f03-90a6-a745d78ab6a0/download/database-of-the-chen-cheng-po-paintings-and-documents-in-tais-at-ith_ccp_20190429_000001.ttl.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/dfa02a5e-6538-4f03-90a6-a745d78ab6a0/database-of-the-chen-cheng-po-paintings-and-documents-in-tais-at-ith_ccp_20190429_000001.ttl.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "38deb9fc-22b7-4fe3-b1b3-9ffb0af6949b",

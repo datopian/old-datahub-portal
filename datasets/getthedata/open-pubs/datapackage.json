@@ -22,7 +22,7 @@
       "description": "",
       "name": "Open Pubs",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/82954561-ba95-4984-82de-1121c1217c9b/resource/6a7281b9-1aaf-488b-bd9f-4e6a9a604745/download/openpubs.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6a7281b9-1aaf-488b-bd9f-4e6a9a604745/openpubs.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "82954561-ba95-4984-82de-1121c1217c9b",

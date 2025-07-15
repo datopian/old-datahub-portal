@@ -22,7 +22,7 @@
       "description": "",
       "name": "raw data",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/e9d68429-9213-4fea-a0a0-734cf0f35ab1/resource/302e41bf-c254-4d76-969f-2d30cc171d21/download/row-data.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/302e41bf-c254-4d76-969f-2d30cc171d21/row-data.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e9d68429-9213-4fea-a0a0-734cf0f35ab1",

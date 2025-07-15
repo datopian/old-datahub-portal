@@ -46,7 +46,7 @@
       "description": "",
       "name": "Lower quartile pay and non-statutory living wage ratio",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/b3cc8d98-a86c-484a-85a7-78cd5e949038/resource/a9ced3dc-2242-45f7-b2c6-c2523fa57357/download/living-wage-ratio.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a9ced3dc-2242-45f7-b2c6-c2523fa57357/living-wage-ratio.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "b3cc8d98-a86c-484a-85a7-78cd5e949038",

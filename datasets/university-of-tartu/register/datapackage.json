@@ -22,7 +22,7 @@
       "description": "RDF data extracted from Register Graph API (see https://developers.ir.ee/graph-api)",
       "name": "Basic data about a subset of Estonian organizations as of May 12, 2017.",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/5e86289b-39f0-41e6-afe4-201e60f19c1c/resource/64c3b3f0-7566-469d-89a1-ae22b815172d/download/organizations-12052017.xml",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/64c3b3f0-7566-469d-89a1-ae22b815172d/organizations-12052017.xml",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "5e86289b-39f0-41e6-afe4-201e60f19c1c",

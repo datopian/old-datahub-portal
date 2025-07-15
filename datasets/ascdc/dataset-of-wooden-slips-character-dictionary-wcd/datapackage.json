@@ -22,7 +22,7 @@
       "description": "The LOD-based dataset of the “ASCDC_ Dataset of the Han Wooden Slips Character Dictionary (WCD)” is created by the Academia Sinica Center for Digital Cultures (ASCDC) and based on the metadata from the online database of the “Wooden Slips Character Dictionary” (簡牘字典—史語所藏居延漢簡資料庫, https://wcd-ihp.ascdc.sinica.edu.tw/woodslip/index.php). The database is established and maintained by the Institute of History and Philology, Academia Sinica, Taipei, Taiwan (ROC). The WCD dataset contains information of more than 200 Han wooden slips, which are excavated by the expedition group of the Academia Sinica and the Swedish archaeologist Folke Bergman (1902-1946) around the 1930s and in Inner Mongolia and Gansu Province. Containing 3,235 data records (from 207 items) and 15,346 triples, the dataset is downloadable in ttl format. The released textual content of the WCD dataset is licensed with CC0 by the Creative Commons Attribution.",
       "name": "LOD Dataset of the Wooden Slips Character Dictionary",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/098a2194-301b-41b8-9ca2-3e41b82323e5/resource/e80d672c-fa6e-4527-98bf-190c392429e8/download/ascdc_lod-dataset-of-wcd.ttl.gz",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/e80d672c-fa6e-4527-98bf-190c392429e8/ascdc_lod-dataset-of-wcd.ttl.gz",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "098a2194-301b-41b8-9ca2-3e41b82323e5",

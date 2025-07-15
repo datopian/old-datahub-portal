@@ -22,7 +22,7 @@
       "description": "",
       "name": "University of Alberta Salary Disclosures",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/2dd45320-d9c9-4795-86d4-c13e1769376a/resource/bb64c067-557f-4782-9fd5-0bc85ffed8f8/download/universityofalbertasalarydisclosures-enhanced.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/bb64c067-557f-4782-9fd5-0bc85ffed8f8/universityofalbertasalarydisclosures-enhanced.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "2dd45320-d9c9-4795-86d4-c13e1769376a",

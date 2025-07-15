@@ -22,7 +22,7 @@
       "description": "",
       "name": "Obesity and physical diet England",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/a54bc8f4-7a34-4630-bf7a-8b66c30c457e/resource/10f29298-057f-4506-9c17-95b6652a68bc/download/obes-phys-acti-diet-eng-2015-tab.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/10f29298-057f-4506-9c17-95b6652a68bc/obes-phys-acti-diet-eng-2015-tab.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a54bc8f4-7a34-4630-bf7a-8b66c30c457e",

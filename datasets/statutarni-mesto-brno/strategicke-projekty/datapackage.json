@@ -22,7 +22,7 @@
       "description": "strategické projekty",
       "name": "strategicke projekty",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/3b4d1c5b-337d-4637-a11d-d686816e915a/resource/c490f327-0220-4c7d-8f0e-4469ef87420c/download/zdrojovadataaplikacestrategickeprojektybrno.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c490f327-0220-4c7d-8f0e-4469ef87420c/zdrojovadataaplikacestrategickeprojektybrno.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "3b4d1c5b-337d-4637-a11d-d686816e915a",

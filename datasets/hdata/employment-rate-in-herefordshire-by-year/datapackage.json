@@ -44,7 +44,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "Employment rate by year Herefordshire",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/aa1b76b7-3301-47e2-bab1-d3e220dee80e/resource/c411a654-801b-46ec-901a-288a5733a2f4/download/convertcsv-1.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c411a654-801b-46ec-901a-288a5733a2f4/convertcsv-1.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "aa1b76b7-3301-47e2-bab1-d3e220dee80e",

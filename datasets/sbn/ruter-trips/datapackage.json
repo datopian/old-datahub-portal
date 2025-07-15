@@ -22,7 +22,7 @@
       "description": "",
       "name": "ruter-trips",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/7a1f82c9-657a-441f-b453-f45647e3d952/resource/906a456d-7e3f-405d-930f-778c1176b435/download/trips.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/906a456d-7e3f-405d-930f-778c1176b435/trips.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "7a1f82c9-657a-441f-b453-f45647e3d952",

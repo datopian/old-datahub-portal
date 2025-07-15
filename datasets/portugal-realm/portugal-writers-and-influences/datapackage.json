@@ -22,7 +22,7 @@
       "description": "Portugal Writers and Influences",
       "name": "portugal-writers-influences",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/0c7f6619-b6f5-4b42-b75c-fb7ff49ec719/resource/0b9f763f-fd8e-4a9e-9e01-ad98161fd170/download/data.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0b9f763f-fd8e-4a9e-9e01-ad98161fd170/data.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "0c7f6619-b6f5-4b42-b75c-fb7ff49ec719",

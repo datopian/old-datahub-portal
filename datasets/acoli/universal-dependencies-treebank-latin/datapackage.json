@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Latin RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/fa497653-2537-420b-a83e-ca3bf574d29f/resource/49523f5d-9707-40c4-b7cb-71b278dfe5bc/download/udlatin.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/49523f5d-9707-40c4-b7cb-71b278dfe5bc/udlatin.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "fa497653-2537-420b-a83e-ca3bf574d29f",

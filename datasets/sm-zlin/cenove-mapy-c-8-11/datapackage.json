@@ -22,7 +22,7 @@
       "description": "",
       "name": "starší cenové mapy",
       "format": "shp/geojson",
-      "url": "https://old.datahub.io/dataset/cc9ae4d6-6139-4622-9045-f82fda6ee097/resource/21d5ae0e-e0f8-4793-b205-4a3c2a7af24c/download/cenove_mapy_starsi.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/21d5ae0e-e0f8-4793-b205-4a3c2a7af24c/cenove_mapy_starsi.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "cc9ae4d6-6139-4622-9045-f82fda6ee097",

@@ -22,7 +22,7 @@
       "description": "List All Arabic Roots",
       "name": "Arabic Roots 2017",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/a35a67a2-52ef-48d7-bba5-acf06a26338d/resource/419b1cbd-9674-40bf-ad62-776b348e0b8e/download/arabicroots.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/419b1cbd-9674-40bf-ad62-776b348e0b8e/arabicroots.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "a35a67a2-52ef-48d7-bba5-acf06a26338d",

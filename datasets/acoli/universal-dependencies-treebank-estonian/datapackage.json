@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Estonian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/74f858f4-c411-46bd-8676-eee91ada1c96/resource/4eabacdc-1139-425b-bd9d-35c4bd203f95/download/udestonian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/4eabacdc-1139-425b-bd9d-35c4bd203f95/udestonian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "74f858f4-c411-46bd-8676-eee91ada1c96",

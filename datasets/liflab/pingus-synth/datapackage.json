@@ -22,7 +22,7 @@
       "description": "Synthetic execution traces of the video game Pingus, used for runtime verification.",
       "name": "Execution traces",
       "format": "XML",
-      "url": "https://old.datahub.io/dataset/77aca17b-5fa6-4ebf-94f0-20d6209bf169/resource/938f527a-20fb-4421-83b2-0481234fc119/download/traces.7z",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/938f527a-20fb-4421-83b2-0481234fc119/traces.7z",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "77aca17b-5fa6-4ebf-94f0-20d6209bf169",

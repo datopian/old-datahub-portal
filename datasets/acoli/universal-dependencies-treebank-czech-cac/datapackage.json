@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Czech-CAC RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/c11a0d4e-3c2f-4797-9956-4336d36cdfd9/resource/3a78788e-f153-446c-9d8c-39ec913940b3/download/udczech-cac.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3a78788e-f153-446c-9d8c-39ec913940b3/udczech-cac.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c11a0d4e-3c2f-4797-9956-4336d36cdfd9",

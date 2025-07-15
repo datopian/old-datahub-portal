@@ -22,7 +22,7 @@
       "description": "Snapshot from the Herefordshire Council Rest Service on 10 May 2016",
       "name": "NNR geometries in Herefordshire",
       "format": "GeoJSON",
-      "url": "https://old.datahub.io/dataset/d761ba9b-c502-4099-9379-240cecd5b5c1/resource/ec749fbb-9326-4a3d-b897-eb8a5b63fba2/download/nnr-geometries-herefordshire.js",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ec749fbb-9326-4a3d-b897-eb8a5b63fba2/nnr-geometries-herefordshire.js",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d761ba9b-c502-4099-9379-240cecd5b5c1",

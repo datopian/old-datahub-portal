@@ -44,7 +44,7 @@
       "description": "400 RDF Datasets Metadata - VoID Descriptions",
       "name": "Datasets Metadata - VoID Descriptions",
       "format": "rdf/turtle",
-      "url": "https://old.datahub.io/dataset/304294e6-6c12-47c8-8374-2c3eced2d900/resource/f229af3b-696c-46f3-a206-844a440e2c82/download/datasets.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f229af3b-696c-46f3-a206-844a440e2c82/datasets.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "304294e6-6c12-47c8-8374-2c3eced2d900",

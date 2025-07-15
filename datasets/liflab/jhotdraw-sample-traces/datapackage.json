@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "ZIP",
-      "url": "https://old.datahub.io/dataset/fbe03f94-1750-47d8-9abe-e0a21514da16/resource/0396d4e4-94ad-45bf-a6a0-ad148bc5de35/download/jhotdraw-trace-samples.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0396d4e4-94ad-45bf-a6a0-ad148bc5de35/jhotdraw-trace-samples.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "fbe03f94-1750-47d8-9abe-e0a21514da16",

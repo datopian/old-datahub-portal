@@ -44,7 +44,7 @@
       "description": "",
       "name": "Segnalazioni",
       "format": "GeoJSON",
-      "url": "https://old.datahub.io/dataset/f15f410e-87f0-44d2-9128-ad72a5af3869/resource/fa5d9fca-b662-40b7-8680-a4fe980b0be9/download/wedugioiadelcolle.geojson",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/fa5d9fca-b662-40b7-8680-a4fe980b0be9/wedugioiadelcolle.geojson",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "f15f410e-87f0-44d2-9128-ad72a5af3869",

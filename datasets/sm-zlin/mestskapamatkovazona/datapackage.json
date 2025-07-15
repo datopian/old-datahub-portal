@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "shp, geojson",
-      "url": "https://old.datahub.io/dataset/0169916f-32f6-40be-873e-a36820c8b591/resource/ffa292d3-3dde-45ae-b0eb-6f98986b46ed/download/mestska_pamatkova_zona.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ffa292d3-3dde-45ae-b0eb-6f98986b46ed/mestska_pamatkova_zona.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "0169916f-32f6-40be-873e-a36820c8b591",

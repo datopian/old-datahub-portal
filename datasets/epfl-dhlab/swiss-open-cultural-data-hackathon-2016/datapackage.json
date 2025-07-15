@@ -22,7 +22,7 @@
       "description": "",
       "name": "Le Temps dataset for the Swiss Open Cultural Hackathon 2016",
       "format": "TAR",
-      "url": "https://old.datahub.io/dataset/feb8391e-923b-43de-aa68-c750c3a36909/resource/1770cbe3-171f-4f64-895c-34810b3337ce/download/swissopenhackathon-letemps.tar.bz2",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/1770cbe3-171f-4f64-895c-34810b3337ce/swissopenhackathon-letemps.tar.bz2",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "feb8391e-923b-43de-aa68-c750c3a36909",

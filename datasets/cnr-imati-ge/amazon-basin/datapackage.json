@@ -44,7 +44,7 @@
       "description": "(23 Mb)",
       "name": "Amazon_basin RDF",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/416674ed-eb52-458f-bb06-1e63385f2aff/resource/49ea4552-0873-48a3-a143-e5375c62a3a8/download/amazon_basin_rdf.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/49ea4552-0873-48a3-a143-e5375c62a3a8/amazon_basin_rdf.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "416674ed-eb52-458f-bb06-1e63385f2aff",

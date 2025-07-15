@@ -29,21 +29,21 @@
   },
   "resources": [
     {
-      "path": "https://old.datahub.io/dataset/0b83b274-ae1b-47ee-8e6e-db5bb3d92156/resource/7f21230d-01a6-4e70-9fcb-2e019ee6cd78/download/alldatawithlabels",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/7f21230d-01a6-4e70-9fcb-2e019ee6cd78/alldatawithlabels",
       "title": "Complete dataset",
       "description": "The complete dataset in a CSV file, including user id, user response, and item description. 1 interaction per line. First line gives column labels.",
       "name": "complete-dataset",
       "format": "CSV"
     },
     {
-      "path": "https://old.datahub.io/dataset/0b83b274-ae1b-47ee-8e6e-db5bb3d92156/resource/7c7a956f-dbcd-499d-a246-d2a0f6843c6b/download/userresponses",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/7c7a956f-dbcd-499d-a246-d2a0f6843c6b/userresponses",
       "title": "User responses",
       "description": "A column of all user responses. Each line corresponds to the same line in \"samples\".",
       "name": "user-responses",
       "format": "CSV"
     },
     {
-      "path": "https://old.datahub.io/dataset/0b83b274-ae1b-47ee-8e6e-db5bb3d92156/resource/790a7e60-65b5-4da9-9407-2592ff7eeeaf/download/samples",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/790a7e60-65b5-4da9-9407-2592ff7eeeaf/samples",
       "title": "Samples",
       "description": "All items rated by the users in the dataset. Each line contains the multivariate description of an item, corresponding to the same line in the file \"userResponses\".",
       "name": "samples",

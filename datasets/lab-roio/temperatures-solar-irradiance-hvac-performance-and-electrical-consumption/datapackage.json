@@ -22,7 +22,7 @@
       "description": "dataset",
       "name": "August 2014",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/bf5758cc-960d-479d-8187-aa354a8024a9/resource/c355da37-1dcd-45b5-aafd-1f9160039f4a/download/roio.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/c355da37-1dcd-45b5-aafd-1f9160039f4a/roio.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "bf5758cc-960d-479d-8187-aa354a8024a9",

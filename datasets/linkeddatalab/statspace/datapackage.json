@@ -22,7 +22,7 @@
       "description": "This metadata repository describes the data sets made available by ten different publishers in a uniform manner. \r\nSparql endpoint: http://ogd.ifs.tuwien.ac.at/sparql, Graph URI: http://statspace.linkedwidgets.org\r\nLinked data interface: http://linkedwidgets.org/resource",
       "name": "Metadata repository",
       "format": "ttl",
-      "url": "https://old.datahub.io/dataset/d537a182-6b8e-446f-ad0a-3c66e8173b2f/resource/9bdbf036-fe51-4dd8-8b78-f8de14499b42/download/statspace.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/9bdbf036-fe51-4dd8-8b78-f8de14499b42/statspace.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "d537a182-6b8e-446f-ad0a-3c66e8173b2f",

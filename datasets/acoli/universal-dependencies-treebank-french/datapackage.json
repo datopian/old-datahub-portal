@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_French RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/95a607ea-1409-44c7-acdc-696a195c84fd/resource/8f9c0b59-7a9f-4af5-9ce4-bbb50e104c0a/download/udfrench.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/8f9c0b59-7a9f-4af5-9ce4-bbb50e104c0a/udfrench.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "95a607ea-1409-44c7-acdc-696a195c84fd",

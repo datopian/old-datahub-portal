@@ -22,7 +22,7 @@
       "description": "",
       "name": "seznam ulic",
       "format": "csv, xlsx",
-      "url": "https://old.datahub.io/dataset/82d69509-5bf0-42a2-a5b2-3aaff30a5b91/resource/9b0ac2c3-f8ce-46c9-a478-43e22005dc4d/download/seznam_ulic.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/9b0ac2c3-f8ce-46c9-a478-43e22005dc4d/seznam_ulic.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "82d69509-5bf0-42a2-a5b2-3aaff30a5b91",

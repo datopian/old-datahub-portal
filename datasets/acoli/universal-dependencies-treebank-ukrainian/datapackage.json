@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Ukrainian RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/1891eb54-ab56-4b26-a977-76ccac97b7b1/resource/5fe0ce7e-e206-4d2c-8cbe-fcc8ac810951/download/udukrainian.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5fe0ce7e-e206-4d2c-8cbe-fcc8ac810951/udukrainian.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1891eb54-ab56-4b26-a977-76ccac97b7b1",

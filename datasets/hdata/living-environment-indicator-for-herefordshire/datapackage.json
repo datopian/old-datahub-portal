@@ -46,7 +46,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "Living Environment Indicator for Herefordshire 2010 - 2013",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/e4e6c80f-79ea-4387-b6d5-ae54900db0ae/resource/5bebf3a7-97c1-4cce-9cd1-754b10b5dcc8/download/living-environment.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5bebf3a7-97c1-4cce-9cd1-754b10b5dcc8/living-environment.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e4e6c80f-79ea-4387-b6d5-ae54900db0ae",

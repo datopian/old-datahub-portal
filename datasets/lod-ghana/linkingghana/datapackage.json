@@ -22,7 +22,7 @@
       "description": "Electricity from Ghana",
       "name": "Ghana Electrcity source",
       "format": "rdf/turtle",
-      "url": "https://old.datahub.io/dataset/e5f21727-35e6-4da5-9000-0f6d7283fcfe/resource/68a9163a-a093-4ba1-8bfd-4b5c636df091/download/electricity-csv-1.rdf",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/68a9163a-a093-4ba1-8bfd-4b5c636df091/electricity-csv-1.rdf",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e5f21727-35e6-4da5-9000-0f6d7283fcfe",

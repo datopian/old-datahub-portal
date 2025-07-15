@@ -22,7 +22,7 @@
       "description": "",
       "name": "Amtrak Routes",
       "format": "GeoJSON",
-      "url": "https://old.datahub.io/dataset/06877a8d-fe8f-48cb-8924-7d93305de5d7/resource/452acc99-0310-4652-98f2-a91d5e9bed1b/download/amtrakroutes.geojson",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/452acc99-0310-4652-98f2-a91d5e9bed1b/amtrakroutes.geojson",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "06877a8d-fe8f-48cb-8924-7d93305de5d7",

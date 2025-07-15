@@ -22,7 +22,7 @@
       "description": "",
       "name": "Mappa Google di tutte le opere",
       "format": "KML",
-      "url": "https://old.datahub.io/dataset/761271af-c98a-44cb-b460-689baa81eb00/resource/f7ccfb1a-42e5-408b-81fe-d05aae491207/download/premiopinto.kml",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/f7ccfb1a-42e5-408b-81fe-d05aae491207/premiopinto.kml",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "761271af-c98a-44cb-b460-689baa81eb00",

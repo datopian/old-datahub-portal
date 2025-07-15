@@ -22,7 +22,7 @@
       "description": "",
       "name": "Kontejnery",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/47739687-a118-4e91-822c-4939c87adfdf/resource/0c6fd9c8-a5a4-4f59-9adf-1b72cc9259ab/download/kontejnery-na-t.-odpad.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0c6fd9c8-a5a4-4f59-9adf-1b72cc9259ab/kontejnery-na-t.-odpad.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "47739687-a118-4e91-822c-4939c87adfdf",

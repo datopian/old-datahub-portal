@@ -22,7 +22,7 @@
       "description": "",
       "name": "biltellere-bymiljoetaten-oslo",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/3b6ed06c-98c5-4cfe-9273-bb1e9cd7305b/resource/4cbe2e81-428f-486d-8006-287db1644806/download/biltellere.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/4cbe2e81-428f-486d-8006-287db1644806/biltellere.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "3b6ed06c-98c5-4cfe-9273-bb1e9cd7305b",

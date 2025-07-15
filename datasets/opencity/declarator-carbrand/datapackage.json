@@ -22,7 +22,7 @@
       "description": "",
       "name": "Car brands June 2016",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/9a4147f8-130b-4360-b5e2-7c15ef0128b5/resource/a6ca1c2b-dae5-41b3-acef-e1a56a6d7e48/download/carbrand.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a6ca1c2b-dae5-41b3-acef-e1a56a6d7e48/carbrand.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "9a4147f8-130b-4360-b5e2-7c15ef0128b5",

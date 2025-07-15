@@ -22,7 +22,7 @@
       "description": "Giá xe ôtô Việt Nam cập nhập 01/2016",
       "name": "Giá xe ôtô Việt Nam 01/2016",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/80f224cd-8f19-4788-8526-662329b14915/resource/7a56282f-b3ad-41cf-9a52-14107f477f5f/download/gia-xe-oto-vit-nam---01-2016.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/7a56282f-b3ad-41cf-9a52-14107f477f5f/gia-xe-oto-vit-nam---01-2016.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "80f224cd-8f19-4788-8526-662329b14915",

@@ -44,7 +44,7 @@
       "description": "Data in JSON format (useful for developers), with made up year",
       "name": "Number of casualties per year 2010-2015",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/01372f09-cf78-4b93-8925-6be1a4ce71cc/resource/85765fbb-5038-4c16-a076-2246ffdde803/download/resilient-and-fair-economy---road-safety.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/85765fbb-5038-4c16-a076-2246ffdde803/resilient-and-fair-economy---road-safety.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "01372f09-cf78-4b93-8925-6be1a4ce71cc",

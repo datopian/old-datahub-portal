@@ -24,7 +24,7 @@
       "name": "0. Readme",
       "description": "info on data origin and content",
       "format": "TXT",
-      "path": "https://old.datahub.io/dataset/8debf9f2-d07b-4a79-bf79-54beac085140/resource/cb6583be-e86b-4503-a078-ad9a23a05a41/download/readme.txt",
+      "path": "https://datahub-old.portaljs.com/datahub-prod/resources/cb6583be-e86b-4503-a078-ad9a23a05a41/readme.txt",
       "mediatype": "",
       "size": null,
       "created": "2016-08-08T16:47:52.448459",

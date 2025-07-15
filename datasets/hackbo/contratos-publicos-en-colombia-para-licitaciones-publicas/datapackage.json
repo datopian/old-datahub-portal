@@ -22,7 +22,7 @@
       "description": "Información sobre contratos públicos de licitaciones en formato SQL/SQLite. Para detalles sobre el origen y procesamiento ver: https://github.com/dav009/contra",
       "name": "Contratos de licitaciones públicas",
       "format": "",
-      "url": "https://old.datahub.io/dataset/04256097-9d69-4c3b-8be3-6d6aaca9de98/resource/e052c2e0-2577-4fda-b929-aaca51b5ef0c/download/contratos-licitaciones.sqlite",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/e052c2e0-2577-4fda-b929-aaca51b5ef0c/contratos-licitaciones.sqlite",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "04256097-9d69-4c3b-8be3-6d6aaca9de98",

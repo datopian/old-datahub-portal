@@ -22,7 +22,7 @@
       "description": "",
       "name": "místní části",
       "format": "csv, shp, geojson",
-      "url": "https://old.datahub.io/dataset/6c5fdbe3-07f9-4935-b6eb-89f2f8b70afb/resource/0a4d6602-0f80-4e47-8463-35c9ed70669e/download/mistni_casti.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0a4d6602-0f80-4e47-8463-35c9ed70669e/mistni_casti.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "6c5fdbe3-07f9-4935-b6eb-89f2f8b70afb",

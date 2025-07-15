@@ -46,7 +46,7 @@
       "description": "In JSON format",
       "name": "healthy-life-expectancy-at-birth (female/male average) in-herefordshire-2009-2014",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/617d6fbd-ee73-4c52-9b66-46e626750d1f/resource/43cea07f-b69f-4dbb-b46b-c5efa709a739/download/hle-birth-average.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/43cea07f-b69f-4dbb-b46b-c5efa709a739/hle-birth-average.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "617d6fbd-ee73-4c52-9b66-46e626750d1f",

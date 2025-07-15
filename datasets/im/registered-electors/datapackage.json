@@ -22,7 +22,7 @@
       "description": "2011 Q1 - 2016 Q1\r\n",
       "name": "Registered Electors (2011-2016)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/882af8fa-20e3-437e-9da8-4c054959c370/resource/22b1ad6a-4168-4de7-a87f-13ce46fc8e58/download/registered-electors.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/22b1ad6a-4168-4de7-a87f-13ce46fc8e58/registered-electors.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "882af8fa-20e3-437e-9da8-4c054959c370",

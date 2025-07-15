@@ -22,7 +22,7 @@
       "description": "spádovost zš a mš",
       "name": "Spádovost škol",
       "format": "geojson, shp",
-      "url": "https://old.datahub.io/dataset/469c40c5-424e-4aad-9cd4-a143b3f2bd7e/resource/bdabd336-e61e-44f8-a7d9-f2f79922f8f9/download/spadovost_skol.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/bdabd336-e61e-44f8-a7d9-f2f79922f8f9/spadovost_skol.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "469c40c5-424e-4aad-9cd4-a143b3f2bd7e",

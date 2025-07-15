@@ -46,7 +46,7 @@
       "description": "In JSON format",
       "name": "% of pupils in Herefordshire achieving level 3 qualifications",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/1632a20c-83a1-4b39-9e3c-0e87a6a45821/resource/ff212211-400f-4686-b940-9e4fbb7f073c/download/level3quals.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ff212211-400f-4686-b940-9e4fbb7f073c/level3quals.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1632a20c-83a1-4b39-9e3c-0e87a6a45821",

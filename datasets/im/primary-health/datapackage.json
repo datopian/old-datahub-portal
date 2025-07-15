@@ -22,7 +22,7 @@
       "description": "FTE GPs, Registered Patients, Average Patients per GP, Patients Age>65 (2004-2015)",
       "name": "Primary Health (2004-2015)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/7ba7436d-23b8-4cc9-bae3-b89925ebcefa/resource/0e76d41d-bae5-4eb1-a99b-ceee729287a6/download/primary-health.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/0e76d41d-bae5-4eb1-a99b-ceee729287a6/primary-health.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "7ba7436d-23b8-4cc9-bae3-b89925ebcefa",

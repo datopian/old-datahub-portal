@@ -46,7 +46,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "% KS4 5+ A*-C inc English and Maths",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/523f1541-66b2-4aa2-bbfe-f77e1dbd9934/resource/be5db3c1-58ba-4471-9255-3b84a02c44d4/download/gcses.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/be5db3c1-58ba-4471-9255-3b84a02c44d4/gcses.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "523f1541-66b2-4aa2-bbfe-f77e1dbd9934",

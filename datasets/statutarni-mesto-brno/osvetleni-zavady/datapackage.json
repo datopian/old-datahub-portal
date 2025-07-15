@@ -22,7 +22,7 @@
       "description": "",
       "name": "Zavady 2016",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/367b3164-8da3-4056-8122-ede6449b8a3d/resource/619938d8-d1dc-4768-9d0c-e356425c043a/download/2016-zavady-voanonimizovano.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/619938d8-d1dc-4768-9d0c-e356425c043a/2016-zavady-voanonimizovano.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "367b3164-8da3-4056-8122-ede6449b8a3d",

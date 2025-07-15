@@ -22,7 +22,7 @@
       "description": "",
       "name": "Terreni",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/e1185a36-a240-4324-b988-11901582a848/resource/17e96ac8-8189-4ce5-a865-2c34902c4647/download/p20170015c-piano-alienazioni---allegato-n-2.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/17e96ac8-8189-4ce5-a865-2c34902c4647/p20170015c-piano-alienazioni---allegato-n-2.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "e1185a36-a240-4324-b988-11901582a848",

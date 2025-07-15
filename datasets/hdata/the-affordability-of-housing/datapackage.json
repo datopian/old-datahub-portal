@@ -46,7 +46,7 @@
       "description": "Ratio of housing prices to earnings from 2006 onwards",
       "name": "Housing affordability ratio",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/cb78f1ff-e633-4fde-81b7-86a5deb448a5/resource/399c3cc6-c8b1-4e37-a809-8a71902bc311/download/affordability-ratio.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/399c3cc6-c8b1-4e37-a809-8a71902bc311/affordability-ratio.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "cb78f1ff-e633-4fde-81b7-86a5deb448a5",

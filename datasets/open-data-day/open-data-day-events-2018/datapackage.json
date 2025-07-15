@@ -22,7 +22,7 @@
       "description": "",
       "name": "Open Data Day events 2018",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/e452c649-e824-4122-8d03-f56e74753cd9/resource/badaeb7a-5e55-4f88-894c-87867510bc0b/download/odd_events_2018.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/badaeb7a-5e55-4f88-894c-87867510bc0b/odd_events_2018.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "e452c649-e824-4122-8d03-f56e74753cd9",

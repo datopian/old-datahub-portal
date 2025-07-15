@@ -22,7 +22,7 @@
       "description": "",
       "name": "Arquivo de teste",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/9761205f-2424-4570-a1c0-58bcbc965840/resource/784a9c89-8142-4d3d-8841-3fb1c627b227/download/teste.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/784a9c89-8142-4d3d-8841-3fb1c627b227/teste.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "9761205f-2424-4570-a1c0-58bcbc965840",

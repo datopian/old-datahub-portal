@@ -22,7 +22,7 @@
       "description": "This is [volume VII](http://www.gsk.ch/fr/les-monuments-d%E2%80%99art-et-d%E2%80%99histoire-du-canton-de-vaud-tome-vii-rolle-et-son-district.html) by Paul Bissegger of the series [*Les monuments d’art et d’histoire du canton de Vaud*](http://www.gsk.ch/fr/recherche-avancee.html?k=&ort=Waadt+%2F+Vaud+%2F+Vaud&inhaltssprache=All&autor=&verlag=All&reihe=2&kantonsband=&bandnr=). It covers [Rolle](https://en.wikipedia.org/wiki/Rolle) and its [former district](https://en.wikipedia.org/wiki/Rolle_District) (now part of the district of Nyon).\r\n\r\n**Please note:** The CC-BY license only applies to the text, for the images please see notices inside the book.\r\n\r\nThe file is offered in the [EPUB format](https://en.wikipedia.org/wiki/EPUB), which means it's basically a ZIP archive that contains xHTML files, images and a CSS style sheet. It is made accessible to the public by the [Society for Art History in Switzerland](https://www.gsk.ch) on occasion of the [Swiss Open Cultural Data Hackathon](http://make.opendata.ch/wiki/event:2016-07).",
       "name": "Rolle et son district",
       "format": "EPUB",
-      "url": "https://old.datahub.io/dataset/c6c2b650-9355-4d48-9025-9ac5688c7ff6/resource/3ece18c8-3408-4670-8f86-b17806987fd4/download/gskshasssaskdsvaudviirolle.epub",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/3ece18c8-3408-4670-8f86-b17806987fd4/gskshasssaskdsvaudviirolle.epub",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c6c2b650-9355-4d48-9025-9ac5688c7ff6",

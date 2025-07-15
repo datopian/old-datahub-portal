@@ -22,7 +22,7 @@
       "description": "",
       "name": "DRC Timber Trade Tracker Exports 2013 - Q4 2016",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/ddb9b98a-3be8-48a5-b8a8-eb0a3bf39a5b/resource/7c936579-7940-42a3-ae79-a0f498cb7ea7/download/datatoupload.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/7c936579-7940-42a3-ae79-a0f498cb7ea7/datatoupload.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "ddb9b98a-3be8-48a5-b8a8-eb0a3bf39a5b",

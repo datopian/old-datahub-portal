@@ -46,7 +46,7 @@
       "description": "Data in JSON format",
       "name": "Local sites in positive conservation management in Herefordshire",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/c50dcde1-bf13-485e-b99d-fb767336484b/resource/ddfd4d16-7e40-4338-93ae-caa55abf795e/download/sites-in-active-management.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/ddfd4d16-7e40-4338-93ae-caa55abf795e/sites-in-active-management.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "c50dcde1-bf13-485e-b99d-fb767336484b",

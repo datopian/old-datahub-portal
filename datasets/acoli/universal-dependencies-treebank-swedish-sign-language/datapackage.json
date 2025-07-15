@@ -44,7 +44,7 @@
       "description": "Converted test.conllu using ACoLi's conll-rdf converter",
       "name": "UD_Swedish_Sign_Language RDF Example",
       "format": "RDF",
-      "url": "https://old.datahub.io/dataset/a8358247-8be1-43d9-8f83-1faab89ba27a/resource/17217240-f1d1-4541-82d8-d8bc4a5592cc/download/udswedishsignlanguage.ttl",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/17217240-f1d1-4541-82d8-d8bc4a5592cc/udswedishsignlanguage.ttl",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "a8358247-8be1-43d9-8f83-1faab89ba27a",

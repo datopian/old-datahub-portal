@@ -44,7 +44,7 @@
       "description": "ruční upload",
       "name": "Upload - počet lékařů na 1000 obyvatel",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/c67a939f-f156-4c44-b1f2-3bc16405cd0b/resource/d1544162-5ae1-4010-8bb6-2ba7761b2d21/download/pocetlekaruna1000obyvatel.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/d1544162-5ae1-4010-8bb6-2ba7761b2d21/pocetlekaruna1000obyvatel.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "c67a939f-f156-4c44-b1f2-3bc16405cd0b",

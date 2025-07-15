@@ -22,7 +22,7 @@
       "description": "General Practioners\t, Dentists (Public), Dentists (Private), Opticians, District Nurses, Health Visitors, Podiatrists, Speech Therapists and Pharmacists",
       "name": "Health Professionals (2005-2015)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/0bf87108-347e-4246-b5db-9ce3ff9b7a58/resource/5d8042d5-599b-4fe3-aa4e-dd0af26fb2f1/download/health-professionals.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5d8042d5-599b-4fe3-aa4e-dd0af26fb2f1/health-professionals.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "0bf87108-347e-4246-b5db-9ce3ff9b7a58",

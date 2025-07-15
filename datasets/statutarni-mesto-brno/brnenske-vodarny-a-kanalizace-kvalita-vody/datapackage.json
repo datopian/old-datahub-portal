@@ -22,7 +22,7 @@
       "description": "",
       "name": "Kvalita vody",
       "format": "XLS",
-      "url": "https://old.datahub.io/dataset/bd7a4378-3328-4a2a-9b96-db9ac58bb61b/resource/6716c484-d904-45b6-89d7-55a9a1a6da4c/download/so-brno-2014-2017.xls",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/6716c484-d904-45b6-89d7-55a9a1a6da4c/so-brno-2014-2017.xls",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "bd7a4378-3328-4a2a-9b96-db9ac58bb61b",

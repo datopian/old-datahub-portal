@@ -22,7 +22,7 @@
       "description": "__Enti associati__ al Centro Studi PIM [aggiornamento 07.2016]\r\nhttp://www.pim.mi.it/enti-associati/",
       "name": "Soci PIM - 2016",
       "format": "KML",
-      "url": "https://old.datahub.io/dataset/1488e943-6e54-4e27-adfa-7a12e0bc8e40/resource/5ec1251b-3449-44f8-a533-9885d9974734/download/soci-pim2016.geojson",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/5ec1251b-3449-44f8-a533-9885d9974734/soci-pim2016.geojson",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "1488e943-6e54-4e27-adfa-7a12e0bc8e40",

@@ -22,7 +22,7 @@
       "description": "This statistical report presents a range of information on obesity, physical activity and diet, drawn together from a variety of sources.",
       "name": "2015 Statistics on Obesity, Physical Activity and Diet",
       "format": "xslx",
-      "url": "https://old.datahub.io/dataset/257569d8-9b14-46e1-a302-b4267333a3ed/resource/775de5cc-9cf7-4e50-9532-112bdae49d43/download/obes-phys-acti-diet-eng-2015-tab.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/775de5cc-9cf7-4e50-9532-112bdae49d43/obes-phys-acti-diet-eng-2015-tab.xlsx",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "257569d8-9b14-46e1-a302-b4267333a3ed",

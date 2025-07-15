@@ -22,7 +22,7 @@
       "description": "Quality of life at the national level",
       "name": "Quality of Life",
       "format": "ods format",
-      "url": "https://old.datahub.io/dataset/9bb7bbb3-1505-4abd-b059-17f02b3e0930/resource/a08f22d6-56b4-4f2b-a464-f9a0853ee0f9/download/qualityoflifereconstructedjustdata.ods",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/a08f22d6-56b4-4f2b-a464-f9a0853ee0f9/qualityoflifereconstructedjustdata.ods",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "9bb7bbb3-1505-4abd-b059-17f02b3e0930",

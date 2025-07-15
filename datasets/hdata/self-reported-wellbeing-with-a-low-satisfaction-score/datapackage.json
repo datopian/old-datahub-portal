@@ -46,7 +46,7 @@
       "description": "Data in JSON format (useful for developers)",
       "name": "Self reported well being",
       "format": "JSON",
-      "url": "https://old.datahub.io/dataset/26b7ca56-bfd5-463c-9b81-75fa7c448fd4/resource/505f81e0-9d76-45e0-a100-67b6d7b83927/download/self-reported-well-being---low-satisfaction-score.json",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/505f81e0-9d76-45e0-a100-67b6d7b83927/self-reported-well-being---low-satisfaction-score.json",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "26b7ca56-bfd5-463c-9b81-75fa7c448fd4",

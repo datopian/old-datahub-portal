@@ -22,7 +22,7 @@
       "description": "This dataset contains the third round survey which was carried out by the Mobile Citizen Helpdesks in Nepal - led by Accountability Lab and Local Interventions Group - as part of the Inter-Agency Common Feedback Project. The questionnaire includes information on communities biggest problems, concerns, needs and satisfaction in relation to the earthquake response.",
       "name": "Citizen Feedback in Earthquake Affected Areas (Round 3)",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/41d3ffff-cffd-4489-a8d8-657dbfffcf41/resource/2136b623-50a2-41f1-99e1-335d1d07492e/download/citizen-feedback-in-earthquake-affected-areas-round-3-1.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/2136b623-50a2-41f1-99e1-335d1d07492e/citizen-feedback-in-earthquake-affected-areas-round-3-1.csv",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "41d3ffff-cffd-4489-a8d8-657dbfffcf41",

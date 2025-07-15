@@ -22,7 +22,7 @@
       "description": "",
       "name": "Herefordshire IMD LSOA 2015",
       "format": "KML",
-      "url": "https://old.datahub.io/dataset/3d0260f3-0048-4efc-a7fe-0acd7e2b530f/resource/8b389edb-f0ab-480f-8cb5-055ba6cacd2d/download/herefordshire-imd-lsoa-2015.kml",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/8b389edb-f0ab-480f-8cb5-055ba6cacd2d/herefordshire-imd-lsoa-2015.kml",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "3d0260f3-0048-4efc-a7fe-0acd7e2b530f",

@@ -22,7 +22,7 @@
       "description": "",
       "name": "lobbying reports",
       "format": "CSV",
-      "url": "https://old.datahub.io/dataset/b6b8c5ed-591d-47aa-8e2f-9e197683046a/resource/117b2e40-5361-49ac-819f-01e12a371632/download/lobbyingreports.csv",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/117b2e40-5361-49ac-819f-01e12a371632/lobbyingreports.csv",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "b6b8c5ed-591d-47aa-8e2f-9e197683046a",

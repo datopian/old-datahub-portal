@@ -22,7 +22,7 @@
       "description": "Serie histórica demográfica con datos del 1888 al 2015 de los nacidos vivos y defunciones de Puerto Rico.  Incluye el incremento natural (biológico o vegetativo) y las tasas brutas (crudas) de natalidad y defunciones con sus respectivas gráficas.",
       "name": "Estadisticas demograficas: Puerto Rico 1888-2015",
       "format": "XLSX",
-      "url": "https://old.datahub.io/dataset/f02a372f-7cf8-4f45-aab5-23f09b25566c/resource/dcb06c65-4deb-43a0-ad18-b35f69c70626/download/serie-historica-demografia-pob-nac-mort.xlsx",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/dcb06c65-4deb-43a0-ad18-b35f69c70626/serie-historica-demografia-pob-nac-mort.xlsx",
       "datastore_active": true,
       "cache_last_updated": null,
       "package_id": "f02a372f-7cf8-4f45-aab5-23f09b25566c",

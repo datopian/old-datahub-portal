@@ -22,7 +22,7 @@
       "description": "",
       "name": "",
       "format": "geojson, shp",
-      "url": "https://old.datahub.io/dataset/e742168c-aef1-4bba-bfbf-4e78cf3fcfeb/resource/fb698f7c-e946-416e-a3d1-d6731e7a0287/download/cenova_mapa_12.zip",
+      "url": "https://datahub-old.portaljs.com/datahub-prod/resources/fb698f7c-e946-416e-a3d1-d6731e7a0287/cenova_mapa_12.zip",
       "datastore_active": false,
       "cache_last_updated": null,
       "package_id": "e742168c-aef1-4bba-bfbf-4e78cf3fcfeb",
