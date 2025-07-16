@@ -5,6 +5,8 @@ import "@/styles/tabs.scss";
 import type { AppProps } from "next/app";
 import { DefaultSeo } from "next-seo";
 import { useRouter } from "next/router";
+import Head from "next/head";
+import { useEffect } from "react";
 
 import SEO from "../next-seo.config";
 
@@ -13,9 +15,25 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Breadcrumbs from "../components/_shared/Breadcrumbs";
 
+
+const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_TRACKING_ID ?? "";
+
+const handleRouteChange = (url: URL) => {
+  window.gtag("config", GA_TRACKING_ID, {
+    page_path: url,
+  });
+};
+
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   
+  useEffect(() => {
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
+
   // Determine breadcrumbs based on current path
   const getBreadcrumbs = () => {
     const path = router.pathname;
@@ -56,6 +74,21 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
+      <Head>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+      </Head>
       <Header />
       <DefaultSeo {...SEO} />
       <Loader />
