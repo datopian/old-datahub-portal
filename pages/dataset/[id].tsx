@@ -4,6 +4,8 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Link from 'next/link';
 import { useState } from 'react';
 import styles from '../../styles/DatasetDetailPage.module.css';
+import { useRouter } from 'next/router';
+import Breadcrumbs from '@/components/_shared/Breadcrumbs';
 
 interface License {
   name: string;
@@ -92,7 +94,11 @@ function getActivityMessage(act: any) {
 }
 
 export default function DatasetDetailPage({ dataset, activityStream = [] }: Props) {
-  const [tab, setTab] = useState<'dataset' | 'groups' | 'activity'>('dataset');
+  const router = useRouter();
+  const datasetName = dataset?.name;
+  let tab: 'dataset' | 'groups' | 'activity' = 'dataset';
+  if (router.asPath.startsWith(`/dataset/groups/`)) tab = 'groups';
+  if (router.asPath.startsWith(`/dataset/activity/`)) tab = 'activity';
   if (!dataset) {
     return (
       <div style={{ padding: 32 }}>
@@ -111,13 +117,20 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Prop
 
   return (
     <div className={styles.pageBg}>
+      <div style={{ margin: '-22px 0 12px 0' }}>
+        <Breadcrumbs items={[
+          { label: 'Datasets', href: '/dataset' },
+          { label: dataset.title }
+        ]} />
+        <div style={{ borderBottom: '1px solid #e5e7eb', marginTop: 12 }} />
+      </div>
       <div className={styles.pageContainer}>
         <main className={styles.mainContent}>
           <h1 style={{ fontSize: '2rem', margin: 0, color: '#ff5722', marginBottom: 10 }}>{dataset.title}</h1>
           <div className={styles.tabRow}>
-            <button onClick={() => setTab('dataset')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
-            <button onClick={() => setTab('groups')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
-            <button onClick={() => setTab('activity')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
+            <button onClick={() => router.push(`/dataset/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
+            <button onClick={() => router.push(`/dataset/groups/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
+            <button onClick={() => router.push(`/dataset/activity/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
           </div>
           {tab === 'dataset' && (
             <>

@@ -6,6 +6,7 @@ import lunr from 'lunr';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '../../styles/DatasetsListPage.module.css';
+import Breadcrumbs from '@/components/_shared/Breadcrumbs';
 
 interface DatasetIndexEntry {
   id: string;
@@ -28,7 +29,6 @@ interface Props {
   licenses: { name: string; count: number }[];
 }
 
-// Simple media query hook
 function useMediaQuery(query: string) {
   const [matches, setMatches] = useState(false);
   useEffect(() => {
@@ -81,6 +81,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     setQuery(searchInput);
+    updateQueryParam('q', searchInput);
   };
 
   const searched = useMemo(() => {
@@ -122,19 +123,41 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
 
   useEffect(() => {
     if (router.isReady) {
-      const tagParam = router.query.tag;
+      const orgParam = router.query.organization;
+      if (typeof orgParam === 'string' && orgParam !== activeOrg) {
+        setActiveOrg(orgParam);
+      } else if (!orgParam && activeOrg) {
+        setActiveOrg(null);
+      }
+      const tagParam = router.query.tags;
       if (typeof tagParam === 'string' && tagParam !== activeTag) {
         setActiveTag(tagParam);
       } else if (!tagParam && activeTag) {
         setActiveTag(null);
+      }
+      const fmtParam = router.query.res_format;
+      if (typeof fmtParam === 'string' && fmtParam !== activeFormat) {
+        setActiveFormat(fmtParam);
+      } else if (!fmtParam && activeFormat) {
+        setActiveFormat(null);
+      }
+      const licParam = router.query.license_id;
+      if (typeof licParam === 'string' && licParam !== activeLicense) {
+        setActiveLicense(licParam);
+      } else if (!licParam && activeLicense) {
+        setActiveLicense(null);
       }
       const qParam = router.query.q;
       if (typeof qParam === 'string' && qParam !== searchInput) {
         setSearchInput(qParam);
         setQuery(qParam);
       }
+      const sortParam = router.query.sort;
+      if (typeof sortParam === 'string' && sortParam !== sort) {
+        setSort(sortParam as any);
+      }
     }
-  }, [router.query.tag, router.query.q, router.isReady]);
+  }, [router.query.organization, router.query.tags, router.query.res_format, router.query.license_id, router.query.q, router.query.sort, router.isReady]);
 
   const isActive = (val: string | null, current: string) => val === current;
   const filterBtn = (label: string, active: boolean, onClick: () => void, count?: number) => (
@@ -174,21 +197,39 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
   );
 
   const activeFilters: { label: string; value: string; onRemove: () => void; type: string }[] = [];
-  if (activeOrg) activeFilters.push({ label: activeOrg, value: activeOrg, onRemove: () => setActiveOrg(null), type: 'Organization' });
-  if (activeTag) activeFilters.push({ label: activeTag, value: activeTag, onRemove: () => setActiveTag(null), type: 'Tag' });
-  if (activeFormat) activeFilters.push({ label: activeFormat, value: activeFormat, onRemove: () => setActiveFormat(null), type: 'Format' });
-  if (activeLicense) activeFilters.push({ label: activeLicense, value: activeLicense, onRemove: () => setActiveLicense(null), type: 'License' });
+  if (activeOrg) activeFilters.push({ label: activeOrg, value: activeOrg, onRemove: () => { setActiveOrg(null); updateQueryParam('organization', null); }, type: 'Organization' });
+  if (activeTag) activeFilters.push({ label: activeTag, value: activeTag, onRemove: () => { setActiveTag(null); updateQueryParam('tags', null); }, type: 'Tag' });
+  if (activeFormat) activeFilters.push({ label: activeFormat, value: activeFormat, onRemove: () => { setActiveFormat(null); updateQueryParam('res_format', null); }, type: 'Format' });
+  if (activeLicense) activeFilters.push({ label: activeLicense, value: activeLicense, onRemove: () => { setActiveLicense(null); updateQueryParam('license_id', null); }, type: 'License' });
 
   const isMobile = useMediaQuery('(max-width: 900px)');
 
+  function updateQueryParam(param: string, value: string | null) {
+    const query = { ...router.query };
+    if (value) {
+      query[param] = value;
+    } else {
+      delete query[param];
+    }
+    router.push({ pathname: '/dataset', query }, undefined, { shallow: true });
+  }
+
   return (
     <div className={styles.pageBg}>
+      <div style={{ margin: '-22px 0 12px 0' }}>
+        <Breadcrumbs items={[{ label: 'Datasets' }]} />
+        <div style={{ borderBottom: '1px solid #e5e7eb', marginTop: 12 }} />
+      </div>
       <div className={styles.pageContainer}>
         {!isMobile && (
           <aside className={styles.sidebar}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Organizations</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
+              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => {
+                const newValue = activeOrg === org.name ? null : org.name;
+                setActiveOrg(newValue);
+                updateQueryParam('organization', newValue);
+              }, org.count))}
               {orgs.length > 10 && (
                 <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllOrgs ? 'Show less' : 'Show more'}
@@ -197,7 +238,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Tags</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
+              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => {
+                const newValue = activeTag === tag.name ? null : tag.name;
+                setActiveTag(newValue);
+                updateQueryParam('tags', newValue); // ensure 'tags' is used
+              }, tag.count))}
               {tags.length > 10 && (
                 <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllTags ? 'Show less' : 'Show more'}
@@ -206,7 +251,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Formats</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
+              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => {
+                const newValue = activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase();
+                setActiveFormat(newValue);
+                updateQueryParam('res_format', newValue);
+              }, fmt.count))}
               {formats.length > 10 && (
                 <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllFormats ? 'Show less' : 'Show more'}
@@ -215,7 +264,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Licenses</h3>
             <div style={{ marginBottom: 0 }}>
-              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
+              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => {
+                const newValue = activeLicense === lic.name ? null : lic.name;
+                setActiveLicense(newValue);
+                updateQueryParam('license_id', newValue);
+              }, lic.count))}
               {licenses.length > 10 && (
                 <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllLicenses ? 'Show less' : 'Show more'}
@@ -238,7 +291,10 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                 Search
               </button>
               <label className={styles.sortLabel}>Order by:</label>
-              <select value={sort} onChange={e => setSort(e.target.value as any)} className={styles.sortSelect}>
+              <select value={sort} onChange={e => {
+                setSort(e.target.value as any);
+                updateQueryParam('sort', e.target.value);
+              }} className={styles.sortSelect}>
                 <option value="relevance">Relevance</option>
                 <option value="date">Date</option>
               </select>
@@ -264,7 +320,7 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
                 onMouseOut={e => (e.currentTarget.style.boxShadow = '0 2px 8px #0001')}
               >
                 <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#ff5722' }}>
-                  <Link href={`/datasets/${ds.id}`}>{ds.title}</Link>
+                  <Link href={`/dataset/${ds.id}`}>{ds.title}</Link>
                 </h2>
                 <div style={{ color: '#444', margin: '10px 0 8px 0', fontSize: '1.05rem', display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', textOverflow: 'ellipsis' }}>{ds.description}</div>
                 <div style={{ fontSize: '0.97rem', color: '#666', marginBottom: 8 }}>
@@ -286,34 +342,28 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
               style={{ margin: '0 6px', padding: '8px 14px', borderRadius: 6, border: '1px solid #ddd', background: '#fff', color: page === 1 ? '#bbb' : '#ff5722', fontWeight: 'bold', cursor: page === 1 ? 'not-allowed' : 'pointer' }}
             >{'<'}</button>
             
-            {/* Smart pagination - show only relevant page numbers */}
             {(() => {
               const pages = [];
-              const maxVisiblePages = 7; // Show max 7 page numbers
+              const maxVisiblePages = 7;
               
               if (totalPages <= maxVisiblePages) {
-                // If total pages is small, show all
                 for (let i = 1; i <= totalPages; i++) {
                   pages.push(i);
                 }
               } else {
-                // Smart pagination for many pages
                 if (page <= 4) {
-                  // Near the beginning
                   for (let i = 1; i <= 5; i++) {
                     pages.push(i);
                   }
                   pages.push('...');
                   pages.push(totalPages);
                 } else if (page >= totalPages - 3) {
-                  // Near the end
                   pages.push(1);
                   pages.push('...');
                   for (let i = totalPages - 4; i <= totalPages; i++) {
                     pages.push(i);
                   }
                 } else {
-                  // In the middle
                   pages.push(1);
                   pages.push('...');
                   for (let i = page - 1; i <= page + 1; i++) {
@@ -361,7 +411,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
           <aside className={styles.sidebar}>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Organizations</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => setActiveOrg(activeOrg === org.name ? null : org.name), org.count))}
+              {(showAllOrgs ? orgs : orgs.slice(0, 10)).map(org => filterBtn(org.name, isActive(activeOrg, org.name), () => {
+                const newValue = activeOrg === org.name ? null : org.name;
+                setActiveOrg(newValue);
+                updateQueryParam('organization', newValue);
+              }, org.count))}
               {orgs.length > 10 && (
                 <button onClick={() => setShowAllOrgs(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllOrgs ? 'Show less' : 'Show more'}
@@ -370,7 +424,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Tags</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count))}
+              {(showAllTags ? tags : tags.slice(0, 10)).map(tag => filterBtn(tag.name, isActive(activeTag, tag.name), () => {
+                const newValue = activeTag === tag.name ? null : tag.name;
+                setActiveTag(newValue);
+                updateQueryParam('tags', newValue);
+              }, tag.count))}
               {tags.length > 10 && (
                 <button onClick={() => setShowAllTags(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllTags ? 'Show less' : 'Show more'}
@@ -379,7 +437,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Formats</h3>
             <div style={{ marginBottom: 24 }}>
-              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count))}
+              {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => {
+                const newValue = activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase();
+                setActiveFormat(newValue);
+                updateQueryParam('res_format', newValue);
+              }, fmt.count))}
               {formats.length > 10 && (
                 <button onClick={() => setShowAllFormats(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllFormats ? 'Show less' : 'Show more'}
@@ -388,7 +450,11 @@ export default function DatasetListPage({ datasets, orgs, tags, formats, license
             </div>
             <h3 style={{ fontSize: '1.1rem', marginBottom: 12 }}>Licenses</h3>
             <div style={{ marginBottom: 0 }}>
-              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count))}
+              {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => filterBtn(lic.name, isActive(activeLicense, lic.name), () => {
+                const newValue = activeLicense === lic.name ? null : lic.name;
+                setActiveLicense(newValue);
+                updateQueryParam('license_id', newValue);
+              }, lic.count))}
               {licenses.length > 10 && (
                 <button onClick={() => setShowAllLicenses(v => !v)} style={{ background: 'none', border: 'none', color: '#ff5722', cursor: 'pointer', fontWeight: 'bold', marginTop: 4 }}>
                   {showAllLicenses ? 'Show less' : 'Show more'}

@@ -5,6 +5,8 @@ import { useState, useMemo, useEffect, useRef } from 'react';
 import lunr from 'lunr';
 import Link from 'next/link';
 import styles from '../../styles/OrganizationsListPage.module.css';
+import { useRouter } from 'next/router';
+import Breadcrumbs from '@/components/_shared/Breadcrumbs';
 
 interface OrganizationIndexEntry {
   id: string;
@@ -22,6 +24,7 @@ interface Props {
 }
 
 export default function OrganizationsListPage({ organizations }: Props) {
+  const router = useRouter();
   const safeOrganizations = Array.isArray(organizations) ? organizations : [];
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState<'name' | 'packages' | 'date'>('name');
@@ -47,6 +50,19 @@ export default function OrganizationsListPage({ organizations }: Props) {
       })
       .catch(() => setLoadingIdx(false));
   }, [safeOrganizations]);
+
+  useEffect(() => {
+    if (router.isReady) {
+      const qParam = router.query.q;
+      if (typeof qParam === 'string' && qParam !== query) {
+        setQuery(qParam);
+      }
+      const sortParam = router.query.sort;
+      if (typeof sortParam === 'string' && sortParam !== sort) {
+        setSort(sortParam as any);
+      }
+    }
+  }, [router.query.q, router.query.sort, router.isReady]);
 
   const searched = useMemo(() => {
     if (loadingIdx) return [];
@@ -80,6 +96,16 @@ export default function OrganizationsListPage({ organizations }: Props) {
 
   useMemo(() => { setPage(1); }, [query, sort]);
 
+  function updateQueryParam(param: string, value: string | null) {
+    const queryObj = { ...router.query };
+    if (value) {
+      queryObj[param] = value;
+    } else {
+      delete queryObj[param];
+    }
+    router.push({ pathname: '/organization', query: queryObj }, undefined, { shallow: true });
+  }
+
   function getPaginationPages(current: number, total: number) {
     const maxVisible = 5;
     if (total <= maxVisible) {
@@ -98,8 +124,11 @@ export default function OrganizationsListPage({ organizations }: Props) {
 
   return (
     <div className={styles.pageBg}>
+      <div style={{ margin: '-22px 0 12px 0' }}>
+        <Breadcrumbs items={[{ label: 'Organizations' }]} />
+        <div style={{ borderBottom: '1px solid #e5e7eb', marginTop: 12 }} />
+      </div>
       <div className={styles.pageContainer}>
-        {/* Header */}
         <div className={styles.headerBlock}>
           <h1 className={styles.pageTitle}>What are Organisations?</h1>
           <p className={styles.pageDesc}>
@@ -107,19 +136,24 @@ export default function OrganizationsListPage({ organizations }: Props) {
           </p>
         </div>
 
-        {/* Search and sorting */}
         <div className={styles.searchSortRow}>
           <input
             type="text"
             placeholder="Search organizations..."
             value={query}
-            onChange={e => setQuery(e.target.value)}
+            onChange={e => {
+              setQuery(e.target.value);
+              updateQueryParam('q', e.target.value);
+            }}
             className={styles.searchInput}
           />
           <label className={styles.sortLabel}>Sort by:</label>
           <select 
             value={sort} 
-            onChange={e => setSort(e.target.value as any)} 
+            onChange={e => {
+              setSort(e.target.value as any);
+              updateQueryParam('sort', e.target.value);
+            }}
             className={styles.sortSelect}
           >
             <option value="name">Name</option>
@@ -128,15 +162,13 @@ export default function OrganizationsListPage({ organizations }: Props) {
           </select>
         </div>
 
-        {/* Statistics */}
         <div className={styles.statsText}>
           {loadingIdx ? 'Loading organizations…' : `${sorted.length} organizations found`}
         </div>
 
-        {/* Organizations grid */}
         <div className={styles.orgGrid}>
           {paged.map(org => (
-            <Link key={org.id} href={`/organizations/${org.name}`} style={{ textDecoration: 'none' }}>
+            <Link key={org.id} href={`/organization/${org.name}`} style={{ textDecoration: 'none' }}>
               <div className={styles.orgCard}
                 onMouseOver={e => {
                   e.currentTarget.style.boxShadow = '0 4px 16px #0002';
@@ -147,7 +179,6 @@ export default function OrganizationsListPage({ organizations }: Props) {
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
-                {/* Logo */}
                 <div className={styles.orgLogoWrap}>
                   <img 
                     src={org.image_url || '/images/logos/DefaultOrgLogo.svg'} 
@@ -156,7 +187,6 @@ export default function OrganizationsListPage({ organizations }: Props) {
                   />
                 </div>
 
-                {/* Name */}
                 <h2 className={styles.orgCardTitle}>
                   {org.title}
                 </h2>

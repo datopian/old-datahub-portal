@@ -6,6 +6,8 @@ import lunr from 'lunr';
 import Link from 'next/link';
 import Tabs from '@/components/_shared/Tabs';
 import styles from '../../styles/OrganizationPage.module.css';
+import { useRouter } from 'next/router';
+import Breadcrumbs from '@/components/_shared/Breadcrumbs';
 
 interface Organization {
   id: string;
@@ -57,7 +59,9 @@ interface Props {
 }
 
 export default function OrganizationPage({ organization, datasets, tags, formats, licenses, activityStream }: Props) {
+  const router = useRouter();
   const [query, setQuery] = useState('');
+  const [searchInput, setSearchInput] = useState('');
   const [sort, setSort] = useState<'relevance' | 'date'>('relevance');
   const [activeTag, setActiveTag] = useState<string | null>(null);
   const [activeFormat, setActiveFormat] = useState<string | null>(null);
@@ -69,13 +73,31 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   const [showAllLicenses, setShowAllLicenses] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
 
-  if (!organization) {
-    return (
-      <div style={{ padding: 32 }}>
-        <div>Organization not found.</div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    if (router.isReady) {
+      const qParam = router.query.q;
+      if (typeof qParam === 'string' && qParam !== query) {
+        setQuery(qParam);
+        setSearchInput(qParam);
+      }
+      const sortParam = router.query.sort;
+      if (typeof sortParam === 'string' && sortParam !== sort) {
+        setSort(sortParam as any);
+      }
+      const tagParam = router.query.tags;
+      if (typeof tagParam === 'string' && tagParam !== activeTag) {
+        setActiveTag(tagParam);
+      }
+      const fmtParam = router.query.res_format;
+      if (typeof fmtParam === 'string' && fmtParam !== activeFormat) {
+        setActiveFormat(fmtParam);
+      }
+      const licParam = router.query.license_id;
+      if (typeof licParam === 'string' && licParam !== activeLicense) {
+        setActiveLicense(licParam);
+      }
+    }
+  }, [router.query.q, router.query.sort, router.query.tags, router.query.res_format, router.query.license_id, router.isReady]);
 
   const { idx, idMap } = useMemo(() => {
     const idMap: Record<string, DatasetIndexEntry> = {};
@@ -130,7 +152,18 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   const totalPages = Math.ceil(sorted.length / pageSize);
   const paged = sorted.slice((page - 1) * pageSize, page * pageSize);
 
-  useMemo(() => { setPage(1); }, [query, activeTag, activeFormat, activeLicense]);
+  useEffect(() => { setPage(1); }, [query, activeTag, activeFormat, activeLicense]);
+
+  function updateQueryParam(param: string, value: string | null) {
+    const queryObj = { ...router.query };
+    if (value) {
+      queryObj[param] = value;
+    } else {
+      delete queryObj[param];
+    }
+    router.push({ pathname: router.pathname, query: { ...queryObj, name: router.query.name } }, undefined, { shallow: true });
+    setPage(1);
+  }
 
   const isActive = (val: string | null, current: string) => val === current;
   const filterBtn = (label: string, active: boolean, onClick: () => void, count?: number) => (
@@ -170,159 +203,17 @@ export default function OrganizationPage({ organization, datasets, tags, formats
   );
 
   const activeFilters: { label: string; value: string; onRemove: () => void; type: string }[] = [];
-  if (activeTag) activeFilters.push({ label: activeTag, value: activeTag, onRemove: () => setActiveTag(null), type: 'Tag' });
-  if (activeFormat) activeFilters.push({ label: activeFormat, value: activeFormat, onRemove: () => setActiveFormat(null), type: 'Format' });
-  if (activeLicense) activeFilters.push({ label: activeLicense, value: activeLicense, onRemove: () => setActiveLicense(null), type: 'License' });
+  if (activeTag) activeFilters.push({ label: activeTag, value: activeTag, onRemove: () => { setActiveTag(null); updateQueryParam('tags', null); }, type: 'Tag' });
+  if (activeFormat) activeFilters.push({ label: activeFormat, value: activeFormat, onRemove: () => { setActiveFormat(null); updateQueryParam('res_format', null); }, type: 'Format' });
+  if (activeLicense) activeFilters.push({ label: activeLicense, value: activeLicense, onRemove: () => { setActiveLicense(null); updateQueryParam('license_id', null); }, type: 'License' });
 
-  // Datasets tab content
-  const DatasetsContent = () => (
-    <div>
-      {/* Search and sorting */}
-      <div className={styles.searchSortRow}>
-        <input
-          type="text"
-          placeholder="Search datasets..."
-          value={query}
-          onChange={e => setQuery(e.target.value)}
-          className={styles.searchInput}
-        />
-        <label className={styles.sortLabel}>Order by:</label>
-        <select 
-          value={sort} 
-          onChange={e => setSort(e.target.value as any)} 
-          className={styles.sortSelect}
-        >
-          <option value="relevance">Relevance</option>
-          <option value="date">Date</option>
-        </select>
-      </div>
-
-      {/* Results count */}
-      <div style={{ marginBottom: 20, color: '#888', fontSize: '1.05rem' }}>
-        {filtered.length} datasets found
-      </div>
-
-      {/* Active filters */}
-      {activeFilters.length > 0 && (
-        <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-          {activeFilters.map(f => (
-            <span key={f.type + f.value} style={{ background: '#ff5722', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
-              {f.type}: {f.label}
-              <button onClick={f.onRemove} style={{ marginLeft: 8, background: 'none', border: 'none', color: '#fff', fontWeight: 'bold', fontSize: '1.1em', cursor: 'pointer', lineHeight: 1 }} title="Remove filter">×</button>
-            </span>
-          ))}
-        </div>
-      )}
-
-      {/* Datasets list */}
-      <div>
-        {paged.map(ds => (
-          <div key={ds.id} style={{ 
-            background: '#fff', 
-            border: '1px solid #e5e7eb', 
-            borderRadius: 12, 
-            boxShadow: '0 2px 8px #0001', 
-            padding: 20, 
-            marginBottom: 24, 
-            transition: 'box-shadow 0.2s', 
-            cursor: 'pointer' 
-          }}
-            onMouseOver={e => (e.currentTarget.style.boxShadow = '0 4px 16px #0002')}
-            onMouseOut={e => (e.currentTarget.style.boxShadow = '0 2px 8px #0001')}
-          >
-            <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#ff5722' }}>
-              <Link href={`/datasets/${ds.id}`}>{ds.title}</Link>
-            </h2>
-            <div style={{ 
-              color: '#444', 
-              margin: '10px 0 8px 0', 
-              fontSize: '1.05rem', 
-              display: '-webkit-box', 
-              WebkitLineClamp: 2, 
-              WebkitBoxOrient: 'vertical', 
-              overflow: 'hidden', 
-              textOverflow: 'ellipsis' 
-            }}>
-              {ds.description}
-            </div>
-            <div style={{ marginTop: 8 }}>
-              {ds.path && (
-                <DatasetFormats path={ds.path} />
-              )}
-            </div>
-          </div>
-        ))}
-        {paged.length === 0 && (
-          <div style={{ 
-            textAlign: 'center', 
-            padding: 40, 
-            color: '#888', 
-            fontSize: '1.1rem' 
-          }}>
-            No datasets found.
-          </div>
-        )}
-      </div>
-
-      {/* Pagination */}
-      {totalPages > 1 && (
-        <div style={{ textAlign: 'center', marginTop: 40 }}>
-          <button
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-            style={{ 
-              margin: '0 6px', 
-              padding: '8px 14px', 
-              borderRadius: 6, 
-              border: '1px solid #ddd', 
-              background: '#fff', 
-              color: page === 1 ? '#bbb' : '#ff5722', 
-              fontWeight: 'bold', 
-              cursor: page === 1 ? 'not-allowed' : 'pointer' 
-            }}
-          >
-            {'<'}
-          </button>
-          {getPaginationPages(page, totalPages).map((pageNum, index) => (
-            pageNum === '...'
-              ? <span key={`ellipsis-${index}`} style={{ margin: '0 6px', padding: '8px 14px', color: '#888' }}>...</span>
-              : <button
-                  key={pageNum}
-                  onClick={() => setPage(pageNum as number)}
-                  style={{ 
-                    margin: '0 6px', 
-                    padding: '8px 14px', 
-                    borderRadius: 6, 
-                    border: pageNum === page ? '1px solid #ff5722' : '1px solid #ddd', 
-                    background: pageNum === page ? '#ff5722' : '#fff', 
-                    color: pageNum === page ? '#fff' : '#ff5722', 
-                    fontWeight: 'bold', 
-                    cursor: 'pointer' 
-                  }}
-                >
-                  {pageNum}
-                </button>
-          ))}
-          <button
-            onClick={() => setPage(page + 1)}
-            disabled={page === totalPages}
-            style={{ 
-              margin: '0 6px', 
-              padding: '8px 14px', 
-              borderRadius: 6, 
-              border: '1px solid #ddd', 
-              background: '#fff', 
-              color: page === totalPages ? '#bbb' : '#ff5722', 
-              fontWeight: 'bold', 
-              cursor: page === totalPages ? 'not-allowed' : 'pointer' 
-            }}
-          >
-            {'>'}
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  const datasetsContentProps = {
+    searchInput, setSearchInput, query, setQuery, sort, setSort,
+    paged, totalPages, page, setPage, activeFilters, filterBtn, styles,
+    updateQueryParam, showAllTags, setShowAllTags, showAllFormats, setShowAllFormats, showAllLicenses, setShowAllLicenses,
+    tags, formats, licenses, activeTag, setActiveTag, activeFormat, setActiveFormat, activeLicense, setActiveLicense,
+    sorted
+  };
 
   function timeAgo(dateStr: string) {
     const date = new Date(dateStr);
@@ -364,7 +255,6 @@ export default function OrganizationPage({ organization, datasets, tags, formats
     );
   };
 
-  // About tab content
   const AboutContent = () => (
     <div style={{ background: '#fff', borderRadius: 12, padding: 24 }}>
       <h3 style={{ fontSize: '1.3rem', marginBottom: 16, color: '#ff5722' }}>About {organization.title}</h3>
@@ -411,30 +301,26 @@ export default function OrganizationPage({ organization, datasets, tags, formats
     </div>
   );
 
-  const tabs = [
-    {
-      id: 'datasets',
-      label: 'Datasets',
-      content: <DatasetsContent />
-    },
-    {
-      id: 'activity',
-      label: 'Activity Stream',
-      content: <ActivityStreamContent />
-    },
-    {
-      id: 'about',
-      label: 'About',
-      content: <AboutContent />
+  const orgName = organization.name;
+  const activeTab = (() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.pathname.startsWith(`/organization/activity/`)) return 'activity';
+      if (window.location.pathname.startsWith(`/organization/about/`)) return 'about';
     }
-  ];
+    return 'datasets';
+  })();
 
   return (
     <div className={styles.pageBg}>
+      <div style={{ margin: '-22px 0 12px 0' }}>
+        <Breadcrumbs items={[
+          { label: 'Organizations', href: '/organization' },
+          { label: organization.title }
+        ]} />
+        <div style={{ borderBottom: '1px solid #e5e7eb', marginTop: 12 }} />
+      </div>
       <div className={styles.pageContainer}>
-        {/* Left column: Organization info and filters */}
         <aside className={styles.sidebar}>
-          {/* Organization info */}
           <div className={styles.orgInfo}>
             <img 
               src={organization.image_url || '/images/logos/DefaultOrgLogo.svg'} 
@@ -468,19 +354,21 @@ export default function OrganizationPage({ organization, datasets, tags, formats
               </div>
             </div>
           </div>
-          {/* Current organization filter (always active) */}
           <div className={styles.currentOrgFilter}>
             <h3 className={styles.filterTitle}>Current Organization</h3>
             <div className={styles.currentOrgName}>
               {organization.title}
             </div>
           </div>
-          {/* Tags filter */}
           <div className={styles.filterBlock}>
             <h3 className={styles.filterTitle}>Tags</h3>
             <div>
               {(showAllTags ? tags : tags.slice(0, 10)).map(tag => 
-                filterBtn(tag.name, isActive(activeTag, tag.name), () => setActiveTag(activeTag === tag.name ? null : tag.name), tag.count)
+                filterBtn(tag.name, isActive(activeTag, tag.name), () => {
+                  const newValue = activeTag === tag.name ? null : tag.name;
+                  setActiveTag(newValue);
+                  updateQueryParam('tags', newValue);
+                }, tag.count)
               )}
               {tags.length > 10 && (
                 <button onClick={() => setShowAllTags(v => !v)} className={styles.showMoreBtn}>
@@ -489,12 +377,15 @@ export default function OrganizationPage({ organization, datasets, tags, formats
               )}
             </div>
           </div>
-          {/* Formats filter */}
           <div className={styles.filterBlock}>
             <h3 className={styles.filterTitle}>Formats</h3>
             <div>
               {(showAllFormats ? formats : formats.slice(0, 10)).map(fmt => 
-                filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => setActiveFormat(activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase()), fmt.count)
+                filterBtn(fmt.name.toUpperCase(), isActive(activeFormat, fmt.name.toUpperCase()), () => {
+                  const newValue = activeFormat === fmt.name.toUpperCase() ? null : fmt.name.toUpperCase();
+                  setActiveFormat(newValue);
+                  updateQueryParam('res_format', newValue);
+                }, fmt.count)
               )}
               {formats.length > 10 && (
                 <button onClick={() => setShowAllFormats(v => !v)} className={styles.showMoreBtn}>
@@ -503,12 +394,15 @@ export default function OrganizationPage({ organization, datasets, tags, formats
               )}
             </div>
           </div>
-          {/* Licenses filter */}
           <div className={styles.filterBlock}>
             <h3 className={styles.filterTitle}>Licenses</h3>
             <div>
               {(showAllLicenses ? licenses : licenses.slice(0, 10)).map(lic => 
-                filterBtn(lic.name, isActive(activeLicense, lic.name), () => setActiveLicense(activeLicense === lic.name ? null : lic.name), lic.count)
+                filterBtn(lic.name, isActive(activeLicense, lic.name), () => {
+                  const newValue = activeLicense === lic.name ? null : lic.name;
+                  setActiveLicense(newValue);
+                  updateQueryParam('license_id', newValue);
+                }, lic.count)
               )}
               {licenses.length > 10 && (
                 <button onClick={() => setShowAllLicenses(v => !v)} className={styles.showMoreBtn}>
@@ -518,11 +412,204 @@ export default function OrganizationPage({ organization, datasets, tags, formats
             </div>
           </div>
         </aside>
-        {/* Main content: Tabs */}
         <main className={styles.mainContent}>
-          <Tabs tabs={tabs} defaultTab="datasets" />
+          <div style={{ display: 'flex', borderBottom: '1px solid #e5e7eb', marginBottom: 24, marginTop: 8 }}>
+            <Link href={`/organization/${orgName}`} legacyBehavior>
+              <a style={{
+                padding: '12px 24px',
+                border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'datasets' ? '3px solid #ff5722' : '3px solid transparent',
+                color: activeTab === 'datasets' ? '#ff5722' : '#666',
+                fontWeight: activeTab === 'datasets' ? 'bold' : 'normal',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                marginRight: 8
+              }}>Datasets</a>
+            </Link>
+            <Link href={`/organization/activity/${orgName}/0`} legacyBehavior>
+              <a style={{
+                padding: '12px 24px',
+                border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'activity' ? '3px solid #ff5722' : '3px solid transparent',
+                color: activeTab === 'activity' ? '#ff5722' : '#666',
+                fontWeight: activeTab === 'activity' ? 'bold' : 'normal',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                marginRight: 8
+              }}>Activity</a>
+            </Link>
+            <Link href={`/organization/about/${orgName}`} legacyBehavior>
+              <a style={{
+                padding: '12px 24px',
+                border: 'none',
+                background: 'none',
+                borderBottom: activeTab === 'about' ? '3px solid #ff5722' : '3px solid transparent',
+                color: activeTab === 'about' ? '#ff5722' : '#666',
+                fontWeight: activeTab === 'about' ? 'bold' : 'normal',
+                fontSize: '1rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                marginRight: 8
+              }}>About</a>
+            </Link>
+          </div>
+          <DatasetsContent {...datasetsContentProps} />
         </main>
       </div>
+    </div>
+  );
+}
+
+function DatasetsContent({
+  searchInput, setSearchInput, query, setQuery, sort, setSort,
+  paged, totalPages, page, setPage, activeFilters, filterBtn, styles,
+  updateQueryParam, showAllTags, setShowAllTags, showAllFormats, setShowAllFormats, showAllLicenses, setShowAllLicenses,
+  tags, formats, licenses, activeTag, setActiveTag, activeFormat, setActiveFormat, activeLicense, setActiveLicense,
+  sorted
+}: any) {
+  return (
+    <div>
+      <form onSubmit={e => { e.preventDefault(); setQuery(searchInput); updateQueryParam('q', searchInput); }} className={styles.searchForm}>
+        <input
+          type="text"
+          placeholder="Search datasets..."
+          value={searchInput}
+          onChange={e => setSearchInput(e.target.value)}
+          className={styles.searchInput}
+        />
+        <button type="submit" className={styles.searchBtn}>Search</button>
+        <label className={styles.sortLabel}>Order by:</label>
+        <select
+          value={sort}
+          onChange={e => {
+            setSort(e.target.value as any);
+            updateQueryParam('sort', e.target.value);
+          }}
+          className={styles.sortSelect}
+        >
+          <option value="relevance">Relevance</option>
+          <option value="date">Date</option>
+        </select>
+      </form>
+      <div style={{ marginBottom: 20, color: '#888', fontSize: '1.05rem' }}>
+        {sorted.length} datasets found
+      </div>
+      {activeFilters.length > 0 && (
+        <div style={{ marginBottom: 20, display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
+          {activeFilters.map(f => (
+            <span key={f.type + f.value} style={{ background: '#ff5722', color: '#fff', borderRadius: 6, padding: '4px 10px', display: 'flex', alignItems: 'center', fontSize: '0.97rem', fontWeight: 'bold' }}>
+              {f.type}: {f.label}
+              <button onClick={f.onRemove} style={{ marginLeft: 8, background: 'none', border: 'none', color: '#fff', fontWeight: 'bold', fontSize: '1.1em', cursor: 'pointer', lineHeight: 1 }} title="Remove filter">×</button>
+            </span>
+          ))}
+        </div>
+      )}
+      <div>
+        {paged.map(ds => (
+          <div key={ds.id} style={{ 
+            background: '#fff', 
+            border: '1px solid #e5e7eb', 
+            borderRadius: 12, 
+            boxShadow: '0 2px 8px #0001', 
+            padding: 20, 
+            marginBottom: 24, 
+            transition: 'box-shadow 0.2s', 
+            cursor: 'pointer' 
+          }}
+            onMouseOver={e => (e.currentTarget.style.boxShadow = '0 4px 16px #0002')}
+            onMouseOut={e => (e.currentTarget.style.boxShadow = '0 2px 8px #0001')}
+          >
+            <h2 style={{ margin: 0, fontSize: '1.2rem', color: '#ff5722' }}>
+              <Link href={`/dataset/${ds.id}`}>{ds.title}</Link>
+            </h2>
+            <div style={{ 
+              color: '#444', 
+              margin: '10px 0 8px 0', 
+              fontSize: '1.05rem', 
+              display: '-webkit-box', 
+              WebkitLineClamp: 2, 
+              WebkitBoxOrient: 'vertical', 
+              overflow: 'hidden', 
+              textOverflow: 'ellipsis' 
+            }}>
+              {ds.description}
+            </div>
+            <div style={{ marginTop: 8 }}>
+              {ds.path && (
+                <DatasetFormats path={ds.path} />
+              )}
+            </div>
+          </div>
+        ))}
+        {paged.length === 0 && (
+          <div style={{ 
+            textAlign: 'center', 
+            padding: 40, 
+            color: '#888', 
+            fontSize: '1.1rem' 
+          }}>
+            No datasets found.
+          </div>
+        )}
+      </div>
+      {totalPages > 1 && (
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
+          <button
+            onClick={() => setPage(page - 1)}
+            disabled={page === 1}
+            style={{ 
+              margin: '0 6px', 
+              padding: '8px 14px', 
+              borderRadius: 6, 
+              border: '1px solid #ddd', 
+              background: '#fff', 
+              color: page === 1 ? '#bbb' : '#ff5722', 
+              fontWeight: 'bold', 
+              cursor: page === 1 ? 'not-allowed' : 'pointer' 
+            }}
+          >
+            {'<'}
+          </button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => (
+            <button
+              key={pageNum}
+              onClick={() => setPage(pageNum)}
+              style={{ 
+                margin: '0 6px', 
+                padding: '8px 14px', 
+                borderRadius: 6, 
+                border: pageNum === page ? '1px solid #ff5722' : '1px solid #ddd', 
+                background: pageNum === page ? '#ff5722' : '#fff', 
+                color: pageNum === page ? '#fff' : '#ff5722', 
+                fontWeight: 'bold', 
+                cursor: 'pointer' 
+              }}
+            >
+              {pageNum}
+            </button>
+          ))}
+          <button
+            onClick={() => setPage(page + 1)}
+            disabled={page === totalPages}
+            style={{ 
+              margin: '0 6px', 
+              padding: '8px 14px', 
+              borderRadius: 6, 
+              border: '1px solid #ddd', 
+              background: '#fff', 
+              color: page === totalPages ? '#bbb' : '#ff5722', 
+              fontWeight: 'bold', 
+              cursor: page === totalPages ? 'not-allowed' : 'pointer' 
+            }}
+          >
+            {'>'}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
@@ -604,7 +691,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params as { name: string };
   
-  // Load organization data
   const orgPath = path.join(process.cwd(), 'datasets', name, 'organization.json');
   let organization = null;
   
@@ -615,7 +701,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     organization = null;
   }
   
-  // Load datasets for this organization
   const datasetsIndexPath = path.join(process.cwd(), 'datasets-index.json');
   let allDatasets = [];
   
@@ -635,7 +720,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     datasets = [];
   }
   
-  // Calculate tag counts
   const tagCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.tags || []).forEach((tag: string) => {
@@ -646,7 +730,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
 
-  // Calculate format counts
   const formatCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.formats || []).forEach((fmt: string) => {
@@ -658,7 +741,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
 
-  // Calculate license counts
   const licenseCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.licenses || []).forEach((lic: string) => {
@@ -669,7 +751,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
   
-  // Load activity stream for this organization
   const activityPath = path.join(process.cwd(), 'datasets', name, 'activity_stream.json');
   let activityStream = [];
   try {

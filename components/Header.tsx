@@ -19,8 +19,8 @@ export default function Header() {
           <span></span>
         </button>
         <nav className={styles.nav + (menuOpen ? ' ' + styles.open : '')}>
-          <Link href="/datasets" onClick={() => setMenuOpen(false)}>Datasets</Link>
-          <Link href="/organizations" onClick={() => setMenuOpen(false)}>Organizations</Link>
+          <Link href="/dataset" onClick={() => setMenuOpen(false)}>Datasets</Link>
+          <Link href="/organization" onClick={() => setMenuOpen(false)}>Organizations</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
         </nav>
       </div>

@@ -7,8 +7,8 @@ export default function Footer() {
       <div className={styles.links}>
         <div>
           <div className={styles.linksTitle}>Explore</div>
-          <Link href="/datasets">Datasets</Link>
-          <Link href="/organizations">Organizations</Link>
+          <Link href="/dataset">Datasets</Link>
+          <Link href="/organization">Organizations</Link>
           <Link href="/about">About</Link>
           <Link href="https://docs.ckan.org/en/2.6/api/">API Docs</Link>
         </div>

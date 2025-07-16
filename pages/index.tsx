@@ -36,7 +36,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      router.push(`/datasets?q=${encodeURIComponent(searchQuery.trim())}`);
+      router.push(`/dataset?q=${encodeURIComponent(searchQuery.trim())}`);
     }
   };
 
@@ -116,7 +116,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
         <section className={styles.statsSection}>
           <div
             className={styles.statsCard}
-            onClick={() => router.push('/datasets')}
+            onClick={() => router.push('/dataset')}
             onMouseOver={e => {
               e.currentTarget.style.boxShadow = '0 4px 24px #ff572233';
               e.currentTarget.style.border = '1.5px solid #ff5722';
@@ -134,7 +134,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
           </div>
           <div
             className={styles.statsCard}
-            onClick={() => router.push('/organizations')}
+            onClick={() => router.push('/organization')}
             onMouseOver={e => {
               e.currentTarget.style.boxShadow = '0 4px 24px #ff572233';
               e.currentTarget.style.border = '1.5px solid #ff5722';
@@ -243,7 +243,7 @@ export default function Home({ datasets, stats, popularTags }: Props) {
                         transition: 'background 0.2s',
                       }}
                       onClick={() => {
-                        window.location.href = `/datasets?tag=${encodeURIComponent(tag.id)}`;
+                        window.location.href = `/dataset?tags=${encodeURIComponent(tag.id)}`;
                       }}
                     >View</button>
                   </div>

@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     const breadcrumbs = [];
     
     if (segments[0] === 'datasets') {
-      breadcrumbs.push({ label: 'Datasets', href: '/datasets' });
+      breadcrumbs.push({ label: 'Datasets', href: '/dataset' });
       
       if (segments[1]) {
         // This is a single dataset page
@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         breadcrumbs.push({ label: segments[1] });
       }
     } else if (segments[0] === 'organizations') {
-      breadcrumbs.push({ label: 'Organizations', href: '/organizations' });
+      breadcrumbs.push({ label: 'Organizations', href: '/organization' });
       if (segments[1]) {
         // This is a single organization page
         const organizationTitle = pageProps.organization?.title || segments[1];

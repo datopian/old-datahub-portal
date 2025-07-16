@@ -157,6 +157,28 @@
   font-size: 1rem;
 }
 
+.searchForm {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+
+.searchBtn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.searchBtn:hover {
+  background: #e64a19;
+}
+
 /* Responsive styles */
 @media (max-width: 900px) {
   .pageContainer {
