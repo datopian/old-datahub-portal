@@ -1,40 +1,35 @@
-import fs from 'fs';
-import path from 'path';
-import { GetStaticPaths, GetStaticProps } from 'next';
-import Link from 'next/link';
-import { useState } from 'react';
-import styles from '../../styles/DatasetDetailPage.module.css';
-import { useRouter } from 'next/router';
+import styles from '../../../styles/DatasetDetailPage.module.css';
 import Breadcrumbs from '@/components/_shared/Breadcrumbs';
+import { useRouter } from 'next/router';
 
-interface License {
+export interface License {
   name: string;
   title: string;
   path: string;
 }
-interface Source {
+export interface Source {
   title: string;
   path: string;
 }
-interface Contributor {
+export interface Contributor {
   title: string;
   role?: string;
 }
-interface Organization {
+export interface Organization {
   name: string;
   title?: string;
   logo?: string;
   description?: string;
   socials?: { name: string; url: string }[];
 }
-interface Resource {
+export interface Resource {
   name: string;
   description?: string;
   format?: string;
   path: string;
   url?: string;
 }
-interface DatasetDetail {
+export interface DatasetDetail {
   name: string;
   title: string;
   description: string;
@@ -49,7 +44,7 @@ interface DatasetDetail {
   resources: Resource[];
 }
 
-interface Props {
+export interface DatasetDetailPageProps {
   dataset: DatasetDetail | null;
   activityStream?: any[];
 }
@@ -93,7 +88,19 @@ function getActivityMessage(act: any) {
   return `${user} did ${type}`;
 }
 
-export default function DatasetDetailPage({ dataset, activityStream = [] }: Props) {
+function timeAgo(dateStr: string) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+  if (diff < 60) return `${diff} seconds ago`;
+  if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+  if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
+  if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
+  return `${Math.floor(diff / 31536000)} years ago`;
+}
+
+export default function DatasetDetailPage({ dataset, activityStream = [] }: DatasetDetailPageProps) {
   const router = useRouter();
   const datasetName = dataset?.name;
   let tab: 'dataset' | 'groups' | 'activity' = 'dataset';
@@ -227,69 +234,4 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Prop
       </div>
     </div>
   );
-}
-
-function timeAgo(dateStr: string) {
-  const date = new Date(dateStr);
-  const now = new Date();
-  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
-  if (diff < 60) return `${diff} seconds ago`;
-  if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
-  if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
-  if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
-  return `${Math.floor(diff / 31536000)} years ago`;
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const indexPath = path.join(process.cwd(), 'datasets-index.json');
-  let datasets = [];
-  try {
-    const raw = fs.readFileSync(indexPath, 'utf-8');
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) {
-      datasets = parsed;
-    }
-  } catch (e) {
-    datasets = [];
-  }
-  const paths = datasets.map((ds: any) => ({ params: { id: ds.id } }));
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { id } = context.params as { id: string };
-  const indexPath = path.join(process.cwd(), 'datasets-index.json');
-  let datasets = [];
-  try {
-    const raw = fs.readFileSync(indexPath, 'utf-8');
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) {
-      datasets = parsed;
-    }
-  } catch (e) {
-    datasets = [];
-  }
-  const entry = datasets.find((ds: any) => ds.id === id);
-  let dataset = null;
-  let activityStream = [];
-  if (entry && entry.path) {
-    const dpPath = path.join(process.cwd(), entry.path);
-    try {
-      const raw = fs.readFileSync(dpPath, 'utf-8');
-      dataset = JSON.parse(raw);
-    } catch (e) {
-      dataset = null;
-    }
-    const activityPath = path.join(path.dirname(dpPath), 'activity_stream.json');
-    if (fs.existsSync(activityPath)) {
-      try {
-        const raw = fs.readFileSync(activityPath, 'utf-8');
-        activityStream = JSON.parse(raw);
-      } catch (e) {
-        activityStream = [];
-      }
-    }
-  }
-  return { props: { dataset, activityStream } };
-};
+} 

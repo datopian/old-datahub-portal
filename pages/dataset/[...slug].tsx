@@ -1,4 +1,4 @@
-import DatasetDetailPage from './[id]';
+import DatasetDetailPage from '../../components/dataset/individualPage/DatasetDetailPage';
 import fs from 'fs';
 import path from 'path';
 
