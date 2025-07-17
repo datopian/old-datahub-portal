@@ -120,7 +120,6 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Data
   const orgSocials = isOrgString ? ORG_PLACEHOLDER.socials : (org.socials || ORG_PLACEHOLDER.socials);
   const orgTitle = isOrgString ? org : (org.title || org.name);
   const license = (dataset.licenses && dataset.licenses[0]) ? (dataset.licenses[0].title || dataset.licenses[0].name) : 'Not specified';
-  const downloadUrl = `/data/datasets/${org.name?.toLowerCase() || 'unknown'}/${dataset.name}/datapackage.json`;
 
   return (
     <div className={styles.pageBg}>

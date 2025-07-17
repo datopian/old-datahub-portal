@@ -105,8 +105,8 @@ export default function OrganizationAboutPage({ organization }: Props) {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const orgsDir = path.join(process.cwd(), 'public/data/organizations.json');
-  const orgs = JSON.parse(fs.readFileSync(orgsDir, 'utf-8'));
+  const orgsPath = path.join(process.cwd(), 'organizations-index.json');
+  const orgs = JSON.parse(fs.readFileSync(orgsPath, 'utf-8'));
   const paths = orgs.map((org: any) => ({ params: { name: org.name } }));
   return { paths, fallback: false };
 };
