@@ -14,6 +14,8 @@ interface Organization {
   num_followers?: number;
   package_count?: number;
   extras?: { key: string; value: string }[];
+  path?: string;
+  packages?: number;
 }
 
 interface Props {
@@ -40,6 +42,15 @@ function renderMarkdownLinks(text: string) {
 }
 
 export default function OrganizationAboutPage({ organization }: Props) {
+  const [details, setDetails] = React.useState<Organization | null>(organization);
+  React.useEffect(() => {
+    if (organization && organization.path) {
+      fetch(`/${organization.path}`)
+        .then(res => res.json())
+        .then(setDetails)
+        .catch(() => setDetails(organization));
+    }
+  }, [organization]);
   if (!organization) return <div>Organization not found</div>;
   return (
     <OrganizationLayout
@@ -50,37 +61,37 @@ export default function OrganizationAboutPage({ organization }: Props) {
       activeTab="about"
     >
       <div style={{ background: '#fff', borderRadius: 12, padding: 32, maxWidth: 800, margin: '0 auto' }}>
-        <h3 style={{ fontSize: '1.3rem', marginBottom: 16, color: '#ff5722' }}>About {organization.title}</h3>
+        <h3 style={{ fontSize: '1.3rem', marginBottom: 16, color: '#ff5722' }}>About {details?.title || organization.title}</h3>
         <div style={{ marginBottom: 24 }}>
           <h4 style={{ fontSize: '1.1rem', marginBottom: 8, color: '#333' }}>Description</h4>
           <p style={{ color: '#666', lineHeight: 1.6 }}>
-            {renderMarkdownLinks(organization.description || 'No description available for this organization.')}
+            {renderMarkdownLinks(details?.description || organization.description || 'No description available for this organization.')}
           </p>
         </div>
         <div style={{ marginBottom: 24 }}>
           <h4 style={{ fontSize: '1.1rem', marginBottom: 8, color: '#333' }}>Statistics</h4>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 16 }}>
             <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{organization.num_followers || 0}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{details?.num_followers ?? 0}</div>
               <div style={{ color: '#666', fontSize: '0.9rem' }}>Followers</div>
             </div>
             <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{organization.package_count || 0}</div>
+              <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{organization.packages ?? 0}</div>
               <div style={{ color: '#666', fontSize: '0.9rem' }}>Datasets</div>
             </div>
-            {organization.created && (
+            {details?.created && (
               <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8, textAlign: 'center' }}>
-                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{new Date(organization.created).getFullYear()}</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#ff5722' }}>{new Date(details.created).getFullYear()}</div>
                 <div style={{ color: '#666', fontSize: '0.9rem' }}>Created</div>
               </div>
             )}
           </div>
         </div>
-        {organization.extras && organization.extras.length > 0 && (
+        {details?.extras && details.extras.length > 0 && (
           <div>
             <h4 style={{ fontSize: '1.1rem', marginBottom: 8, color: '#333' }}>Additional Information</h4>
             <div style={{ background: '#f8fafc', padding: 16, borderRadius: 8 }}>
-              {organization.extras.map((extra, index) => (
+              {details.extras.map((extra, index) => (
                 <div key={index} style={{ marginBottom: 8 }}>
                   <strong style={{ color: '#333' }}>{extra.key}:</strong> {extra.value}
                 </div>
@@ -102,10 +113,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const name = context.params?.name as string;
-  const orgPath = path.join(process.cwd(), 'datasets', name, 'organization.json');
-  let organization = null;
-  if (fs.existsSync(orgPath)) {
-    organization = JSON.parse(fs.readFileSync(orgPath, 'utf-8'));
+  const orgsIndexPath = path.join(process.cwd(), 'organizations-index.json');
+  let organizations = [];
+  try {
+    const raw = fs.readFileSync(orgsIndexPath, 'utf-8');
+    organizations = JSON.parse(raw);
+  } catch (e) {
+    organizations = [];
   }
+  const organization = organizations.find((org: any) => org.name === name) || null;
   return { props: { organization } };
 }; 

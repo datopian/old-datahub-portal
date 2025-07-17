@@ -4,6 +4,7 @@ import path from 'path';
 import { useRouter } from 'next/router';
 import OrganizationLayout from '@/components/_shared/OrganizationLayout';
 import { format } from 'timeago.js';
+import React from 'react';
 
 interface ActivityStreamEntry {
   user_id: string;
@@ -22,6 +23,7 @@ interface Organization {
   title: string;
   description: string;
   image_url?: string;
+  activity_stream_path?: string;
 }
 
 interface Props {
@@ -31,7 +33,16 @@ interface Props {
   totalPages: number;
 }
 
-export default function OrganizationActivityPage({ organization, activityStream }: Props) {
+export default function OrganizationActivityPage({ organization }: Props) {
+  const [activityStream, setActivityStream] = React.useState<ActivityStreamEntry[]>([]);
+  React.useEffect(() => {
+    if (organization && organization.activity_stream_path) {
+      fetch(`/${organization.activity_stream_path}`)
+        .then(res => res.json())
+        .then(setActivityStream)
+        .catch(() => setActivityStream([]));
+    }
+  }, [organization]);
   if (!organization) return <div>Organization not found</div>;
   return (
     <OrganizationLayout
@@ -72,26 +83,20 @@ export default function OrganizationActivityPage({ organization, activityStream 
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const orgsDir = path.join(process.cwd(), 'public/data/organizations.json');
-  const orgs = JSON.parse(fs.readFileSync(orgsDir, 'utf-8'));
-  const paths: any[] = [];
-  for (const org of orgs) {
-    paths.push({ params: { name: org.name, page: '0' } });
-  }
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const name = context.params?.name as string;
-  const orgPath = path.join(process.cwd(), 'datasets', name, 'organization.json');
-  let organization = null;
-  if (fs.existsSync(orgPath)) {
-    organization = JSON.parse(fs.readFileSync(orgPath, 'utf-8'));
+  const orgsIndexPath = path.join(process.cwd(), 'organizations-index.json');
+  let organizations = [];
+  try {
+    const raw = fs.readFileSync(orgsIndexPath, 'utf-8');
+    organizations = JSON.parse(raw);
+  } catch (e) {
+    organizations = [];
   }
-  let activityStream: ActivityStreamEntry[] = [];
-  if (organization) {
-    const activityPath = path.join(process.cwd(), 'datasets', name, 'activity_stream.json');
+  const organization = organizations.find((org: any) => org.name === name) || null;
+  let activityStream = [];
+  if (organization && organization.activity_stream_path) {
+    const activityPath = path.join(process.cwd(), organization.activity_stream_path);
     if (fs.existsSync(activityPath)) {
       activityStream = JSON.parse(fs.readFileSync(activityPath, 'utf-8'));
     }

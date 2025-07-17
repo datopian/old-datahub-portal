@@ -690,27 +690,24 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { name } = context.params as { name: string };
-  
-  const orgPath = path.join(process.cwd(), 'datasets', name, 'organization.json');
-  let organization = null;
-  
+  const orgsIndexPath = path.join(process.cwd(), 'organizations-index.json');
+  let organizations = [];
   try {
-    const raw = fs.readFileSync(orgPath, 'utf-8');
-    organization = JSON.parse(raw);
+    const raw = fs.readFileSync(orgsIndexPath, 'utf-8');
+    organizations = JSON.parse(raw);
   } catch (e) {
-    organization = null;
+    organizations = [];
   }
-  
+  const organization = organizations.find((org: any) => org.name === name) || null;
+
   const datasetsIndexPath = path.join(process.cwd(), 'datasets-index.json');
   let allDatasets = [];
-  
   try {
     const raw = fs.readFileSync(datasetsIndexPath, 'utf-8');
     allDatasets = JSON.parse(raw);
   } catch (e) {
     allDatasets = [];
   }
-  
   let datasets = [];
   if (organization && organization.title) {
     datasets = allDatasets.filter((ds: any) => {
@@ -719,7 +716,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   } else {
     datasets = [];
   }
-  
   const tagCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.tags || []).forEach((tag: string) => {
@@ -729,7 +725,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const tags = Object.entries(tagCounts)
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
-
   const formatCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.formats || []).forEach((fmt: string) => {
@@ -740,7 +735,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const formats = Object.entries(formatCounts)
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
-
   const licenseCounts: Record<string, number> = {};
   datasets.forEach((ds: any) => {
     (ds.licenses || []).forEach((lic: string) => {
@@ -750,25 +744,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const licenses = Object.entries(licenseCounts)
     .sort((a, b) => b[1] - a[1])
     .map(([name, count]) => ({ name, count }));
-  
-  const activityPath = path.join(process.cwd(), 'datasets', name, 'activity_stream.json');
-  let activityStream = [];
-  try {
-    const raw = fs.readFileSync(activityPath, 'utf-8');
-    activityStream = JSON.parse(raw);
-  } catch (e) {
-    activityStream = [];
-  }
-  
-  return { 
-    props: { 
+  return {
+    props: {
       organization,
       datasets,
       tags,
       formats,
       licenses,
-      activityStream
-    } 
+      activityStream: []
+    }
   };
 };
 

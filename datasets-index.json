@@ -222060,6 +222060,25 @@
     "modified": "2015-05-25T18:40:45.908847"
   },
   {
+    "id": "zip-codes-poquoson-va",
+    "title": "Zip Codes - Poquoson, VA",
+    "description": "Zip Code 23662 GIS dataset for the city of Poquoson, Virginia.  \r\n",
+    "organization": "Open Hampton Roads",
+    "tags": [],
+    "path": "datasets/open-hampton-roads/zip-codes-poquoson-va/datapackage.json",
+    "formats": [
+      "GEOJSON",
+      "TOPOJSON",
+      "KML",
+      "SHP"
+    ],
+    "licenses": [
+      "License not specified"
+    ],
+    "created": "2015-05-25T05:35:49.799707",
+    "modified": "2015-05-25T05:42:20.180334"
+  },
+  {
     "id": "zip-codes-portsmouth-va",
     "title": "Zip Codes - Portsmouth, VA",
     "description": "Portsmouth, Virginia zip codes GIS dataset.  \r\nZip codes:  \r\n23702\tPortsmouth\tPortsmouth City\r\n23703\tPortsmouth\tPortsmouth City\r\n23704\tPortsmouth\tPortsmouth City\r\n23705\tPortsmouth\tPortsmouth City\r\n23707\tPortsmouth\tPortsmouth City\r\n23708\tPortsmouth\tPortsmouth City\r\n23709\tPortsmouth\tPortsmouth City",
@@ -230840,22 +230859,6 @@
     ],
     "created": "2014-03-29T19:32:24.196621",
     "modified": "2015-08-07T14:17:45.248736"
-  },
-  {
-    "id": "zip-codes-poquoson-va",
-    "title": "Zip Codes – Poquoson, VA",
-    "description": "List of ZIP codes for the city of Poquoson, Virginia.",
-    "organization": "Poquoson",
-    "tags": [],
-    "path": "datasets/poquoson/zip-codes-poquoson-va/datapackage.json",
-    "formats": [
-      "CSV"
-    ],
-    "licenses": [
-      "Not Specified"
-    ],
-    "created": "2025-05-30T06:05:06Z",
-    "modified": "2025-05-30T06:05:06Z"
   },
   {
     "id": "portugal-writers-and-influences",

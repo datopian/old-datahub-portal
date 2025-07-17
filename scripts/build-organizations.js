@@ -36,7 +36,10 @@ async function rebuildOrganizationsIndex() {
         image_url: orgDetails.image_url || null,
         created: orgDetails.created || null,
         packages: datasetCount,
-        path: `datasets/${orgName}/organization.json`
+        path: `datasets/${orgName}/organization.json`,
+        activity_stream_path: fs.existsSync(path.join(DATASETS_DIR, name, 'activity_stream.json'))
+          ? `datasets/${orgName}/activity_stream.json`
+          : null
       });
     }
   }
