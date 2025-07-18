@@ -1,0 +1,14 @@
+datasets/
+node_modules/
+.idea/
+.next/
+
+*.log
+*.tmp
+*.cache
+
+public/data/lunr-index.json
+public/data/lunr-org-index.json
+
+*.test.*
+*.spec.*
