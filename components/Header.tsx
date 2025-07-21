@@ -25,7 +25,9 @@ export default function Header() {
         </nav>
       </div>
       <div className={styles.right}>
-        <span className={styles.powered}>Powered by PortalJS and CKAN</span>
+        <span className={styles.powered}>
+          Powered by <a href="https://portaljs.com/ckan" target="_blank" rel="noopener noreferrer" style={{ color: '#ff5722', textDecoration: 'underline' }}>PortalJS and CKAN</a>
+        </span>
       </div>
     </header>
   );

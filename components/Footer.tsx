@@ -14,12 +14,14 @@ export default function Footer() {
         </div>
         <div>
           <div className={styles.linksTitle}>PortalJS</div>
-          <Link href="https://portaljs.com">PortalJS and CKAN</Link>
+          <Link href="https://portaljs.com/ckan">PortalJS and CKAN</Link>
           <Link href="https://portaljs.com">PortalJS Cloud</Link>
         </div>
       </div>
       <div className={styles.powered}>
-        <span>Powered by PortalJS and CKAN</span>
+        <span>
+          Powered by <a href="https://portaljs.com/ckan" target="_blank" rel="noopener noreferrer" style={{ color: '#ff5722', textDecoration: 'underline' }}>PortalJS and CKAN</a>
+        </span>
       </div>
     </footer>
   );
