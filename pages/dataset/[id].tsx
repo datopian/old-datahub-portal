@@ -1,36 +1,38 @@
-import styles from '../../../styles/DatasetDetailPage.module.css';
-import Breadcrumbs from '@/components/_shared/Breadcrumbs';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import fs from 'fs';
+import path from 'path';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
+import { useState } from 'react';
+import styles from '../../styles/DatasetDetailPage.module.css';
 
-export interface License {
+interface License {
   name: string;
   title: string;
   path: string;
 }
-export interface Source {
+interface Source {
   title: string;
   path: string;
 }
-export interface Contributor {
+interface Contributor {
   title: string;
   role?: string;
 }
-export interface Organization {
+interface Organization {
   name: string;
   title?: string;
   logo?: string;
   description?: string;
   socials?: { name: string; url: string }[];
 }
-export interface Resource {
+interface Resource {
   name: string;
   description?: string;
   format?: string;
   path: string;
   url?: string;
 }
-export interface DatasetDetail {
+interface DatasetDetail {
   name: string;
   title: string;
   description: string;
@@ -45,11 +47,9 @@ export interface DatasetDetail {
   resources: Resource[];
 }
 
-export interface DatasetDetailPageProps {
-  dataset?: DatasetDetail | null;
+interface Props {
+  dataset: DatasetDetail | null;
   activityStream?: any[];
-  datasetPath?: string | null;
-  id?: string;
 }
 
 const ORG_PLACEHOLDER = {
@@ -91,56 +91,9 @@ function getActivityMessage(act: any) {
   return `${user} did ${type}`;
 }
 
-function timeAgo(dateStr: string) {
-  const date = new Date(dateStr);
-  const now = new Date();
-  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
-  if (diff < 60) return `${diff} seconds ago`;
-  if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
-  if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
-  if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
-  if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
-  return `${Math.floor(diff / 31536000)} years ago`;
-}
-
-export default function DatasetDetailPage({ dataset: initialDataset, activityStream = [], datasetPath, id }: DatasetDetailPageProps) {
-  const router = useRouter();
-  const [dataset, setDataset] = useState<DatasetDetail | null | undefined>(initialDataset);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (!dataset && datasetPath) {
-      setLoading(true);
-      setError(null);
-      fetch(`/${datasetPath}`)
-        .then(res => {
-          if (!res.ok) throw new Error('Not found');
-          return res.json();
-        })
-        .then(data => {
-          setDataset(data);
-          setLoading(false);
-        })
-        .catch(() => {
-          setError('Dataset not found.');
-          setLoading(false);
-        });
-    }
-  }, [dataset, datasetPath]);
-
-  const datasetName = dataset?.name || id;
-  let tab: 'dataset' | 'groups' | 'activity' = 'dataset';
-  if (router.asPath.startsWith(`/dataset/groups/`)) tab = 'groups';
-  if (router.asPath.startsWith(`/dataset/activity/`)) tab = 'activity';
-  if (loading) {
-    return (
-      <div style={{ padding: 32 }}>
-        <div>Loading…</div>
-      </div>
-    );
-  }
-  if (!dataset || error) {
+export default function DatasetDetailPage({ dataset, activityStream = [] }: Props) {
+  const [tab, setTab] = useState<'dataset' | 'groups' | 'activity'>('dataset');
+  if (!dataset) {
     return (
       <div style={{ padding: 32 }}>
         <div>Dataset not found.</div>
@@ -154,23 +107,17 @@ export default function DatasetDetailPage({ dataset: initialDataset, activityStr
   const orgSocials = isOrgString ? ORG_PLACEHOLDER.socials : (org.socials || ORG_PLACEHOLDER.socials);
   const orgTitle = isOrgString ? org : (org.title || org.name);
   const license = (dataset.licenses && dataset.licenses[0]) ? (dataset.licenses[0].title || dataset.licenses[0].name) : 'Not specified';
+  const downloadUrl = `/data/datasets/${org.name?.toLowerCase() || 'unknown'}/${dataset.name}/datapackage.json`;
 
   return (
     <div className={styles.pageBg}>
-      <div style={{ margin: '-22px 0 12px 0' }}>
-        <Breadcrumbs items={[
-          { label: 'Datasets', href: '/dataset' },
-          { label: dataset.title }
-        ]} />
-        <div style={{ borderBottom: '1px solid #e5e7eb', marginTop: 12 }} />
-      </div>
       <div className={styles.pageContainer}>
         <main className={styles.mainContent}>
           <h1 style={{ fontSize: '2rem', margin: 0, color: '#ff5722', marginBottom: 10 }}>{dataset.title}</h1>
           <div className={styles.tabRow}>
-            <button onClick={() => router.push(`/dataset/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
-            <button onClick={() => router.push(`/dataset/groups/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
-            <button onClick={() => router.push(`/dataset/activity/${datasetName}`)} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
+            <button onClick={() => setTab('dataset')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'dataset' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'dataset' ? 'bold' : 'normal', color: tab === 'dataset' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Dataset</button>
+            <button onClick={() => setTab('groups')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'groups' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'groups' ? 'bold' : 'normal', color: tab === 'groups' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Groups</button>
+            <button onClick={() => setTab('activity')} style={{ padding: '8px 18px', border: 'none', borderBottom: tab === 'activity' ? '3px solid #ff5722' : '3px solid transparent', background: 'none', fontWeight: tab === 'activity' ? 'bold' : 'normal', color: tab === 'activity' ? '#ff5722' : '#222', fontSize: '1.1rem', cursor: 'pointer' }}>Activity Stream</button>
           </div>
           {tab === 'dataset' && (
             <>
@@ -267,4 +214,69 @@ export default function DatasetDetailPage({ dataset: initialDataset, activityStr
       </div>
     </div>
   );
-} 
+}
+
+function timeAgo(dateStr: string) {
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diff = Math.floor((now.getTime() - date.getTime()) / 1000);
+  if (diff < 60) return `${diff} seconds ago`;
+  if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+  if (diff < 2592000) return `${Math.floor(diff / 86400)} days ago`;
+  if (diff < 31536000) return `${Math.floor(diff / 2592000)} months ago`;
+  return `${Math.floor(diff / 31536000)} years ago`;
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const indexPath = path.join(process.cwd(), 'datasets-index.json');
+  let datasets = [];
+  try {
+    const raw = fs.readFileSync(indexPath, 'utf-8');
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      datasets = parsed;
+    }
+  } catch (e) {
+    datasets = [];
+  }
+  const paths = datasets.map((ds: any) => ({ params: { id: ds.id } }));
+  return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { id } = context.params as { id: string };
+  const indexPath = path.join(process.cwd(), 'datasets-index.json');
+  let datasets = [];
+  try {
+    const raw = fs.readFileSync(indexPath, 'utf-8');
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      datasets = parsed;
+    }
+  } catch (e) {
+    datasets = [];
+  }
+  const entry = datasets.find((ds: any) => ds.id === id);
+  let dataset = null;
+  let activityStream = [];
+  if (entry && entry.path) {
+    const dpPath = path.join(process.cwd(), entry.path);
+    try {
+      const raw = fs.readFileSync(dpPath, 'utf-8');
+      dataset = JSON.parse(raw);
+    } catch (e) {
+      dataset = null;
+    }
+    const activityPath = path.join(path.dirname(dpPath), 'activity_stream.json');
+    if (fs.existsSync(activityPath)) {
+      try {
+        const raw = fs.readFileSync(activityPath, 'utf-8');
+        activityStream = JSON.parse(raw);
+      } catch (e) {
+        activityStream = [];
+      }
+    }
+  }
+  return { props: { dataset, activityStream } };
+};
