@@ -37,6 +37,7 @@ export interface DatasetDetail {
   version?: string;
   licenses?: License[];
   keywords?: string[];
+  tags?: any[];
   sources?: Source[];
   contributors?: Contributor[];
   created?: string;
@@ -155,6 +156,13 @@ export default function DatasetDetailPage({ dataset: initialDataset, activityStr
   const orgTitle = isOrgString ? org : (org.title || org.name);
   const license = (dataset.licenses && dataset.licenses[0]) ? (dataset.licenses[0].title || dataset.licenses[0].name) : 'Not specified';
 
+  // Ensure tags is always present and is an array of objects with name/display_name
+  const tags = Array.isArray(dataset.tags) ? dataset.tags.filter(tag => tag && (tag.name || tag.display_name)) : [];
+  // DEBUG: Вывести теги в консоль
+  if (typeof window !== 'undefined') {
+    console.log('Dataset tags:', tags);
+  }
+
   return (
     <div className={styles.pageBg}>
       <div style={{ margin: '-22px 0 12px 0' }}>
@@ -196,8 +204,8 @@ export default function DatasetDetailPage({ dataset: initialDataset, activityStr
               <section style={{ marginBottom: 24 }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: 10 }}>Tags</h3>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {(dataset.keywords || []).map(tag => (
-                    <button key={tag} style={{ background: '#fff3e6', color: '#ff5722', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag}</button>
+                  {tags.length === 0 ? <span style={{ color: '#888' }}>No tags</span> : tags.map((tag: any) => (
+                    <button key={tag.name} style={{ background: '#fff3e6', color: '#ff5722', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag.display_name || tag.name}</button>
                   ))}
                 </div>
               </section>

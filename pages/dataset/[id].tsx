@@ -43,6 +43,8 @@ interface DatasetDetail {
   contributors?: Contributor[];
   created?: string;
   modified?: string;
+  metadata_created?: string;
+  metadata_modified?: string;
   organization?: Organization;
   resources: Resource[];
 }
@@ -109,6 +111,9 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Prop
   const license = (dataset.licenses && dataset.licenses[0]) ? (dataset.licenses[0].title || dataset.licenses[0].name) : 'Not specified';
   const downloadUrl = `/data/datasets/${org.name?.toLowerCase() || 'unknown'}/${dataset.name}/datapackage.json`;
 
+  // Ensure tags is always present and is an array of objects with name/display_name
+  const tags = Array.isArray((dataset as any).tags) ? (dataset as any).tags.filter(tag => tag && (tag.name || tag.display_name)) : [];
+
   return (
     <div className={styles.pageBg}>
       <div className={styles.pageContainer}>
@@ -143,8 +148,8 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Prop
               <section style={{ marginBottom: 24 }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: 10 }}>Tags</h3>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {(dataset.keywords || []).map(tag => (
-                    <button key={tag} style={{ background: '#fff3e6', color: '#ff5722', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag}</button>
+                  {tags.length === 0 ? <span style={{ color: '#888' }}>No tags</span> : tags.map((tag: any) => (
+                    <button key={tag.name} style={{ background: '#fff3e6', color: '#ff5722', border: 'none', borderRadius: 6, padding: '5px 14px', fontWeight: 'bold', fontSize: '0.98rem', cursor: 'pointer' }}>{tag.display_name || tag.name}</button>
                   ))}
                 </div>
               </section>
@@ -152,12 +157,11 @@ export default function DatasetDetailPage({ dataset, activityStream = [] }: Prop
                 <h3 style={{ fontSize: '1.1rem', marginBottom: 10 }}>Additional Info</h3>
                 <table style={{ width: '100%', borderCollapse: 'collapse', background: '#f9fafb', borderRadius: 8 }}>
                   <tbody>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8, width: 160 }}>Source</td><td style={{ padding: 8 }}>{dataset.sources && dataset.sources[0] ? <a href={dataset.sources[0].path} target="_blank" rel="noopener noreferrer">{dataset.sources[0].title}</a> : '—'}</td></tr>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Author</td><td style={{ padding: 8 }}>{orgTitle}</td></tr>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Maintainer</td><td style={{ padding: 8 }}>{dataset.contributors && dataset.contributors[0] ? dataset.contributors[0].title : '—'}</td></tr>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Version</td><td style={{ padding: 8 }}>{dataset.version || '—'}</td></tr>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Last Updated</td><td style={{ padding: 8 }}>{dataset.modified ? new Date(dataset.modified).toLocaleString('en-GB', { timeZone: 'UTC', year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' UTC' : '—'}</td></tr>
-                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Created</td><td style={{ padding: 8 }}>{dataset.created ? new Date(dataset.created).toLocaleString('en-GB', { timeZone: 'UTC', year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' UTC' : '—'}</td></tr>
+                    <tr><td style={{ fontWeight: 'bold', padding: 8, width: 160 }}>Author</td><td style={{ padding: 8 }}>{orgTitle}</td></tr>
+                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Maintainer</td><td style={{ padding: 8 }}>{(dataset.contributors && dataset.contributors[0] && dataset.contributors[0].title) ? dataset.contributors[0].title : orgTitle}</td></tr>
+                    {dataset.version && <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Version</td><td style={{ padding: 8 }}>{dataset.version}</td></tr>}
+                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Last Updated</td><td style={{ padding: 8 }}>{dataset.metadata_modified ? new Date(dataset.metadata_modified).toLocaleString('en-GB', { timeZone: 'UTC', year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' UTC' : '—'}</td></tr>
+                    <tr><td style={{ fontWeight: 'bold', padding: 8 }}>Created</td><td style={{ padding: 8 }}>{dataset.metadata_created ? new Date(dataset.metadata_created).toLocaleString('en-GB', { timeZone: 'UTC', year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }) + ' UTC' : '—'}</td></tr>
                   </tbody>
                 </table>
               </section>
